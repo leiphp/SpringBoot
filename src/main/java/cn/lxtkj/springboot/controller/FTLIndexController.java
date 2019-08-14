@@ -2,6 +2,7 @@ package cn.lxtkj.springboot.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.Map;
 
@@ -14,5 +15,17 @@ public class FTLIndexController {
         map.put("age","28");
         map.put("sex","0");
         return "ftlIndex";
+    }
+    @RequestMapping("/")
+    public String Index(){
+        return "home";
+    }
+    @RequestMapping("/list")
+    public String List(){
+        return "list";
+    }
+    @RequestMapping(value="/article/{id}", method = RequestMethod.GET)
+    public String Article(){
+        return "article";
     }
 }
