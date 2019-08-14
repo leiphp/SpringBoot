@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="gb2312">
-    <title>机友汇</title>
+    <title>雷小天SpringBoot开源博客</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <link href="/css/base.css" rel="stylesheet">
@@ -35,12 +35,12 @@
     </div>
     <nav id="topnav">
         <ul>
-            <a href="/" target="_blank">网站首页</a>
-            <a href="/list" target="_blank">新闻中心</a>
-            <a href="/article/2" target="_blank">产品中心</a>
-            <a href="a.html" target="_blank">关于我们</a>
-            <a href="c.html" target="_blank">联系我们</a>
-            <a href="b.html" target="_blank">网上留言</a>
+            <a href="/">网站首页</a>
+            <a href="/list">新闻中心</a>
+            <a href="/article/2">产品中心</a>
+            <a href="a.html">关于我们</a>
+            <a href="c.html">联系我们</a>
+            <a href="b.html">网上留言</a>
         </ul>
         <script src="/js/silder.js"></script>
     </nav>
