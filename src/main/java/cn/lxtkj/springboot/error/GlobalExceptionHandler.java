@@ -12,7 +12,7 @@ import java.util.Map;
  * 1.返回json格式
  * 2.捕获返回页面
  */
-@ControllerAdvice(basePackages = "cn.lxtkj.springboot")
+@ControllerAdvice(basePackages = "cn.lxtkj.springboot.config")
 public class GlobalExceptionHandler {
     //@ResponseBody 返回json格式
     //modeAndView 返回页面
