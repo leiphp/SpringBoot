@@ -1,8 +1,11 @@
 package cn.lxtkj.springboot.service;
 
+import cn.lxtkj.springboot.entity.User;
 import cn.lxtkj.springboot.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
@@ -14,4 +17,13 @@ public class UserService {
         return insertUserResult;
     }
 
+    public List<User> findUserList(int page, int pageSize){
+        //mysql查询limit
+        //pageHelper 帮我们生产分页语句
+        PageHelper.startPage(page, pageSize);
+        List<User> listUser = userMapper.findUserList();
+        //返回给客户端展示
+        PageInfo<User> pageInfoUserList = new PageInfo<User>(listUser);
+        return pageInfoUserList;
+    }
 }
