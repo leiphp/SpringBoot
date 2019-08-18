@@ -16,5 +16,5 @@ SpringBoot学习项目
  * ##### 整合jpa
  * ##### SpringBOot整合多数据源
  * ##### SpringBOot项目打包
-    1. ######使用命令 mvn clean package 打包（mvn packsge Dmven.test.skip=true/ mvn -Dmaven.test.skip -U clean package   //跳过测试类）
-    2. ######使用idea Maven Projects > 项目名 > Lifecycle > 双击package开始打包
+    1. ###### 使用命令 mvn clean package 打包（mvn packsge Dmven.test.skip=true/ mvn -Dmaven.test.skip -U clean package   //跳过测试类）
+    2. ###### 使用idea Maven Projects > 项目名 > Lifecycle > 双击package开始打包
