@@ -16,4 +16,19 @@ public interface UserMapper {
 
     @Select("SELECT * FROM USERS ")
     List<User> findUserList();
+
+    /**
+     * 获得密码
+     * @param username 用户名
+     */
+    @Select("SELECT password FROM USERS WHERE username = #{username}")
+    String getPassword(String username);
+
+    /**
+     * 获得角色权限
+     * @param username 用户名
+     * @return user/admin
+     */
+    @Select("SELECT role FROM USERS WHERE username = #{username}")
+    String getRole(String username);
 }
