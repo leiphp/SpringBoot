@@ -28,4 +28,8 @@ public class FTLIndexController {
     public String Article(){
         return "article";
     }
+    @RequestMapping("/login")
+    public String Login(){
+        return "admin/login";
+    }
 }

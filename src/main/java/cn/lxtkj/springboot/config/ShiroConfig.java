@@ -50,6 +50,14 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/list", "anon");
         filterChainDefinitionMap.put("/article/**", "anon");
+        filterChainDefinitionMap.put("/images/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/css/**", "anon");
+        //配置登录界面的资源
+        filterChainDefinitionMap.put("/admin/css/**", "anon");
+        filterChainDefinitionMap.put("/admin/images/**", "anon");
+        filterChainDefinitionMap.put("/admin/js/**", "anon");
+        filterChainDefinitionMap.put("/admin/plugins/**", "anon");
         //游客，开发权限
         filterChainDefinitionMap.put("/guest/**", "anon");
         //用户，需要角色权限 “user”
