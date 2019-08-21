@@ -1,10 +1,7 @@
 package cn.lxtkj.springboot.controller.admin;
 
-import cn.lxtkj.springboot.mapper.UserMapper;
+
 import cn.lxtkj.springboot.model.ResultMap;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,20 +20,10 @@ import java.util.Map;
 @RequestMapping("/admin")
 public class AdminController {
     private final ResultMap resultMap;
-    private final UserMapper userMapper;
 
     @Autowired
-    public AdminController(ResultMap resultMap,UserMapper userMapper) {
+    public AdminController(ResultMap resultMap) {
         this.resultMap = resultMap;
-        this.userMapper = userMapper;
-    }
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String Login(Map<String, Object> map) {
-        map.put("comments","11");
-        map.put("articles","11");
-        map.put("statistics","11");
-        map.put("logs","11");
-        return "admin/index";
     }
     @RequestMapping(value = "/getMessage", method = RequestMethod.GET)
     public ResultMap getMessage() {
