@@ -29,7 +29,8 @@ public class FTLIndexController {
         return "article";
     }
     @RequestMapping("/login")
-    public String Login(){
+    public String Login(Map<String, Object> map){
+        map.put("pic",(int)(1+Math.random()*5));
         return "admin/login";
     }
 }
