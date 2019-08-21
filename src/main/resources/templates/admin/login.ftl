@@ -53,7 +53,7 @@
             <h3 class="text-center m-t-10"> Login My Blog</h3>
         </div>
         <div class="panel-body">
-            <form class="form-horizontal m-t-20" method="post" id="loginForm" >
+            <form class="form-horizontal m-t-20" method="post" id="loginForm" onsubmit="return checkForm()">
                 <div class="form-group">
                     <div class="col-xs-12">
                         <input class=" input-lg input-border" name="username" type="text" required=""
