@@ -8,6 +8,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 
 
 /**
@@ -29,7 +30,14 @@ public class AdminController {
         this.resultMap = resultMap;
         this.userMapper = userMapper;
     }
-
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public String Login(Map<String, Object> map) {
+        map.put("comments","11");
+        map.put("articles","11");
+        map.put("statistics","11");
+        map.put("logs","11");
+        return "admin/index";
+    }
     @RequestMapping(value = "/getMessage", method = RequestMethod.GET)
     public ResultMap getMessage() {
         return resultMap.success().message("您拥有管理员权限，可以获得该接口的信息！");
