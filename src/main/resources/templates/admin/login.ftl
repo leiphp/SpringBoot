@@ -46,8 +46,12 @@
 
 </head>
 <body  style="background:url(/admin/images/bg/${pic}.png) no-repeat; background-size: cover;">
-<div >
+<div style="margin: 0 auto; padding-bottom: 0%; padding-top: 7.5%; width: 380px;">
     <div class="panel panel-color panel-danger panel-pages panel-shadow">
+        <div class="panel-heading bg-img">
+            <div class="bg-overlay"></div>
+            <h3 class="text-center m-t-10"> Login My Blog</h3>
+        </div>
         <div class="panel-body">
             <form class="form-horizontal m-t-20" method="post" id="loginForm" >
                 <div class="form-group">
@@ -80,5 +84,29 @@
         </div>
     </div>
 </div>
+<!-- Main  -->
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.2.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://cdn.bootcss.com/limonte-sweetalert2/6.4.1/sweetalert2.min.js"></script>
+<script type="text/javascript" src="admin/js/base.js"></script>
+<script type="text/javascript">
+    /*<![CDATA[*/
+    var tale = new $.tale();
+    function checkForm() {
+        tale.post({
+            url: '/admin/login',
+            data: $("#loginForm").serialize(),
+            success: function (result) {
+                if (result && result.success) {
+                    window.location.href = '/admin/index';
+                } else {
+                    tale.alertError(result.msg || '登录失败');
+                }
+            }
+        });
+        return false;
+    }
+    /*]]>*/
+</script>
 </body>
 </html>
