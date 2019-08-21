@@ -66,7 +66,8 @@ public class LoginController {
             return resultMap.success().message("欢迎登陆");
         }
         if ("admin".equals(role)) {
-            return resultMap.success().message("欢迎来到管理员页面");
+//            return resultMap.success().message("欢迎来到管理员页面");
+            return resultMap.success().status(true);
         }
         return resultMap.fail().message("权限错误！");
     }

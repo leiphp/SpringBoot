@@ -31,5 +31,10 @@ public class ResultMap extends HashMap<String, Object> {
         this.put("message", message);
         return this;
     }
+
+    public ResultMap status(Boolean success) {
+        this.put("success", true);
+        return this;
+    }
 }
 
