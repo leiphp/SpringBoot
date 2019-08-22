@@ -24,9 +24,9 @@
 
                     <ul class="nav navbar-nav navbar-right pull-right">
                         <li class="dropdown">
-                            <a href="index.html" class="dropdown-toggle profile" data-toggle="dropdown"
-                               aria-expanded="true"><img src="" alt="user-img"
-                                                         class="img-circle"/> </a>
+                            <a class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true" href="index.html">
+                                <img alt="user-img" class="img-circle" src="https://github.com/identicons/afe94ddc67b57b89f353a02e1ffe3ede.png">
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a href="" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i>查看网站</a></li>
                                 <li><a href="admin/profile"><i class="fa fa-sun-o"></i> 个人设置</a></li>

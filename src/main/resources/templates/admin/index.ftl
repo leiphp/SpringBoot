@@ -60,11 +60,14 @@
                                 </div>
                                 <div class="panel-body">
                                     <ul class="list-group">
-                                        <li class="list-group-item" each="article : ${articles}">
-                            <span class="badge badge-primary" title="0条评论" >0</span>
-                                            <a target="_blank" href="${commons.site_url('/article/')}+${article.cid}"
-                                               text="${article.title}"></a>
+                                        <li class="list-group-item">
+                                            <span class="badge badge-primary" title="0条评论">0</span>
+                                            <a target="_blank" href="/article/2">Hello My Blog</a>
                                         </li>
+                                        <#--<li class="list-group-item" each="article : ${articles}">-->
+                                            <#--<span class="badge badge-primary" title="0条评论" >0</span>-->
+                                            <#--<a target="_blank" href="${commons.site_url('/article/')}+${article.cid}">测试文章</a>-->
+                                        <#--</li>-->
                                     </ul>
                                 </div>
                             </div>
@@ -91,6 +94,12 @@
                                 </div>
                                 <div class="panel-body">
                                     <ul class="list-group" >
+                                        <li class="list-group-item">
+                                            <span>2019-08-22 15:09:27 =&gt; 登录后台</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span>2019-08-21 15:17:00 =&gt; 登录后台</span>
+                                        </li>
                                         <#--<li class="list-group-item" each="log : ${logs}">-->
                                             <#--<span text="${commons.fmtdate(log.created, 'yyyy-MM-dd HH:mm:ss')} +' => '+ ${log.action}"></span>-->
                                         <#--</li>-->
@@ -107,6 +116,7 @@
     </div>
 </div>
 <#--<div replace="admin/footer :: footer"></div>-->
+<#include "footer-content.ftl">
 <#include "footer.ftl">
 </body>
 </html>
