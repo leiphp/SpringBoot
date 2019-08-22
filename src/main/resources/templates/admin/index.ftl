@@ -6,7 +6,6 @@
 <div id="wrapper">
     <#--<div replace="admin/header::header-body"></div>-->
     <#include "header-body.ftl">
-    
     <div class="content-page">
         <div class="content">
             <div class="container">
@@ -20,7 +19,7 @@
                             <div class="mini-stat clearfix bx-shadow bg-info">
                                 <span class="mini-stat-icon"><i class="fa fa-quote-right" aria-hidden="true"></i></span>
                                 <div class="mini-stat-info text-right">
-                                    发表了<span class="counter" text="${statistics.articles}"></span>篇文章
+                                    发表了<span class="counter" >1</span>篇文章
                                 </div>
                             </div>
                         </div>
@@ -28,7 +27,7 @@
                             <div class="mini-stat clearfix bg-purple bx-shadow">
                                 <span class="mini-stat-icon"><i class="fa fa-comments-o" aria-hidden="true"></i></span>
                                 <div class="mini-stat-info text-right">
-                                    收到了<span class="counter" text="${statistics.comments}"></span>条留言
+                                    收到了<span class="counter" >0</span>条留言
                                 </div>
                             </div>
                         </div>
@@ -38,7 +37,7 @@
                                 <span class="mini-stat-icon"><i class="fa fa-cloud-upload"
                                                                 aria-hidden="true"></i></span>
                                 <div class="mini-stat-info text-right">
-                                    上传了<span class="counter" text="${statistics.attachs}"></span>个附件
+                                    上传了<span class="counter">0</span>个附件
                                 </div>
                             </div>
                         </div>
@@ -47,7 +46,7 @@
                             <div class="mini-stat clearfix bg-primary bx-shadow">
                                 <span class="mini-stat-icon"><i class="fa fa-link" aria-hidden="true"></i></span>
                                 <div class="mini-stat-info text-right">
-                                    友链了<span class="counter" text="${statistics.links}"></span>个好友
+                                    友链了<span class="counter">0</span>个好友
                                 </div>
                             </div>
                         </div>
@@ -62,8 +61,7 @@
                                 <div class="panel-body">
                                     <ul class="list-group">
                                         <li class="list-group-item" each="article : ${articles}">
-                            <span class="badge badge-primary"
-                                  title="${article.commentsNum}+'条评论'" text="${article.commentsNum}"></span>
+                            <span class="badge badge-primary" title="0条评论" >0</span>
                                             <a target="_blank" href="${commons.site_url('/article/')}+${article.cid}"
                                                text="${article.title}"></a>
                                         </li>
