@@ -6,6 +6,7 @@
 <div id="wrapper">
     <#--<div replace="admin/header::header-body"></div>-->
     <#include "header-body.ftl">
+    
     <div class="content-page">
         <div class="content">
             <div class="container">
