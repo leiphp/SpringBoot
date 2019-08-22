@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 /**
  * Created with IntelliJ IDEA
  *
@@ -39,11 +42,27 @@ public class LoginController {
         return resultMap.success().message("您没有权限！");
     }
 
+//    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+//    public ResultMap logout() {
+//        Subject subject = SecurityUtils.getSubject();
+//        subject.logout();
+//        return resultMap.success().message("成功注销！");
+//    }
+
+    /**
+     * 注销
+     *
+     * @param response
+     */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public ResultMap logout() {
+    public void logout( HttpServletResponse response) {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
-        return resultMap.success().message("成功注销！");
+        try {
+            response.sendRedirect("/login");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
