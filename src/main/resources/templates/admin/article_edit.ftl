@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="title='保存文章',active='publish'">
-<header th:replace="admin/header::headerFragment(${title},${active})"></header>
-<link th:href="@{/admin/plugins/tagsinput/jquery.tagsinput.css}" rel="stylesheet"/>
-<link th:href="@{/admin/plugins/select2.dist.css/select2-bootstrap.css}" rel="stylesheet"/>
-<link th:href="@{/admin/plugins/toggles/toggles.css}" rel="stylesheet"/>
+<html lang="en">
+<#--<header replace="admin/header::headerFragment(${title},${active})"></header>-->
+<#include "head.ftl">
+<link href="plugins/tagsinput/jquery.tagsinput.css" rel="stylesheet"/>
+<link href="plugins/select2.dist.css/select2-bootstrap.css" rel="stylesheet"/>
+<link href="plugins/toggles/toggles.css" rel="stylesheet"/>
 
-<link href="//cdn.bootcss.com/multi-select/0.9.12/css/multi-select.css" rel="stylesheet"/>
-<link href="//cdn.bootcss.com/select2/3.4.8/select2.min.css" rel="stylesheet"/>
-<link th:href="@{/admin/plugins/md/css/style.css}" rel="stylesheet"/>
+<link href="http://cdn.bootcss.com/multi-select/0.9.12/css/multi-select.css" rel="stylesheet"/>
+<link href="http://cdn.bootcss.com/select2/3.4.8/select2.min.css" rel="stylesheet"/>
+<link href="plugins/md/css/style.css" rel="stylesheet"/>
 <style>
     #tags_tagsinput {
         background-color: #fafafa;
@@ -15,7 +16,7 @@
     }
 
     #tags_addTag input {
-        width: 100%;
+        wid 100%;
     }
 
     #tags_addTag {
@@ -24,138 +25,149 @@
 </style>
 <body class="fixed-left">
 <div id="wrapper">
-    <div th:replace="admin/header::header-body"></div>
+    <#--<div replace="admin/header::header-body"></div>-->
+    <#include "header-body.ftl">
     <div class="content-page">
         <div class="content">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
                         <h4 class="page-title">
-                            <th:block th:if="${null != contents}">
-                                编辑文章
-                            </th:block>
-                            <th:block th:unless="${null != contents}">
-                                发布文章
-                            </th:block>
+                            发布文章
+                            <#--<block if="${null != contents">-->
+                                <#--编辑文章-->
+                            <#--</block>-->
+                            <#--<block unless="${null != contents">-->
+                                <#--发布文章-->
+                            <#--</block>-->
                         </h4>
                     </div>
                     <div class="col-md-12">
                         <form id="articleForm" role="form" novalidate="novalidate">
                             <input type="hidden" name="categories" id="categories"/>
-                            <input type="hidden" name="cid"
-                                   th:value="${contents!=null and contents.cid!=null}?${contents.cid}: ''" id="cid"/>
-                            <input type="hidden" name="status"
-                                   th:value="${contents!=null and contents.status !=null}?${contents.status}: 'publish'"
-                                   id="status"/>
-                            <input type="hidden" name="allowComment"
-                                   th:value="${contents!=null and contents.allowComment !=null}?${contents.allowComment}: true"
-                                   id="allow_comment"/>
-                            <input type="hidden" name="allowPing"
-                                   th:value="${contents!=null and contents.allowPing !=null}?${contents.allowPing}: true"
-                                   id="allow_ping"/>
-                            <input type="hidden" name="allowFeed"
-                                   th:value="${contents!=null and contents.allowFeed !=null}?${contents.allowFeed}: true"
-                                   id="allow_feed"/>
+                            <input type="hidden" name="cid" value="" id="cid"/>
+                            <input type="hidden" name="status" value="publish" id="status"/>
+                            <input type="hidden" name="allowComment" value="true" id="allow_comment"/>
+                            <input type="hidden" name="allowPing" value="true" id="allow_ping"/>
+                            <input type="hidden" name="allowFeed" value="true" id="allow_feed"/>
                             <input type="hidden" name="content" id="content-editor"/>
 
                             <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
                                 <input type="text" class="form-control" placeholder="请输入文章标题（必须）" name="title"
                                        required="required"
                                        aria-required="true"
-                                       th:value="${contents!=null and contents.title!=null }?${contents.title}: ''"/>
+                                       value=""/>
                             </div>
 
                             <div class="form-group col-md-6" style="padding: 0 0 0 10px;">
                                 <input type="text" class="form-control"
                                        placeholder="自定义访问路径，如：my-first-article  默认为文章id" name="slug"
-                                       th:value="${contents!=null and contents.slug !=null}?${contents.slug}: ''"/>
+                                       value="${contents!=null and contents.slug !=null}?${contents.slug}: ''"/>
                             </div>
 
                             <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
-                                <input name="tags" id="tags" type="text" class="form-control" placeholder="请填写文章标签"
-                                       th:value="${contents!=null and contents.tags !=null}?${contents.tags}: ''"/>
+                                <input name="tags" id="tags" type="text" class="form-control" placeholder="请填写文章标签" value=""/>
                             </div>
 
                             <div class="form-group col-md-6">
-                                <select id="multiple-sel" class="select2 form-control" multiple="multiple"
-                                        data-placeholder="请选择分类...">
-                                    <th:block th:if="${null == categories}">
-                                        <option value="默认分类" selected="selected">默认分类</option>
-                                    </th:block>
-                                    <th:block th:unless="${null == categories}">
-                                        <th:block th:each="c : ${categories}">
-                                            <option th:value="${c.name}" th:text="${c.name}"
-                                                    th:selected="${null !=contents and adminCommons.exist_cat(c, contents.categories)}?true:false"></option>
-                                        </th:block>
-                                    </th:block>
+                                <select id="multiple-sel" class="select2 form-control" multiple="multiple" data-placeholder="请选择分类..." tabindex="-1">
+                                    <#--<block if="${null == categories">-->
+                                        <#--<option value="默认分类" selected="selected">默认分类</option>-->
+                                    <#--</block>-->
+                                    <#--<block unless="${null == categories">-->
+                                        <#--<block each="c : ${categories">-->
+                                            <#--<option value="${c.name" text="${c.name"-->
+                                                    <#--selected="${null !=contents and adminCommons.exist_cat(c, contents.categories)}?true:false"></option>-->
+                                        <#--</block>-->
+                                    <#--</block>-->
+                                    <option value="default">default</option>
                                 </select>
                             </div>
                             <div class="clearfix"></div>
                             <div class="form-group">
-                                <textarea style="height: 450px" autocomplete="off" id="text" name="text"
-                                          class="markdown-textarea"
-                                          th:utext="${contents!=null and contents.content !=null}?${contents.content}: ''"></textarea>
+                                <textarea style="height: 450px" autocomplete="off" id="text" name="text" class="markdown-textarea" utext=""></textarea>
                             </div>
 
                             <div class="form-group col-md-3 col-sm-4">
                                 <label class="col-sm-4">开启评论</label>
                                 <div class="col-sm-8">
-                                    <div th:class="${contents!=null and contents.allowComment!=null }?'toggle toggle-success allow-'+${contents.allowComment}:'toggle toggle-success allow-true'"
-                                         onclick="allow_comment(this);"></div>
+                                    <div class="toggle toggle-success allow-true" onclick="allow_comment(this);" style="height: 20px; width: 50px;">
+                                        <div class="toggle-slide active">
+                                            <div class="toggle-inner" style="width: 80px; margin-left: 0px;">
+                                                <div class="toggle-on active" style="height: 20px; width: 40px; text-align: center; text-indent: -10px; line-height: 20px;">开启</div>
+                                                <div class="toggle-blob" style="height: 20px; width: 20px; margin-left: -10px;"></div>
+                                                <div class="toggle-off" style="height: 20px; width: 40px; margin-left: -10px; text-align: center; text-indent: 10px; line-height: 20px;">关闭</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group col-md-3 col-sm-4">
                                 <label class="col-sm-4">允许Ping</label>
                                 <div class="col-sm-8">
-                                    <div th:class="${contents!=null and contents.allowPing !=null}?'toggle toggle-success allow-'+${contents.allowPing}:'toggle toggle-success allow-true'"
-                                         onclick="allow_ping(this);"></div>
+                                    <div class="toggle toggle-success allow-true" onclick="allow_ping(this);" style="height: 20px; width: 50px;">
+                                        <div class="toggle-slide active">
+                                            <div class="toggle-inner" style="width: 80px; margin-left: 0px;">
+                                                <div class="toggle-on active" style="height: 20px; width: 40px; text-align: center; text-indent: -10px; line-height: 20px;">开启</div>
+                                                <div class="toggle-blob" style="height: 20px; width: 20px; margin-left: -10px;"></div>
+                                                <div class="toggle-off" style="height: 20px; width: 40px; margin-left: -10px; text-align: center; text-indent: 10px; line-height: 20px;">关闭</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group col-md-3 col-sm-4">
                                 <label class="col-sm-4">允许订阅</label>
                                 <div class="col-sm-8">
-                                    <div th:class="${contents!=null and  contents.allowFeed !=null}?'toggle toggle-success allow-'+${contents.allowFeed}: 'toggle toggle-success allow-true'"
-                                         onclick="allow_feed(this);"></div>
+                                    <div class="toggle toggle-success allow-true" onclick="allow_feed(this);" style="height: 20px; width: 50px;">
+                                        <div class="toggle-slide active">
+                                            <div class="toggle-inner" style="width: 80px; margin-left: 0px;"><div class="toggle-on active" style="height: 20px; width: 40px; text-align: center; text-indent: -10px; line-height: 20px;">开启</div>
+                                                <div class="toggle-blob" style="height: 20px; width: 20px; margin-left: -10px;"></div>
+                                                <div class="toggle-off" style="height: 20px; width: 40px; margin-left: -10px; text-align: center; text-indent: 10px; line-height: 20px;">关闭</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="clearfix"></div>
 
                             <div class="text-right">
-                                <a class="btn btn-default waves-effect waves-light" th:href="@{/admin/article}">返回列表</a>
-                                <button type="button" class="btn btn-primary waves-effect waves-light"
-                                        onclick="subArticle('publish');">
+                                <a class="btn btn-default waves-effect waves-light" href="article">返回列表</a>
+                                <button type="button" class="btn btn-primary waves-effect waves-light" onclick="subArticle('publish');">
                                     保存文章
                                 </button>
-                                <button type="button" class="btn btn-warning waves-effect waves-light"
-                                        onclick="subArticle('draft');">
+                                <button type="button" class="btn btn-warning waves-effect waves-light" onclick="subArticle('draft');">
                                     存为草稿
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div th:replace="admin/footer :: footer-content"></div>
+                <#--<div replace="admin/footer :: footer-content"></div>-->
+                <#include "footer-content.ftl">
             </div>
         </div>
     </div>
 </div>
-<div th:replace="admin/footer :: footer"></div>
+<#--<div replace="admin/footer :: footer"></div>-->
+<#include "footer-content.ftl">
+<#include "footer.ftl">
 
-<script th:src="@{/admin/plugins/tagsinput/jquery.tagsinput.min.js}"></script>
-<script th:src="@{/admin/plugins/jquery-multi-select/jquery.quicksearch.js}"></script>
+<script src="plugins/tagsinput/jquery.tagsinput.min.js"></script>
+<script src="plugins/jquery-multi-select/jquery.quicksearch.js"></script>
 
-<script th:src="@{/admin/plugins/md/js/jquery.scrollto.js}"></script>
-<script th:src="@{/admin/plugins/md/js/pagedown.js}"></script>
-<script th:src="@{/admin/plugins/md/js/pagedown-extra.js}"></script>
-<script th:src="@{/admin/plugins/md/js/diff.js}"></script>
-<script th:src="@{/admin/plugins/md/js/md.js}"></script>
+<script src="plugins/md/js/jquery.scrollto.js"></script>
+<script src="plugins/md/js/pagedown.js"></script>
+<script src="plugins/md/js/pagedown-extra.js"></script>
+<script src="plugins/md/js/diff.js"></script>
+<script src="plugins/md/js/md.js"></script>
 
-<script th:src="@{//cdn.bootcss.com/multi-select/0.9.12/js/jquery.multi-select.min.js}"></script>
-<script th:src="@{//cdn.bootcss.com/select2/3.4.8/select2.min.js}"></script>
-<script th:src="@{//cdn.bootcss.com/jquery-toggles/2.0.4/toggles.min.js}"></script>
-<script th:src="@{/admin/js/article.js}"></script>
+<script src="http://cdn.bootcss.com/multi-select/0.9.12/js/jquery.multi-select.min.js"></script>
+<script src="http://cdn.bootcss.com/select2/3.4.8/select2.min.js"></script>
+<script src="http://cdn.bootcss.com/jquery-toggles/2.0.4/toggles.min.js"></script>
+<script src="js/article.js"></script>
 </body>
 </html>
