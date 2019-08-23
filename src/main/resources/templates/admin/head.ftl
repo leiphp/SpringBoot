@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="images/favicon.png"/>
     <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="css/style.min.css" rel="stylesheet" type="text/css"/>
+    <link href="/admin/css/style.min.css" rel="stylesheet" type="text/css"/>
     <link href="http://cdn.bootcss.com/limonte-sweetalert2/6.4.1/sweetalert2.min.css" rel="stylesheet"/>
 
 

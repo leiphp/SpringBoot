@@ -4,7 +4,7 @@
             <div class="text-center p-t-10" style="margin: 0 auto;">
                 <div class="pull-left" style="padding-left: 10px;">
                     <a href="admin/index">
-                        <img src="images/logo.png" width="50" height="50"/>
+                        <img src="/admin/images/logo.png" width="50" height="50"/>
                     </a>
                 </div>
                 <div class="pull-left" style="padding-left: 10px;">

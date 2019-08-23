@@ -2,13 +2,13 @@
 <html lang="en">
 <#--<header replace="admin/header::headerFragment(${title},${active})"></header>-->
 <#include "head.ftl">
-<link href="plugins/tagsinput/jquery.tagsinput.css" rel="stylesheet"/>
-<link href="plugins/select2.dist.css/select2-bootstrap.css" rel="stylesheet"/>
-<link href="plugins/toggles/toggles.css" rel="stylesheet"/>
+<link href="/admin/plugins/tagsinput/jquery.tagsinput.css" rel="stylesheet"/>
+<link href="/admin/plugins/select2.dist.css/select2-bootstrap.css" rel="stylesheet"/>
+<link href="/admin/plugins/toggles/toggles.css" rel="stylesheet"/>
 
 <link href="http://cdn.bootcss.com/multi-select/0.9.12/css/multi-select.css" rel="stylesheet"/>
 <link href="http://cdn.bootcss.com/select2/3.4.8/select2.min.css" rel="stylesheet"/>
-<link href="plugins/md/css/style.css" rel="stylesheet"/>
+<link href="/admin/plugins/md/css/style.css" rel="stylesheet"/>
 <style>
     #tags_tagsinput {
         background-color: #fafafa;
@@ -62,7 +62,7 @@
                             <div class="form-group col-md-6" style="padding: 0 0 0 10px;">
                                 <input type="text" class="form-control"
                                        placeholder="自定义访问路径，如：my-first-article  默认为文章id" name="slug"
-                                       value="${contents!=null and contents.slug !=null}?${contents.slug}: ''"/>
+                                       value=""/>
                             </div>
 
                             <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
@@ -156,18 +156,18 @@
 <#include "footer-content.ftl">
 <#include "footer.ftl">
 
-<script src="plugins/tagsinput/jquery.tagsinput.min.js"></script>
-<script src="plugins/jquery-multi-select/jquery.quicksearch.js"></script>
+<script src="/admin/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+<script src="/admin/plugins/jquery-multi-select/jquery.quicksearch.js"></script>
 
-<script src="plugins/md/js/jquery.scrollto.js"></script>
-<script src="plugins/md/js/pagedown.js"></script>
-<script src="plugins/md/js/pagedown-extra.js"></script>
-<script src="plugins/md/js/diff.js"></script>
-<script src="plugins/md/js/md.js"></script>
+<script src="/admin/plugins/md/js/jquery.scrollto.js"></script>
+<script src="/admin/plugins/md/js/pagedown.js"></script>
+<script src="/admin/plugins/md/js/pagedown-extra.js"></script>
+<script src="/admin/plugins/md/js/diff.js"></script>
+<script src="/admin/plugins/md/js/md.js"></script>
 
 <script src="http://cdn.bootcss.com/multi-select/0.9.12/js/jquery.multi-select.min.js"></script>
 <script src="http://cdn.bootcss.com/select2/3.4.8/select2.min.js"></script>
 <script src="http://cdn.bootcss.com/jquery-toggles/2.0.4/toggles.min.js"></script>
-<script src="js/article.js"></script>
+<script src="/admin/js/article.js"></script>
 </body>
 </html>
