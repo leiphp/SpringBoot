@@ -62,7 +62,8 @@
 
                             </tbody>
                         </table>
-                        <div replace="comm/macros :: pageAdminNav(${articles})"></div>
+                        <#--<div replace="comm/macros :: pageAdminNav(${articles})"></div>-->
+                        <#include "/comm/page.ftl">
                     </div>
                 </div>
                 <#--<div replace="admin/footer :: footer-content"></div>-->
