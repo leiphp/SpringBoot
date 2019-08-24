@@ -32,11 +32,15 @@
                                     <td>
                                         <a href="/admin/article/+${post.cid}" >${post.title}</a>
                                     </td>
-                                    <td> ${post.created}</td>
+                                    <td> ${(post.created*1000)?number_to_datetime}</td>
 
                                     <td>${post.hits}</td>
-                                    <#--<td>${post.categories}</td>-->
-                                    <td>00</td>
+                                    <#--#if post.categories??  判断是否为null-->
+                                    <#if post.categories??>
+                                        <td>${post.categories}</td>
+                                    <#else>
+                                        <td></td>
+                                    </#if>
                                     <td>
                                         <#if post.status == 'publish'>
                                             <span class="label label-success">已发布</span>
