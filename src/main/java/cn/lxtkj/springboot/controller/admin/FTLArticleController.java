@@ -19,8 +19,8 @@ public class FTLArticleController {
     private ArticleService articleService;
 
     @RequestMapping(value = "")
-    public String index(@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "limit", defaultValue = "10") int limit, HttpServletRequest request) {
-        PageInfo<Article> articlePaginator = articleService.findArticleList(page, limit);
+    public String index(@RequestParam(value = "type", defaultValue = "post") String type,@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "limit", defaultValue = "10") int limit, HttpServletRequest request) {
+        PageInfo<Article> articlePaginator = articleService.findArticleList(type, page, limit);
         request.setAttribute("articles", articlePaginator);
         request.setAttribute("pageInfo", articlePaginator);
         return "admin/article_list";

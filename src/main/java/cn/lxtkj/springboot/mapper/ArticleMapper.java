@@ -14,8 +14,8 @@ public interface ArticleMapper {
     @Insert("INSERT INTO ARTICLE(title, slug, content) VALUES(#{title}, #{slug}, #{content})")
     int insert(@Param("title") String title, @Param("slug") Integer slug, @Param("content") String content);
 
-    @Select("SELECT * FROM ARTICLES ")
-    List<Article> findArticleList();
+    @Select("SELECT * FROM ARTICLES WHERE TYPE = #{type}")
+    List<Article> findArticleList(@Param("type") String type);
 
 
 }
