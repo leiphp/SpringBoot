@@ -15,7 +15,7 @@
         border: 1px solid #eeeeee;
     }
     #tags_addTag input {
-        wid 100%;
+        width: 100%;
     }
     #tags_addTag {
         margin-top: -5px;

@@ -1,11 +1,17 @@
 package cn.lxtkj.springboot.controller.admin;
 
+import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.entity.Article;
+import cn.lxtkj.springboot.model.Bo.RestResponseBo;
+import cn.lxtkj.springboot.model.Vo.ContentVo;
 import cn.lxtkj.springboot.service.ArticleService;
+import cn.lxtkj.springboot.dto.Types;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,12 +35,30 @@ public class FTLArticleController {
     public String newArticle() {
         return "admin/article_edit";
     }
+
 //    @RequestMapping(value = "/publish")
 //    public String newArticle(HttpServletRequest request) {
 //        List<MetaVo> categories = metasService.getMetas(Types.CATEGORY.getType());
 //        request.setAttribute("categories", categories);
 //        return "admin/article_edit";
 //    }
+
+    @RequestMapping(value = "/publish", method = RequestMethod.POST)
+    public RestResponseBo publishArticle(ContentVo contents, HttpServletRequest request) {
+//        UserVo users = this.user(request);
+//        contents.setAuthorId(users.getId());
+        int cid=4;
+        contents.setAuthorId(cid);
+        contents.setType(Types.ARTICLE.getType());
+        if (StringUtils.isBlank(contents.getCategories())) {
+            contents.setCategories("默认分类");
+        }
+        String result = articleService.publish(contents);
+        if (!WebConst.SUCCESS_RESULT.equals(result)) {
+            return RestResponseBo.fail(result);
+        }
+        return RestResponseBo.ok();
+    }
 
 
 }
