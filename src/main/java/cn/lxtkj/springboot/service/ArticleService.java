@@ -16,8 +16,8 @@ public class ArticleService {
     @Autowired
     private ArticleMapper articleMapper;
 
-    public int insertArticle(String title, String slug, String content){
-        int insertArticleResult = articleMapper.insert(title, slug, content);
+    public int insertArticle(String title, String tags, String content, String categories){
+        int insertArticleResult = articleMapper.insert(title, tags, content, categories);
         return insertArticleResult;
     }
 
@@ -31,7 +31,7 @@ public class ArticleService {
         return pageInfoArticleList;
     }
     public String publish(ContentVo contents){
-        int insertArticleResult = articleMapper.insert(contents.getTitle(), contents.getSlug(), contents.getContent());
+        int insertArticleResult = articleMapper.insert(contents.getTitle(), contents.getTags(), contents.getContent(), contents.getCategories());
         if(insertArticleResult==1){
             return WebConst.SUCCESS_RESULT;
         }else{

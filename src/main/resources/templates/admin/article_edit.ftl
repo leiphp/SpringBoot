@@ -59,8 +59,7 @@
 
                             <div class="form-group col-md-6" style="padding: 0 0 0 10px;">
                                 <input type="text" class="form-control"
-                                       placeholder="自定义访问路径，如：my-first-article  默认为文章id" name="slug"
-                                       value=""/>
+                                       placeholder="自定义访问路径，如：my-first-article  默认为文章id" name="slug" value=""/>
                             </div>
 
                             <div class="form-group col-md-6" style="padding: 0 10px 0 0;">

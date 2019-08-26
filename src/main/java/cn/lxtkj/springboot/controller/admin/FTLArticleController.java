@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -44,6 +45,7 @@ public class FTLArticleController {
 //    }
 
     @RequestMapping(value = "/publish", method = RequestMethod.POST)
+    @ResponseBody
     public RestResponseBo publishArticle(ContentVo contents, HttpServletRequest request) {
 //        UserVo users = this.user(request);
 //        contents.setAuthorId(users.getId());
