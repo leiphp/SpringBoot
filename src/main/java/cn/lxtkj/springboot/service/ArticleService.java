@@ -21,11 +21,11 @@ public class ArticleService {
         return insertArticleResult;
     }
 
-    public PageInfo<Article> findArticleList(String type, int page, int pageSize){
+    public PageInfo<Article> findArticleList(String type, int page, int pageSize, String sort){
         //mysql查询limit
         //pageHelper 帮我们生产分页语句
         PageHelper.startPage(page, pageSize);
-        List<Article> listArticle = articleMapper.findArticleList(type);
+        List<Article> listArticle = articleMapper.findArticleList(type, sort);
         //返回给客户端展示
         PageInfo<Article> pageInfoArticleList = new PageInfo<Article>(listArticle);
         return pageInfoArticleList;
