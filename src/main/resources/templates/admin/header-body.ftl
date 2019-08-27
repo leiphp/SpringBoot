@@ -56,7 +56,7 @@
                                     class="fa fa-list" aria-hidden="true"></i><span> 文章管理 </span></a>
                     </li>
                     <li >
-                        <a href="@{/admin/page}" class="waves-effect"><i
+                        <a href="/admin/page" class="waves-effect"><i
                                     class="fa fa-file-text" aria-hidden="true"></i><span> 页面管理 </span></a>
                     </li>
                     <li >
@@ -65,7 +65,7 @@
                                     class="fa fa-comments" aria-hidden="true"></i><span> 评论管理 </span></a>
                     </li>
                     <li >
-                        <a href="@{/admin/category}"
+                        <a href="/admin/category"
                            class="waves-effect"><i
                                     class="fa fa-tags" aria-hidden="true"></i><span> 分类/标签 </span></a>
                     </li>

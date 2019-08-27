@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" with="title='管理中心',active='home'">
 <#--<header replace="admin/header::headerFragment(${title},${active})"></header>-->
+<#assign title = "管理中心">
 <#include "head.ftl">
 <body class="fixed-left">
 <div id="wrapper">

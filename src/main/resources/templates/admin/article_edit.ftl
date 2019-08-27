@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <#--<header replace="admin/header::headerFragment(${title},${active})"></header>-->
+<#assign title = "保存文章">
 <#include "head.ftl">
 <link href="/admin/plugins/tagsinput/jquery.tagsinput.css" rel="stylesheet"/>
 <link href="/admin/plugins/select2.dist.css/select2-bootstrap.css" rel="stylesheet"/>

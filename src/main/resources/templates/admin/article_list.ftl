@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <#--<header replace="admin/header::headerFragment(${title},${active})"></header>-->
+<#assign title = "文章管理">
 <#include "head.ftl">
 <body class="fixed-left">
 <div id="wrapper">

@@ -28,11 +28,11 @@ public class FTLPageController extends BaseController {
     private ArticleService articleService;
 
     @RequestMapping(value = "")
-    public String index(@RequestParam(value = "type", defaultValue = "post") String type,@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "limit", defaultValue = "10") int limit,@RequestParam(value = "sort", defaultValue = "created desc") String sort, HttpServletRequest request) {
+    public String index(@RequestParam(value = "type", defaultValue = "page") String type,@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "limit", defaultValue = "10") int limit,@RequestParam(value = "sort", defaultValue = "created desc") String sort, HttpServletRequest request) {
         PageInfo<Article> articlePaginator = articleService.findArticleList(type, page, limit, sort);
         request.setAttribute("articles", articlePaginator);
         request.setAttribute("pageInfo", articlePaginator);
-        return "admin/article_list";
+        return "admin/page_list";
     }
     @RequestMapping(value = "/publish")
     public String newArticle() {
@@ -51,8 +51,6 @@ public class FTLPageController extends BaseController {
         int time = DateKit.getCurrentUnixTime();
         contents.setCreated(time);
         contents.setModified(time);
-        contents.setHits(0);
-        contents.setCommentsNum(0);
 
         if (StringUtils.isBlank(contents.getCategories())) {
             contents.setCategories("默认分类");

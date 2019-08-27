@@ -1,6 +1,6 @@
 <head>
     <meta charset="utf-8"/>
-    <title>管理中心- My Blog</title>
+    <title>${title}- My Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta content="Coderthemes" name="author"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
