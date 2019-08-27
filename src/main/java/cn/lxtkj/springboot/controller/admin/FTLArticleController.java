@@ -6,6 +6,7 @@ import cn.lxtkj.springboot.model.Bo.RestResponseBo;
 import cn.lxtkj.springboot.model.Vo.ContentVo;
 import cn.lxtkj.springboot.service.ArticleService;
 import cn.lxtkj.springboot.dto.Types;
+import cn.lxtkj.springboot.utils.DateKit;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,12 @@ public class FTLArticleController {
         int cid=4;
         contents.setAuthorId(cid);
         contents.setType(Types.ARTICLE.getType());
+        int time = DateKit.getCurrentUnixTime();
+        contents.setCreated(time);
+        contents.setModified(time);
+        contents.setHits(0);
+        contents.setCommentsNum(0);
+
         if (StringUtils.isBlank(contents.getCategories())) {
             contents.setCategories("默认分类");
         }
