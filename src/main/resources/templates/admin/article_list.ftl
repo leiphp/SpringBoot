@@ -51,7 +51,7 @@
                                        </#if>
                                     </td>
                                     <td>
-                                        <a href="{'/admin/article/'+${post.cid}}"
+                                        <a href="/admin/article/${post.cid}"
                                            class="btn btn-primary btn-sm waves-effect waves-light m-b-5"><i
                                                 class="fa fa-edit"></i> <span>编辑</span></a>
                                         <a href="javascript:void(0)" onclick="'delPost('+${post.cid}+');'"

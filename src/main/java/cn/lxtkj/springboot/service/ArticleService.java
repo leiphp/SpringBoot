@@ -6,6 +6,7 @@ import cn.lxtkj.springboot.mapper.ArticleMapper;
 import cn.lxtkj.springboot.model.Vo.ContentVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,5 +39,39 @@ public class ArticleService {
             return WebConst.FAILURE_RESULT;
         }
 //        return insertArticleResult;
+    }
+    public Article getArticle(Integer cid){
+        Article article = articleMapper.selectByCid(cid);
+       return article;
+
+    }
+    public String updateArticle(ContentVo contents){
+        if (null == contents) {
+            return "文章对象为空";
+        }
+        if (StringUtils.isBlank(contents.getTitle())) {
+            return "文章标题不能为空";
+        }
+        if (StringUtils.isBlank(contents.getContent())) {
+            return "文章内容不能为空";
+        }
+        int titleLength = contents.getTitle().length();
+        if (titleLength > WebConst.MAX_TITLE_COUNT) {
+            return "文章标题过长";
+        }
+        int contentLength = contents.getContent().length();
+        if (contentLength > WebConst.MAX_TEXT_COUNT) {
+            return "文章内容过长";
+        }
+        if (null == contents.getAuthorId()) {
+            return "请登录后发布文章";
+        }
+        int insertArticleResult = articleMapper.update(contents.getCid(),contents.getTitle(), contents.getTags(), contents.getContent(), contents.getCategories(), contents.getModified());
+        if(insertArticleResult==1){
+            return WebConst.SUCCESS_RESULT;
+        }else{
+            return WebConst.FAILURE_RESULT;
+        }
+
     }
 }

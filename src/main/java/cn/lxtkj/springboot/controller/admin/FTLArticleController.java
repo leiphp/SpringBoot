@@ -12,10 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -41,12 +38,13 @@ public class FTLArticleController {
         return "admin/article_edit";
     }
 
-//    @RequestMapping(value = "/publish")
-//    public String newArticle(HttpServletRequest request) {
-//        List<MetaVo> categories = metasService.getMetas(Types.CATEGORY.getType());
-//        request.setAttribute("categories", categories);
-//        return "admin/article_edit";
-//    }
+    @RequestMapping(value = "/{cid}")
+    public String editArticle(@PathVariable String cid, HttpServletRequest request) {
+        log.info("cid是："+cid);
+        Article article = articleService.getArticle(Integer.valueOf(cid));
+        request.setAttribute("contents", article);
+        return "admin/article_edit";
+    }
 
     @RequestMapping(value = "/publish", method = RequestMethod.POST)
     @ResponseBody
@@ -71,6 +69,39 @@ public class FTLArticleController {
         }
         return RestResponseBo.ok();
     }
+
+    @RequestMapping(value = "/modify", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResponseBo modifyArticle(ContentVo contents, HttpServletRequest request) {
+//        UserVo users = this.user(request);
+//        contents.setAuthorId(users.getUid());
+
+        if (StringUtils.isBlank(contents.getSlug())) {
+            contents.setSlug(null);
+        }
+        int time = DateKit.getCurrentUnixTime();
+        contents.setModified(time);
+        Integer cid = contents.getCid();
+        int author_id=4;
+        contents.setAuthorId(author_id);
+        contents.setType(Types.ARTICLE.getType());
+        String result = articleService.updateArticle(contents);
+        if (!WebConst.SUCCESS_RESULT.equals(result)) {
+            return RestResponseBo.fail(result);
+        }
+        return RestResponseBo.ok();
+    }
+
+//    @RequestMapping(value = "/delete")
+//    @ResponseBody
+//    public RestResponseBo delete(@RequestParam int cid, HttpServletRequest request) {
+//        String result = contentsService.deleteByCid(cid);
+//        logService.insertLog(LogActions.DEL_ARTICLE.getAction(), cid + "", request.getRemoteAddr(), this.getUid(request));
+//        if (!WebConst.SUCCESS_RESULT.equals(result)) {
+//            return RestResponseBo.fail(result);
+//        }
+//        return RestResponseBo.ok();
+//    }
 
 
 }

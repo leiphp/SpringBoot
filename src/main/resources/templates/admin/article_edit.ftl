@@ -32,7 +32,11 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <h4 class="page-title">
-                            发布文章
+                            <#if contents??>
+                                编辑文章
+                            <#else>
+                                发布文章
+                            </#if>
                             <#--<block if="${null != contents">-->
                                 <#--编辑文章-->
                             <#--</block>-->
@@ -44,7 +48,7 @@
                     <div class="col-md-12">
                         <form id="articleForm" role="form" novalidate="novalidate">
                             <input type="hidden" name="categories" id="categories"/>
-                            <input type="hidden" name="cid" value="" id="cid"/>
+                            <input type="hidden" name="cid" <#if contents?? >value="${contents.cid}"<#else>value=""</#if> id="cid"/>
                             <input type="hidden" name="status" value="publish" id="status"/>
                             <input type="hidden" name="allowComment" value="true" id="allow_comment"/>
                             <input type="hidden" name="allowPing" value="true" id="allow_ping"/>
@@ -52,19 +56,34 @@
                             <input type="hidden" name="content" id="content-editor"/>
 
                             <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
-                                <input type="text" class="form-control" placeholder="请输入文章标题（必须）" name="title"
-                                       required="required"
-                                       aria-required="true"
-                                       value=""/>
+                                <input type="text" class="form-control" placeholder="请输入文章标题（必须）" name="title" required="required" aria-required="true"
+                                    <#if contents??>
+                                        value="${contents.title}"
+                                    <#else>
+                                        value=""
+                                    </#if>
+                                />
                             </div>
 
                             <div class="form-group col-md-6" style="padding: 0 0 0 10px;">
                                 <input type="text" class="form-control"
-                                       placeholder="自定义访问路径，如：my-first-article  默认为文章id" name="slug" value=""/>
+                                       placeholder="自定义访问路径，如：my-first-article  默认为文章id" name="slug"
+                                        <#if contents?? && contents.slug??>
+                                            value="${contents.slug}"
+                                        <#else>
+                                            value=""
+                                        </#if>
+                                />
                             </div>
 
                             <div class="form-group col-md-6" style="padding: 0 10px 0 0;">
-                                <input name="tags" id="tags" type="text" class="form-control" placeholder="请填写文章标签" value=""/>
+                                <input name="tags" id="tags" type="text" class="form-control" placeholder="请填写文章标签"
+                                        <#if contents?? && contents.tags??>
+                                            value="${contents.tags}"
+                                        <#else>
+                                            value=""
+                                        </#if>
+                                />
                             </div>
 
                             <div class="form-group col-md-6">
@@ -83,7 +102,7 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="form-group">
-                                <textarea style="height: 450px" autocomplete="off" id="text" name="text" class="markdown-textarea" utext=""></textarea>
+                                <textarea style="height: 450px" autocomplete="off" id="text" name="text" class="markdown-textarea"><#if contents?? && contents.content??>${contents.content}<#else></#if></textarea>
                             </div>
 
                             <div class="form-group col-md-3 col-sm-4">
