@@ -52,9 +52,6 @@ public class FTLPageController extends BaseController {
         contents.setCreated(time);
         contents.setModified(time);
 
-        if (StringUtils.isBlank(contents.getCategories())) {
-            contents.setCategories("默认分类");
-        }
         String result = articleService.publish(contents);
         if (!WebConst.SUCCESS_RESULT.equals(result)) {
             return RestResponseBo.fail(result);

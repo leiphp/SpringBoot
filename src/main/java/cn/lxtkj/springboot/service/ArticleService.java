@@ -17,8 +17,8 @@ public class ArticleService {
     @Autowired
     private ArticleMapper articleMapper;
 
-    public int insertArticle(String title, String tags, String content, Integer author_id, String categories, Integer created, Integer modified){
-        int insertArticleResult = articleMapper.insert(title, tags, content, author_id, categories,created, modified);
+    public int insertArticle(String title, String slug, String tags, String content, Integer author_id, String type, String categories, Integer created, Integer modified){
+        int insertArticleResult = articleMapper.insert(title, slug, tags, content, author_id, type, categories,created, modified);
         return insertArticleResult;
     }
 
@@ -32,7 +32,36 @@ public class ArticleService {
         return pageInfoArticleList;
     }
     public String publish(ContentVo contents){
-        int insertArticleResult = articleMapper.insert(contents.getTitle(), contents.getTags(), contents.getContent(), contents.getAuthorId(), contents.getCategories(), contents.getCreated(), contents.getModified());
+        if (null == contents) {
+            return "文章对象为空";
+        }
+        if (StringUtils.isBlank(contents.getTitle())) {
+            return "文章标题不能为空";
+        }
+        if (StringUtils.isBlank(contents.getContent())) {
+            return "文章内容不能为空";
+        }
+        int titleLength = contents.getTitle().length();
+        if (titleLength > WebConst.MAX_TITLE_COUNT) {
+            return "文章标题过长";
+        }
+        int contentLength = contents.getContent().length();
+        if (contentLength > WebConst.MAX_TEXT_COUNT) {
+            return "文章内容过长";
+        }
+        if (null == contents.getAuthorId()) {
+            return "请登录后发布文章";
+        }
+        if (StringUtils.isNotBlank(contents.getSlug())) {
+            if (contents.getSlug().length() < 5) {
+                return "路径太短了";
+            }
+            long count = 0;
+            if (count > 0) return "该路径已经存在，请重新输入";
+        } else {
+            contents.setSlug(null);
+        }
+        int insertArticleResult = articleMapper.insert(contents.getTitle(),contents.getSlug(), contents.getTags(), contents.getContent(), contents.getAuthorId(),contents.getType(), contents.getCategories(), contents.getCreated(), contents.getModified());
         if(insertArticleResult==1){
             return WebConst.SUCCESS_RESULT;
         }else{
