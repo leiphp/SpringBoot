@@ -34,9 +34,9 @@ public class FTLPageController extends BaseController {
         request.setAttribute("pageInfo", articlePaginator);
         return "admin/page_list";
     }
-    @RequestMapping(value = "/publish")
-    public String newArticle() {
-        return "admin/article_edit";
+    @RequestMapping(value = "/new")
+    public String newPage() {
+        return "admin/page_edit";
     }
 
 
@@ -47,7 +47,7 @@ public class FTLPageController extends BaseController {
 //        contents.setAuthorId(users.getId());
         int cid=4;
         contents.setAuthorId(cid);
-        contents.setType(Types.ARTICLE.getType());
+        contents.setType(Types.PAGE.getType());
         int time = DateKit.getCurrentUnixTime();
         contents.setCreated(time);
         contents.setModified(time);
