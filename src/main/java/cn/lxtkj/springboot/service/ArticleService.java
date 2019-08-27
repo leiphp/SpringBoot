@@ -74,4 +74,13 @@ public class ArticleService {
         }
 
     }
+    public String deleteByCid(Integer cid){
+        int deleteArticleResult = articleMapper.delete(cid);
+        if(deleteArticleResult==1){
+            return WebConst.SUCCESS_RESULT;
+        }else{
+            return WebConst.FAILURE_RESULT;
+        }
+
+    }
 }

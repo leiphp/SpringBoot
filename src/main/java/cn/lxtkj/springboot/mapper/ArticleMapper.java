@@ -1,10 +1,7 @@
 package cn.lxtkj.springboot.mapper;
 
 import cn.lxtkj.springboot.entity.Article;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -23,4 +20,7 @@ public interface ArticleMapper {
 
     @Update("UPDATE ARTICLES SET title=#{title},tags=#{tags},content=#{content}, categories=#{categories},modified=#{modified} where cid=#{cid}")
     int update(@Param("cid") Integer cid, @Param("title") String title, @Param("tags") String tags, @Param("content") String content,  @Param("categories") String categories,  @Param("modified") Integer modified);
+
+    @Delete("DELETE FROM ARTICLES WHERE cid = #{cid}")
+    int delete(@Param("cid") Integer cid);
 }

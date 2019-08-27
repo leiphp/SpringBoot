@@ -54,10 +54,10 @@
                                         <a href="/admin/article/${post.cid}"
                                            class="btn btn-primary btn-sm waves-effect waves-light m-b-5"><i
                                                 class="fa fa-edit"></i> <span>编辑</span></a>
-                                        <a href="javascript:void(0)" onclick="'delPost('+${post.cid}+');'"
+                                        <a href="javascript:void(0)" onclick="delPost(${post.cid});"
                                            class="btn btn-danger btn-sm waves-effect waves-light m-b-5"><i
                                                 class="fa fa-trash-o"></i> <span>删除</span></a>
-                                        <a class="btn btn-warning btn-sm waves-effect waves-light m-b-5" href="/article/${post.cid}/preview"
+                                        <a class="btn btn-warning btn-sm waves-effect waves-light m-b-5" href="/article/${post.cid}"
                                            target="_blank"><i
                                                 class="fa fa-rocket"></i> <span>预览</span></a>
                                     </td>

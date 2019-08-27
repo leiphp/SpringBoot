@@ -92,16 +92,15 @@ public class FTLArticleController {
         return RestResponseBo.ok();
     }
 
-//    @RequestMapping(value = "/delete")
-//    @ResponseBody
-//    public RestResponseBo delete(@RequestParam int cid, HttpServletRequest request) {
-//        String result = contentsService.deleteByCid(cid);
-//        logService.insertLog(LogActions.DEL_ARTICLE.getAction(), cid + "", request.getRemoteAddr(), this.getUid(request));
-//        if (!WebConst.SUCCESS_RESULT.equals(result)) {
-//            return RestResponseBo.fail(result);
-//        }
-//        return RestResponseBo.ok();
-//    }
+    @RequestMapping(value = "/delete")
+    @ResponseBody
+    public RestResponseBo delete(@RequestParam int cid, HttpServletRequest request) {
+        String result = articleService.deleteByCid(cid);
+        if (!WebConst.SUCCESS_RESULT.equals(result)) {
+            return RestResponseBo.fail(result);
+        }
+        return RestResponseBo.ok();
+    }
 
 
 }
