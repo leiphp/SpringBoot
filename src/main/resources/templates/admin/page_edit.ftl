@@ -63,12 +63,7 @@
                             </div>
 
                             <div class="form-group">
-                                <textarea style="height: 450px" autocomplete="off" id="text" name="text" class="markdown-textarea" utext=""></textarea>
-                                <#--<#if contents??>-->
-                                    <#--<textarea style="height: 450px" autocomplete="off" id="text" name="text" class="markdown-textarea" utext="${contents.content}"></textarea>-->
-                                <#--<#else>-->
-                                    <#--<textarea style="height: 450px" autocomplete="off" id="text" name="text" class="markdown-textarea" utext=""></textarea>-->
-                                <#--</#if>-->
+                                <textarea style="height: 450px" autocomplete="off" id="text" name="text" class="markdown-textarea" ><#if contents?? && contents.content??>${contents.content}<#else></#if></textarea>
                             </div>
 
                             <div class="text-right">
