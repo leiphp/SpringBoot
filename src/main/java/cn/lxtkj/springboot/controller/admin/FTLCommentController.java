@@ -2,10 +2,8 @@ package cn.lxtkj.springboot.controller.admin;
 
 import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.controller.BaseController;
-import cn.lxtkj.springboot.dto.Types;
 import cn.lxtkj.springboot.entity.Comment;
 import cn.lxtkj.springboot.model.Bo.RestResponseBo;
-import cn.lxtkj.springboot.model.Vo.ContentVo;
 import cn.lxtkj.springboot.service.CommentService;
 import cn.lxtkj.springboot.utils.DateKit;
 import com.github.pagehelper.PageInfo;
@@ -35,16 +33,16 @@ public class FTLCommentController extends BaseController {
 
 
 
+    @RequestMapping(value = "delete")
+    @ResponseBody
+    public RestResponseBo delete(@RequestParam int coid, HttpServletRequest request) {
+        String result = commentService.deleteByCoid(coid);
+        if (!WebConst.SUCCESS_RESULT.equals(result)) {
+            return RestResponseBo.fail(result);
+        }
+        return RestResponseBo.ok();
+    }
 
-//    @RequestMapping(value = "delete")
-//    @ResponseBody
-//    public RestResponseBo delete(@RequestParam int cid, HttpServletRequest request) {
-//        String result = articleService.deleteByCid(cid);
-//        if (!WebConst.SUCCESS_RESULT.equals(result)) {
-//            return RestResponseBo.fail(result);
-//        }
-//        return RestResponseBo.ok();
-//    }
 
 
     @RequestMapping(value = "/status", method = RequestMethod.POST)

@@ -32,7 +32,7 @@
                             <#--<th:block th:each="comment : ${comments.list}">-->
                                 <tr cid=${comment.coid}>
                                     <td>
-                                        <a href="/article/${comment.cid}+'#comments'" target="_blank" >${comment.content}</a>
+                                        <a href="/article/${comment.cid}#comments" target="_blank" >${comment.content}</a>
                                     </td>
                                     <td >${comment.author}</td>
                                     <td >${(comment.created*1000)?number_to_datetime}</td>

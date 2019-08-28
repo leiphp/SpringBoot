@@ -83,9 +83,9 @@ public class CommentService {
         }
 
     }
-    public String deleteByCid(Integer cid){
-        int deleteArticleResult = commentMapper.delete(cid);
-        if(deleteArticleResult==1){
+    public String deleteByCoid(Integer coid){
+        int result = commentMapper.delete(coid);
+        if(result==1){
             return WebConst.SUCCESS_RESULT;
         }else{
             return WebConst.FAILURE_RESULT;
