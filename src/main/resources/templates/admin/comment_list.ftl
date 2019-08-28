@@ -50,11 +50,11 @@
                                     <td>
                                         <#if comment.status == 'not_audit'>
                                             <a href="javascript:void(0)"
-                                               th:onclick="updateStatus(${comment.coid});" class="btn btn-success btn-sm waves-effect waves-light m-b-5"><i class="fa fa-check-square-o"></i>
+                                               onclick="updateStatus(${comment.coid});" class="btn btn-success btn-sm waves-effect waves-light m-b-5"><i class="fa fa-check-square-o"></i>
                                                 <span>通过</span>
                                             </a>
                                         </#if>
-                                        <a href="javascript:void(0)" th:onclick="delComment(${comment.coid});" class="btn btn-danger btn-sm waves-effect waves-light m-b-5"><i class="fa fa-trash-o"></i>
+                                        <a href="javascript:void(0)" onclick="delComment(${comment.coid});" class="btn btn-danger btn-sm waves-effect waves-light m-b-5"><i class="fa fa-trash-o"></i>
                                             <span>删除</span>
                                         </a>
                                     </td>

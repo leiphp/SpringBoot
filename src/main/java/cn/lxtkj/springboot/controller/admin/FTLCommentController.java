@@ -34,14 +34,6 @@ public class FTLCommentController extends BaseController {
     }
 
 
-//    @RequestMapping(value = "/{cid}")
-//    public String editPage(@PathVariable String cid, HttpServletRequest request) {
-//        Article article = articleService.getArticle(Integer.valueOf(cid));
-//        request.setAttribute("contents", article);
-//        return "admin/page_edit";
-//    }
-
-
 
 
 //    @RequestMapping(value = "delete")
@@ -54,23 +46,24 @@ public class FTLCommentController extends BaseController {
 //        return RestResponseBo.ok();
 //    }
 
-//    @PostMapping(value = "status")
-//    @ResponseBody
-//    public RestResponseBo delete(@RequestParam Integer coid, @RequestParam String status) {
-//        try {
-//            CommentVo comments = commentsService.getCommentById(coid);
-//            if (comments != null) {
-//                comments.setCoid(coid);
-//                comments.setStatus(status);
-//                commentsService.update(comments);
-//            } else {
-//                return RestResponseBo.fail("操作失败");
-//            }
-//        } catch (Exception e) {
-//            String msg = "操作失败";
-//            return RestResponseBo.fail(msg);
-//        }
-//        return RestResponseBo.ok();
-//    }
+
+    @RequestMapping(value = "/status", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResponseBo status(@RequestParam Integer coid, @RequestParam String status) {
+        try {
+            Comment comments = commentService.getCommentById(coid);
+            if (comments != null) {
+                comments.setCoid(coid);
+                comments.setStatus(status);
+                commentService.updateComment(comments);
+            } else {
+                return RestResponseBo.fail("操作失败");
+            }
+        } catch (Exception e) {
+            String msg = "操作失败";
+            return RestResponseBo.fail(msg);
+        }
+        return RestResponseBo.ok();
+    }
 
 }

@@ -17,7 +17,7 @@ public class CommentService {
     @Autowired
     private CommentMapper commentMapper;
 
-    public int insertArticle(String title, String slug, String tags, String content, Integer author_id, String type, String categories, Integer created, Integer modified){
+    public int insert(String title, String slug, String tags, String content, Integer author_id, String type, String categories, Integer created, Integer modified){
         int insertArticleResult = commentMapper.insert(title, slug, tags, content, author_id, type, categories,created, modified);
         return insertArticleResult;
     }
@@ -69,33 +69,13 @@ public class CommentService {
         }
 //        return insertArticleResult;
     }
-    public Comment getArticle(Integer cid){
-        Comment article = commentMapper.selectByCid(cid);
-       return article;
+    public Comment getCommentById(Integer coid){
+        Comment comment = commentMapper.selectByCoid(coid);
+       return comment;
 
     }
-    public String updateArticle(ContentVo contents){
-        if (null == contents) {
-            return "文章对象为空";
-        }
-        if (StringUtils.isBlank(contents.getTitle())) {
-            return "文章标题不能为空";
-        }
-        if (StringUtils.isBlank(contents.getContent())) {
-            return "文章内容不能为空";
-        }
-        int titleLength = contents.getTitle().length();
-        if (titleLength > WebConst.MAX_TITLE_COUNT) {
-            return "文章标题过长";
-        }
-        int contentLength = contents.getContent().length();
-        if (contentLength > WebConst.MAX_TEXT_COUNT) {
-            return "文章内容过长";
-        }
-        if (null == contents.getAuthorId()) {
-            return "请登录后发布文章";
-        }
-        int insertArticleResult = commentMapper.update(contents.getCid(),contents.getTitle(), contents.getTags(), contents.getContent(), contents.getCategories(), contents.getModified());
+    public String updateComment(Comment comment){
+        int insertArticleResult = commentMapper.update(comment.getCoid(),comment.getStatus());
         if(insertArticleResult==1){
             return WebConst.SUCCESS_RESULT;
         }else{

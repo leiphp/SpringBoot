@@ -15,11 +15,11 @@ public interface CommentMapper {
     @Select("SELECT * FROM COMMENTS WHERE TYPE = #{type} ORDER BY ${sort}")
     List<Comment> list(@Param("type") String type, @Param("sort") String sort);
 
-    @Select("SELECT * FROM COMMENTS WHERE cid = #{cid}")
-    Comment selectByCid(@Param("cid") Integer cid);
+    @Select("SELECT * FROM COMMENTS WHERE coid = #{coid}")
+    Comment selectByCoid(@Param("coid") Integer coid);
 
-    @Update("UPDATE COMMENTS SET title=#{title},tags=#{tags},content=#{content}, categories=#{categories},modified=#{modified} where cid=#{cid}")
-    int update(@Param("cid") Integer cid, @Param("title") String title, @Param("tags") String tags, @Param("content") String content, @Param("categories") String categories, @Param("modified") Integer modified);
+    @Update("UPDATE COMMENTS SET status=#{status} where coid=#{coid}")
+    int update(@Param("coid") Integer coid, @Param("status") String status);
 
     @Delete("DELETE FROM COMMENTS WHERE cid = #{cid}")
     int delete(@Param("cid") Integer cid);
