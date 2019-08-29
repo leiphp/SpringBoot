@@ -20,16 +20,23 @@ public class MetasService {
     @Autowired
     private MetasMapper metasMapper;
 
-    public PageInfo<Article> findArticleList(String type, int page, int pageSize, String sort){
-        //mysql查询limit
-        //pageHelper 帮我们生产分页语句
-        PageHelper.startPage(page, pageSize);
-        List<Article> listArticle = metasMapper.findArticleList(type, sort);
-        //返回给客户端展示
-        PageInfo<Article> pageInfoArticleList = new PageInfo<Article>(listArticle);
-        return pageInfoArticleList;
+    public List<Metas> getMetaList(String type, String orderby, int limit) {
+        if (StringUtils.isNotBlank(type)) {
+            if (StringUtils.isBlank(orderby)) {
+                orderby = "count desc, a.mid desc";
+            }
+            if (limit < 1 || limit > WebConst.MAX_POSTS) {
+                limit = 10;
+            }
+            Map<String, Object> paraMap = new HashMap<>();
+            paraMap.put("type", type);
+            paraMap.put("order", orderby);
+            paraMap.put("limit", limit);
+            return metasMapper.selectByParm(paraMap);
+        }
+        return null;
     }
-
+    
     public String saveMeta(String type, String cname, Integer  mid){
         int insertArticleResult;
         if(mid>0){
@@ -60,20 +67,4 @@ public class MetasService {
 
     }
 
-    public List<Metas> getMetaList(String type, String orderby, int limit) {
-        if (StringUtils.isNotBlank(type)) {
-            if (StringUtils.isBlank(orderby)) {
-                orderby = "count desc, a.mid desc";
-            }
-            if (limit < 1 || limit > WebConst.MAX_POSTS) {
-                limit = 10;
-            }
-            Map<String, Object> paraMap = new HashMap<>();
-            paraMap.put("type", type);
-            paraMap.put("order", orderby);
-            paraMap.put("limit", limit);
-            return metasMapper.selectByParm(paraMap);
-        }
-        return null;
-    }
 }
