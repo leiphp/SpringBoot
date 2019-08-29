@@ -28,4 +28,9 @@ public class UserService {
         PageInfo<User> pageInfoUserList = new PageInfo<User>(listUser);
         return pageInfoUserList;
     }
+    public User queryUserById(Integer id){
+        User user = userMapper.selectById(id);
+        return user;
+
+    }
 }

@@ -5,6 +5,7 @@ import cn.lxtkj.springboot.controller.BaseController;
 import cn.lxtkj.springboot.entity.Metas;
 import cn.lxtkj.springboot.model.Bo.RestResponseBo;
 import cn.lxtkj.springboot.service.MetasService;
+import cn.lxtkj.springboot.utils.AdminCommons;
 import com.github.pagehelper.PageInfo;
 import cn.lxtkj.springboot.dto.Types;
 import org.apache.log4j.Logger;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -27,6 +29,8 @@ public class FTLCategoryController extends BaseController {
     @Autowired
     private MetasService metasService;
 
+    @Resource
+    private AdminCommons adminCommons;
 //    @RequestMapping(value = "")
 //    public String index(@RequestParam(value = "type", defaultValue = "comment") String type,@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "limit", defaultValue = "10") int limit,@RequestParam(value = "sort", defaultValue = "created desc") String sort, HttpServletRequest request) {
 //        PageInfo<Comment> commentPaginator = commentService.getCommentList(type, page, limit, sort);
@@ -39,8 +43,10 @@ public class FTLCategoryController extends BaseController {
     public String index(HttpServletRequest request) {
         List<Metas> categories = metasService.getMetaList(Types.CATEGORY.getType(), null, WebConst.MAX_POSTS);
         List<Metas> tags = metasService.getMetaList(Types.TAG.getType(), null, WebConst.MAX_POSTS);
+        log.info("sort是什么："+categories);
         request.setAttribute("categories", categories);
         request.setAttribute("tags", tags);
+        request.setAttribute("adminCommons", adminCommons);
         return "admin/category";
     }
 

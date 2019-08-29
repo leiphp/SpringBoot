@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="title='分类管理',active='category'">
-<header th:replace="admin/header::headerFragment(${title},${active})"></header>
+<#--<header th:replace="admin/header::headerFragment(${title},${active})"></header>-->
+<#assign title = "分类管理">
+<#include "head.ftl">
 <body class="fixed-left">
 <div id="wrapper">
-    <div th:replace="admin/header::header-body"></div>
+    <#--<div th:replace="admin/header::header-body"></div>-->
+    <#include "header-body.ftl">
     <div class="content-page">
         <div class="content">
             <div class="container">
@@ -17,33 +20,27 @@
                                 <h1 class="panel-title">分类列表</h1>
                             </div>
                             <div class="panel-body">
-                                <th:block th:each="c : ${categories}">
+                                <#list categories as c>
+                                <#--<th:block th:each="c : ${categories}">-->
                                     <div class="btn-group m-b-10">
-                                        <th:block th:if="${c.name == '默认分类'}">
-                                            <button type="button"
-                                                    th:class="'btn btn-'+${adminCommons.rand_color()}+' waves-effect waves-light'">
-                                                <th:block th:text="${c.name}"/>
-                                                <th:block th:text="' ('+${c.count}+')'"/>
+                                        <#if c.name == '默认分类'>
+                                            <button type="button" class="btn btn-${adminCommons.rand_color()} waves-effect waves-light">
+                                                ${c.name}(${c.count})
                                             </button>
-                                        </th:block>
-                                        <th:block th:unless="${c.name == '默认分类'}">
-                                            <button type="button"
-                                                    th:class="'btn btn-'+${adminCommons.rand_color()}+' dropdown-toggle waves-effect waves-light'"
-                                                    data-toggle="dropdown" aria-expanded="false">
-                                                <th:block th:text="${c.name}"/>
-                                                <th:block th:text="' ('+${c.count}+')'"/>
-                                                <span
-                                                        class="caret"></span></button>
+                                        <#else>
+                                            <button type="button" class="'btn btn-${adminCommons.rand_color()} dropdown-toggle waves-effect waves-light'" data-toggle="dropdown" aria-expanded="false">
+                                                ${c.name}(${c.count})
+                                                <span class="caret"></span>
+                                            </button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="javascript:void(0)" th:attr="mid=${c.mid},cname=${c.name}"
-                                                       class="edit-category">修改</a>
+                                                <li><a href="javascript:void(0)" mid=${c.mid},cname=${c.name} class="edit-category">修改</a>
                                                 </li>
-                                                <li><a href="javascript:void(0)" th:attr="mid=${c.mid}"
-                                                       class="del-category">删除</a></li>
+                                                <li><a href="javascript:void(0)" mid=${c.mid} class="del-category">删除</a></li>
                                             </ul>
-                                        </th:block>
+                                        </#if>
                                     </div>
-                                </th:block>
+                                <#--</th:block>-->
+                                </#list>
                             </div>
                         </div>
                     </div>
@@ -54,21 +51,17 @@
                                 <h1 class="panel-title">标签列表</h1>
                             </div>
                             <div class="panel-body">
-                                <th:block th:each="c : ${tags}">
+                                <#list tags as c>
                                     <div class="btn-group m-b-10">
-                                        <button type="button"
-                                                th:class="'btn btn-'+${adminCommons.rand_color()}+' dropdown-toggle waves-effect waves-light'"
-                                                data-toggle="dropdown" aria-expanded="false">
-                                            <th:block th:text="${c.name}"/>
-                                            <th:block th:text="' ('+${c.count}+')'"/>
-                                            <span
-                                                    class="caret"></span></button>
+                                        <button type="button" class="btn btn-${adminCommons.rand_color()} dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-expanded="false">
+                                            ${c.name}(${c.count})
+                                            <span class="caret"></span></button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="javascript:void(0)" th:attr="mid=${c.mid}"
-                                                   class="del-category">删除</a></li>
+                                            <li><a href="javascript:void(0)" mid=${c.mid}class="del-category">删除</a></li>
                                         </ul>
                                     </div>
-                                </th:block>
+
+                                </#list>
                             </div>
                         </div>
                     </div>
@@ -89,12 +82,15 @@
                         </div>
                     </div>
                 </div>
-                <div th:replace="admin/footer :: footer-content"></div>
+                <#--<div th:replace="admin/footer :: footer-content"></div>-->
+                <#include "footer-content.ftl">
             </div>
         </div>
     </div>
 </div>
-<div th:replace="admin/footer :: footer"></div>
+<#--<div th:replace="admin/footer :: footer"></div>-->
+<#include "footer-content.ftl">
+<#include "footer.ftl">
 <script type="text/javascript">
     /*<![CDATA[*/
     var tale = new $.tale();

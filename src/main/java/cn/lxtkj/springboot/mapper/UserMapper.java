@@ -31,4 +31,7 @@ public interface UserMapper {
      */
     @Select("SELECT role FROM USERS WHERE username = #{username}")
     String getRole(String username);
+
+    @Select("SELECT * FROM USERS WHERE id = #{id}")
+    User selectById(@Param("id") Integer id);
 }
