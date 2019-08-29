@@ -4,6 +4,7 @@ import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.entity.Attach;
 import cn.lxtkj.springboot.mapper.AttachMapper;
 import cn.lxtkj.springboot.model.Vo.ContentVo;
+import cn.lxtkj.springboot.utils.DateKit;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -34,19 +35,19 @@ public class AttachService {
 //        }
 //        return null;
 //    }
-//
-//    @Override
-//    @Transactional
-//    public void save(String fname, String fkey, String ftype, Integer author) {
-//        AttachVo attach = new AttachVo();
-//        attach.setFname(fname);
-//        attach.setAuthorId(author);
-//        attach.setFkey(fkey);
-//        attach.setFtype(ftype);
-//        attach.setCreated(DateKit.getCurrentUnixTime());
-//        attachDao.insertSelective(attach);
-//    }
-//
+
+
+    @Transactional
+    public void save(String fname, String fkey, String ftype, Integer author) {
+        Attach attach = new Attach();
+        attach.setFname(fname);
+        attach.setAuthorId(author);
+        attach.setFkey(fkey);
+        attach.setFtype(ftype);
+        attach.setCreated(DateKit.getCurrentUnixTime());
+        attachMapper.insert(attach.getFname(), attach.getFtype(), attach.getFkey(), attach.getAuthorId(), attach.getCreated());
+    }
+
 //    @Override
 //    @Transactional
 //    public void deleteById(Integer id) {

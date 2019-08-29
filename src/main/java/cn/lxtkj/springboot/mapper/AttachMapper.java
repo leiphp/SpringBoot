@@ -9,8 +9,8 @@ public interface AttachMapper {
     @Select("SELECT * FROM ATTACH WHERE TITLE = #{TITLE}")
     Attach findByTitle(@Param("title") String title);
 
-    @Insert("INSERT INTO ATTACH(title, slug, tags, content, author_id, type, categories, created, modified) VALUES(#{title}, #{slug}, #{tags}, #{content}, #{author_id}, #{type}, #{categories}, #{created}, #{modified})")
-    int insert(@Param("title") String title, @Param("slug") String slug, @Param("tags") String tags, @Param("content") String content, @Param("author_id") Integer author_id, @Param("type") String type, @Param("categories") String categories, @Param("created") Integer created, @Param("modified") Integer modified);
+    @Insert("INSERT INTO ATTACH(fname, ftype, fkey, author_id, created) VALUES(#{fname}, #{ftype}, #{fkey}, #{author_id}, #{created})")
+    int insert(@Param("fname") String fname, @Param("ftype") String ftype, @Param("fkey") String fkey, @Param("author_id") Integer author_id, @Param("created") Integer created);
 
     @Select("SELECT * FROM ATTACH  ORDER BY ${sort}")
     List<Attach> list(@Param("sort") String sort);

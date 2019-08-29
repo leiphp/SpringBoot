@@ -4,7 +4,8 @@ import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.controller.admin.AttachController;
 import cn.lxtkj.springboot.exception.TipException;
 import cn.lxtkj.springboot.model.Vo.UserVo;
-//import org.apache.commons.lang3.StringUtils;
+import cn.lxtkj.springboot.entity.User;
+import org.apache.commons.lang3.StringUtils;
 //import org.commonmark.Extension;
 //import org.commonmark.ext.gfm.tables.TablesExtension;
 //import org.commonmark.node.Node;
@@ -142,12 +143,12 @@ public class TaleUtils {
      *
      * @return
      */
-    public static UserVo getLoginUser(HttpServletRequest request) {
+    public static User getLoginUser(HttpServletRequest request) {
         HttpSession session = request.getSession();
         if (null == session) {
             return null;
         }
-        return (UserVo) session.getAttribute(WebConst.LOGIN_SESSION_KEY);
+        return (User) session.getAttribute(WebConst.LOGIN_SESSION_KEY);
     }
 
 
@@ -350,26 +351,26 @@ public class TaleUtils {
 //        return false;
 //    }
 
-//    public static String getFileKey(String name) {
-//        String prefix = "/upload/" + DateKit.dateFormat(new Date(), "yyyy/MM");
-//        if (!new File(AttachController.CLASSPATH + prefix).exists()) {
-//            new File(AttachController.CLASSPATH + prefix).mkdirs();
-//        }
-//
-//        name = StringUtils.trimToNull(name);
-//        if (name == null) {
-//            return prefix + "/" + UUID.UU32() + "." + null;
-//        } else {
-//            name = name.replace('\\', '/');
-//            name = name.substring(name.lastIndexOf("/") + 1);
-//            int index = name.lastIndexOf(".");
-//            String ext = null;
-//            if (index >= 0) {
-//                ext = StringUtils.trimToNull(name.substring(index + 1));
-//            }
-//            return prefix + "/" + UUID.UU32() + "." + (ext == null ? null : (ext));
-//        }
-//    }
+    public static String getFileKey(String name) {
+        String prefix = "/upload/" + DateKit.dateFormat(new Date(), "yyyy/MM");
+        if (!new File(AttachController.CLASSPATH + prefix).exists()) {
+            new File(AttachController.CLASSPATH + prefix).mkdirs();
+        }
+
+        name = StringUtils.trimToNull(name);
+        if (name == null) {
+            return prefix + "/" + UUID.UU32() + "." + null;
+        } else {
+            name = name.replace('\\', '/');
+            name = name.substring(name.lastIndexOf("/") + 1);
+            int index = name.lastIndexOf(".");
+            String ext = null;
+            if (index >= 0) {
+                ext = StringUtils.trimToNull(name.substring(index + 1));
+            }
+            return prefix + "/" + UUID.UU32() + "." + (ext == null ? null : (ext));
+        }
+    }
 
     /**
      * 判断文件是否是图片类型

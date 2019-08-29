@@ -1,6 +1,7 @@
 package cn.lxtkj.springboot.controller;
 
-import cn.lxtkj.springboot.model.Vo.UserVo;
+//import cn.lxtkj.springboot.model.Vo.UserVo;
+import cn.lxtkj.springboot.entity.User;
 import cn.lxtkj.springboot.utils.MapCache;
 import cn.lxtkj.springboot.utils.TaleUtils;
 
@@ -39,12 +40,12 @@ public abstract class BaseController {
      * @param request
      * @return
      */
-    public UserVo user(HttpServletRequest request) {
+    public User user(HttpServletRequest request) {
         return TaleUtils.getLoginUser(request);
     }
 
     public Integer getUid(HttpServletRequest request){
-        return this.user(request).getUid();
+        return this.user(request).getId();
     }
 
     public String render_404() {
