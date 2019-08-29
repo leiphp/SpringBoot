@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
+Source Server         : localhost
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : springboot
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-08-27 23:55:04
+Date: 2019-08-29 18:46:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -66,9 +66,58 @@ INSERT INTO `articles` VALUES ('32', 'PHP程序员这行能干多久？888', '10
 INSERT INTO `articles` VALUES ('33', '雷小天测试', '106', '0', '0', '雷小天', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('36', 'PHP程序员这行能干多久？', '1010', '0', '0', 'ddddddddd ', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('37', '雷小天继续', null, '0', '0', '侧是是是', '0', 'post', 'publish', '测试', 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('41', '测试标题', 'test2', '1566919759', '1566919759', 'xxxxxxx', '4', 'page', 'publish', null, '默认分类', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('42', '关于我', 'aboutme', '1566920166', '1566920166', 'aboutme', '4', 'page', 'publish', null, '默认分类', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('42', '关于', 'aboutme', '1566920166', '1566977785', 'aboutme', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('43', '相册', 'pincture', '1566921035', '1566921035', '这是相册页面', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
+
+-- ----------------------------
+-- Table structure for attach
+-- ----------------------------
+DROP TABLE IF EXISTS `attach`;
+CREATE TABLE `attach` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `fname` varchar(100) NOT NULL DEFAULT '',
+  `ftype` varchar(50) DEFAULT '',
+  `fkey` varchar(100) NOT NULL DEFAULT '',
+  `author_id` int(10) DEFAULT NULL,
+  `created` int(10) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of attach
+-- ----------------------------
+INSERT INTO `attach` VALUES ('1', '1.jpg', 'image', '/upload/2019/08/rj85i5gasejovohqpic80aubf2.jpg', '1', '1567063704');
+INSERT INTO `attach` VALUES ('2', '微信图片_20190819095358.png', 'image', '/upload/2019/08/7pb9iolu7mi7bpcj929o8spjig.png', '4', '1567075366');
+
+-- ----------------------------
+-- Table structure for comments
+-- ----------------------------
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `coid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `cid` int(10) unsigned DEFAULT '0',
+  `created` int(10) unsigned DEFAULT '0',
+  `author` varchar(200) DEFAULT NULL,
+  `author_id` int(10) unsigned DEFAULT '0',
+  `owner_id` int(10) unsigned DEFAULT '0',
+  `mail` varchar(200) DEFAULT NULL,
+  `url` varchar(200) DEFAULT NULL,
+  `ip` varchar(64) DEFAULT NULL,
+  `agent` varchar(200) DEFAULT NULL,
+  `content` text,
+  `type` varchar(16) DEFAULT 'comment',
+  `status` varchar(16) DEFAULT 'approved',
+  `parent` int(10) unsigned DEFAULT '0',
+  PRIMARY KEY (`coid`),
+  KEY `cid` (`cid`),
+  KEY `created` (`created`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of comments
+-- ----------------------------
+INSERT INTO `comments` VALUES ('2', '19', '1566912607', 'xiao', '0', '1', '1124378213@qq.com', 'https://github.com/leiphp/sshflower', '0:0:0:0:0:0:0:1', null, '我来快快快测试', 'comment', 'approved', '0');
+INSERT INTO `comments` VALUES ('3', '17', '1566912678', '雷小天', '0', '1', '1124378213@qq.com', 'https://github.com/leiphp/sshflower', '0:0:0:0:0:0:0:1', null, '我可以看看 你的源码吗', 'comment', 'approved', '0');
 
 -- ----------------------------
 -- Table structure for metas
@@ -84,16 +133,33 @@ CREATE TABLE `metas` (
   `parent` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`mid`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of metas
 -- ----------------------------
 INSERT INTO `metas` VALUES ('1', 'default', null, 'category', null, '0', '0');
 INSERT INTO `metas` VALUES ('6', 'my github', 'https://github.com/ZHENFENG13', 'link', null, '0', '0');
-INSERT INTO `metas` VALUES ('7', '测试', '测试', 'tag', null, '0', '0');
-INSERT INTO `metas` VALUES ('8', '技术', null, 'category', null, '0', '0');
 INSERT INTO `metas` VALUES ('9', '运维', null, 'category', null, '0', '0');
+INSERT INTO `metas` VALUES ('11', 'html5', null, 'category', null, '0', '0');
+INSERT INTO `metas` VALUES ('12', 'python', null, 'category', null, '0', '0');
+
+-- ----------------------------
+-- Table structure for relationships
+-- ----------------------------
+DROP TABLE IF EXISTS `relationships`;
+CREATE TABLE `relationships` (
+  `cid` int(10) unsigned NOT NULL,
+  `mid` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`cid`,`mid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of relationships
+-- ----------------------------
+INSERT INTO `relationships` VALUES ('2', '1');
+INSERT INTO `relationships` VALUES ('3', '1');
+INSERT INTO `relationships` VALUES ('3', '7');
 
 -- ----------------------------
 -- Table structure for role
@@ -159,6 +225,38 @@ INSERT INTO `t_comments` VALUES ('2', '19', '1566912607', 'xiao', '0', '1', '112
 INSERT INTO `t_comments` VALUES ('3', '17', '1566912678', '雷小天', '0', '1', '1124378213@qq.com', 'https://github.com/leiphp/sshflower', '0:0:0:0:0:0:0:1', null, '我可以看看 你的源码吗', 'comment', 'not_audit', '0');
 
 -- ----------------------------
+-- Table structure for t_contents
+-- ----------------------------
+DROP TABLE IF EXISTS `t_contents`;
+CREATE TABLE `t_contents` (
+  `cid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) DEFAULT NULL,
+  `slug` varchar(200) DEFAULT NULL,
+  `created` int(10) unsigned DEFAULT '0',
+  `modified` int(10) unsigned DEFAULT '0',
+  `content` text COMMENT '内容文字',
+  `author_id` int(10) unsigned DEFAULT '0',
+  `type` varchar(16) DEFAULT 'post',
+  `status` varchar(16) DEFAULT 'publish',
+  `tags` varchar(200) DEFAULT NULL,
+  `categories` varchar(200) DEFAULT NULL,
+  `hits` int(10) unsigned DEFAULT '0',
+  `comments_num` int(10) unsigned DEFAULT '0',
+  `allow_comment` tinyint(1) DEFAULT '1',
+  `allow_ping` tinyint(1) DEFAULT '1',
+  `allow_feed` tinyint(1) DEFAULT '1',
+  PRIMARY KEY (`cid`),
+  UNIQUE KEY `slug` (`slug`),
+  KEY `created` (`created`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_contents
+-- ----------------------------
+INSERT INTO `t_contents` VALUES ('1', 'about my blog', 'about', '1487853610', '1487872488', '### Hello World\r\n\r\nabout me\r\n\r\n### ...\r\n\r\n...', '1', 'page', 'publish', null, null, '0', '0', '1', '1', '1');
+INSERT INTO `t_contents` VALUES ('2', 'Hello My Blog', null, '1487861184', '1487872798', '## Hello  World.\r\n\r\n> ...\r\n\r\n----------\r\n\r\n\r\n<!--more-->\r\n\r\n```java\r\npublic static void main(String[] args){\r\n    System.out.println(\"Hello 13 Blog.\");\r\n}\r\n```', '1', 'post', 'publish', '', 'default', '10', '0', '1', '1', '1');
+
+-- ----------------------------
 -- Table structure for t_logs
 -- ----------------------------
 DROP TABLE IF EXISTS `t_logs`;
@@ -179,6 +277,57 @@ INSERT INTO `t_logs` VALUES ('1', '登录后台', null, '1', '0:0:0:0:0:0:0:1', 
 INSERT INTO `t_logs` VALUES ('2', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566400842');
 INSERT INTO `t_logs` VALUES ('3', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566489734');
 INSERT INTO `t_logs` VALUES ('4', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566569572');
+
+-- ----------------------------
+-- Table structure for t_metas
+-- ----------------------------
+DROP TABLE IF EXISTS `t_metas`;
+CREATE TABLE `t_metas` (
+  `mid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) DEFAULT NULL,
+  `slug` varchar(200) DEFAULT NULL,
+  `type` varchar(32) NOT NULL DEFAULT '',
+  `description` varchar(200) DEFAULT NULL,
+  `sort` int(10) unsigned DEFAULT '0',
+  `parent` int(10) unsigned DEFAULT '0',
+  PRIMARY KEY (`mid`),
+  KEY `slug` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_metas
+-- ----------------------------
+INSERT INTO `t_metas` VALUES ('1', 'default', null, 'category', null, '0', '0');
+INSERT INTO `t_metas` VALUES ('6', '默认分类', 'https://github.com/ZHENFENG13', 'link', null, '0', '0');
+
+-- ----------------------------
+-- Table structure for t_metas_copy
+-- ----------------------------
+DROP TABLE IF EXISTS `t_metas_copy`;
+CREATE TABLE `t_metas_copy` (
+  `mid` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) DEFAULT NULL,
+  `slug` varchar(200) DEFAULT NULL,
+  `type` varchar(32) NOT NULL DEFAULT '',
+  `description` varchar(200) DEFAULT NULL,
+  `sort` int(10) unsigned DEFAULT '0',
+  `parent` int(10) unsigned DEFAULT '0',
+  PRIMARY KEY (`mid`),
+  KEY `slug` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_metas_copy
+-- ----------------------------
+INSERT INTO `t_metas_copy` VALUES ('1', 'default', null, 'category', null, '0', '0');
+INSERT INTO `t_metas_copy` VALUES ('6', 'my github', 'https://github.com/ZHENFENG13', 'link', null, '0', '0');
+INSERT INTO `t_metas_copy` VALUES ('7', 'mysql', null, 'category', null, '0', '0');
+INSERT INTO `t_metas_copy` VALUES ('8', 'java', null, 'category', null, '0', '0');
+INSERT INTO `t_metas_copy` VALUES ('9', 'python', null, 'category', null, '0', '0');
+INSERT INTO `t_metas_copy` VALUES ('10', 'html', null, 'category', null, '0', '0');
+INSERT INTO `t_metas_copy` VALUES ('11', 'python', 'python', 'tag', null, '0', '0');
+INSERT INTO `t_metas_copy` VALUES ('12', '架构', '架构', 'tag', null, '0', '0');
+INSERT INTO `t_metas_copy` VALUES ('13', '默认分类', null, 'category', null, '0', '0');
 
 -- ----------------------------
 -- Table structure for t_options
