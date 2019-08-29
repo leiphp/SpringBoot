@@ -6,13 +6,14 @@ import cn.lxtkj.springboot.controller.BaseController;
 import cn.lxtkj.springboot.dto.LogActions;
 import cn.lxtkj.springboot.dto.Types;
 import cn.lxtkj.springboot.model.Bo.RestResponseBo;
-import cn.lxtkj.springboot.model.Vo.AttachVo;
+import cn.lxtkj.springboot.entity.Attach;
 import cn.lxtkj.springboot.model.Vo.UserVo;
-//import cn.lxtkj.springboot.service.IAttachService;
+import cn.lxtkj.springboot.service.AttachService;
 //import cn.lxtkj.springboot.service.ILogService;
-//import cn.lxtkj.springboot.utils.Commons;
+import cn.lxtkj.springboot.utils.Commons;
 import cn.lxtkj.springboot.utils.TaleUtils;
-import org.slf4j.Logger;
+import org.apache.log4j.Logger;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
@@ -27,42 +28,40 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 附件管理
- * <p>
- * Created by 13 on 2017/2/21.
- */
+
 @Controller
 @RequestMapping("admin/attach")
 public class AttachController extends BaseController {
+    private static Logger log = Logger.getLogger(FTLArticleController.class);
 
-//    private static final Logger LOGGER = LoggerFactory.getLogger(AttachController.class);
-//
-//    public static final String CLASSPATH = TaleUtils.getUploadFilePath();
-//
-//    @Resource
-//    private IAttachService attachService;
-//
+    public static final String CLASSPATH = TaleUtils.getUploadFilePath();
+
+    @Resource
+    private AttachService attachService;
+
 //    @Resource
 //    private ILogService logService;
-//
-//    /**
-//     * 附件页面
-//     *
-//     * @param request
-//     * @param page
-//     * @param limit
-//     * @return
-//     */
-//    @GetMapping(value = "")
-//    public String index(HttpServletRequest request, @RequestParam(value = "page", defaultValue = "1") int page,
-//                        @RequestParam(value = "limit", defaultValue = "12") int limit) {
-//        PageInfo<AttachVo> attachPaginator = attachService.getAttachs(page, limit);
-//        request.setAttribute("attachs", attachPaginator);
-//        request.setAttribute(Types.ATTACH_URL.getType(), Commons.site_option(Types.ATTACH_URL.getType(), Commons.site_url()));
-//        request.setAttribute("max_file_size", WebConst.MAX_FILE_SIZE / 1024);
-//        return "admin/attach";
-//    }
+    @Resource
+    private Commons commons;
+
+    /**
+     * 附件页面
+     *
+     * @param request
+     * @param page
+     * @param limit
+     * @return
+     */
+    @RequestMapping(value = "")
+    public String index(HttpServletRequest request, @RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "limit", defaultValue = "12") int limit, @RequestParam(value = "sort", defaultValue = "id desc") String sort) {
+        PageInfo<Attach> attachPaginator = attachService.getAttachs(page, limit, sort);
+        request.setAttribute("attachs", attachPaginator);
+        request.setAttribute("pageInfo", attachPaginator);
+        request.setAttribute(Types.ATTACH_URL.getType(), Commons.site_option(Types.ATTACH_URL.getType(), Commons.site_url()));
+        request.setAttribute("max_file_size", WebConst.MAX_FILE_SIZE / 1024);
+        request.setAttribute("commons", commons);
+        return "admin/attach";
+    }
 //
 //    /**
 //     * 上传文件接口

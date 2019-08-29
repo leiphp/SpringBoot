@@ -53,6 +53,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/images/**", "anon");
         filterChainDefinitionMap.put("/js/**", "anon");
         filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/upload/**", "anon");
         //配置登录界面的资源
         filterChainDefinitionMap.put("/admin/css/**", "anon");
         filterChainDefinitionMap.put("/admin/images/**", "anon");
