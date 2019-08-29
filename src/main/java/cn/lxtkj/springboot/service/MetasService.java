@@ -20,11 +20,6 @@ public class MetasService {
     @Autowired
     private MetasMapper metasMapper;
 
-    public int insertArticle(String title, String slug, String tags, String content, Integer author_id, String type, String categories, Integer created, Integer modified){
-        int insertArticleResult = metasMapper.insert(title, slug, tags, content, author_id, type, categories,created, modified);
-        return insertArticleResult;
-    }
-
     public PageInfo<Article> findArticleList(String type, int page, int pageSize, String sort){
         //mysql查询limit
         //pageHelper 帮我们生产分页语句
@@ -34,78 +29,27 @@ public class MetasService {
         PageInfo<Article> pageInfoArticleList = new PageInfo<Article>(listArticle);
         return pageInfoArticleList;
     }
-    public String publish(ContentVo contents){
-        if (null == contents) {
-            return "文章对象为空";
+
+    public String saveMeta(String type, String cname, Integer  mid){
+        int insertArticleResult;
+        if(mid>0){
+             insertArticleResult = metasMapper.update(type, cname, mid);
+        }else{
+             insertArticleResult = metasMapper.insert(type, cname);
         }
-        if (StringUtils.isBlank(contents.getTitle())) {
-            return "文章标题不能为空";
-        }
-        if (StringUtils.isBlank(contents.getContent())) {
-            return "文章内容不能为空";
-        }
-        int titleLength = contents.getTitle().length();
-        if (titleLength > WebConst.MAX_TITLE_COUNT) {
-            return "文章标题过长";
-        }
-        int contentLength = contents.getContent().length();
-        if (contentLength > WebConst.MAX_TEXT_COUNT) {
-            return "文章内容过长";
-        }
-        if (null == contents.getAuthorId()) {
-            return "请登录后发布文章";
-        }
-        if (StringUtils.isNotBlank(contents.getSlug())) {
-            if (contents.getSlug().length() < 5) {
-                return "路径太短了";
-            }
-            long count = 0;
-            if (count > 0) return "该路径已经存在，请重新输入";
-        } else {
-            contents.setSlug(null);
-        }
-        int insertArticleResult = metasMapper.insert(contents.getTitle(),contents.getSlug(), contents.getTags(), contents.getContent(), contents.getAuthorId(),contents.getType(), contents.getCategories(), contents.getCreated(), contents.getModified());
         if(insertArticleResult==1){
             return WebConst.SUCCESS_RESULT;
         }else{
             return WebConst.FAILURE_RESULT;
         }
-//        return insertArticleResult;
     }
+
     public Article getArticle(Integer cid){
         Article article = metasMapper.selectByCid(cid);
        return article;
 
     }
-    public String updateArticle(ContentVo contents){
-        if (null == contents) {
-            return "文章对象为空";
-        }
-        if (StringUtils.isBlank(contents.getTitle())) {
-            return "文章标题不能为空";
-        }
-        if (StringUtils.isBlank(contents.getContent())) {
-            return "文章内容不能为空";
-        }
-        int titleLength = contents.getTitle().length();
-        if (titleLength > WebConst.MAX_TITLE_COUNT) {
-            return "文章标题过长";
-        }
-        int contentLength = contents.getContent().length();
-        if (contentLength > WebConst.MAX_TEXT_COUNT) {
-            return "文章内容过长";
-        }
-        if (null == contents.getAuthorId()) {
-            return "请登录后发布文章";
-        }
-        int insertArticleResult = metasMapper.update(contents.getCid(),contents.getTitle(), contents.getTags(), contents.getContent(), contents.getCategories(), contents.getModified());
-        if(insertArticleResult==1){
-            return WebConst.SUCCESS_RESULT;
-        }else{
-            return WebConst.FAILURE_RESULT;
-        }
 
-    }
     public String deleteByCid(Integer cid){
         int deleteArticleResult = metasMapper.delete(cid);
         if(deleteArticleResult==1){

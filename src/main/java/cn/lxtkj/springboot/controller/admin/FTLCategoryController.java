@@ -31,13 +31,6 @@ public class FTLCategoryController extends BaseController {
 
     @Resource
     private AdminCommons adminCommons;
-//    @RequestMapping(value = "")
-//    public String index(@RequestParam(value = "type", defaultValue = "comment") String type,@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "limit", defaultValue = "10") int limit,@RequestParam(value = "sort", defaultValue = "created desc") String sort, HttpServletRequest request) {
-//        PageInfo<Comment> commentPaginator = commentService.getCommentList(type, page, limit, sort);
-//        request.setAttribute("comments", commentPaginator);
-//        request.setAttribute("pageInfo", commentPaginator);
-//        return "admin/comment_list";
-//    }
 
     @RequestMapping(value = "")
     public String index(HttpServletRequest request) {
@@ -50,6 +43,22 @@ public class FTLCategoryController extends BaseController {
         return "admin/category";
     }
 
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @ResponseBody
+    public RestResponseBo saveCategory(@RequestParam String cname, @RequestParam Integer mid) {
+        if(mid==null){
+            mid =0;
+        }
+        log.info("mid是多少："+mid);
+        try {
+            metasService.saveMeta(Types.CATEGORY.getType(), cname, mid);
+        } catch (Exception e) {
+            String msg = "分类保存失败";
+            log.error(msg, e);
+            return RestResponseBo.fail(msg);
+        }
+        return RestResponseBo.ok();
+    }
 
 //    @RequestMapping(value = "delete")
 //    @ResponseBody
