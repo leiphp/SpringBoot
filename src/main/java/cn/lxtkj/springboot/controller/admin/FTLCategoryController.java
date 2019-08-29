@@ -6,7 +6,6 @@ import cn.lxtkj.springboot.entity.Metas;
 import cn.lxtkj.springboot.model.Bo.RestResponseBo;
 import cn.lxtkj.springboot.service.MetasService;
 import cn.lxtkj.springboot.utils.AdminCommons;
-import com.github.pagehelper.PageInfo;
 import cn.lxtkj.springboot.dto.Types;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,35 +59,15 @@ public class FTLCategoryController extends BaseController {
         return RestResponseBo.ok();
     }
 
-//    @RequestMapping(value = "delete")
-//    @ResponseBody
-//    public RestResponseBo delete(@RequestParam int coid, HttpServletRequest request) {
-//        String result = commentService.deleteByCoid(coid);
-//        if (!WebConst.SUCCESS_RESULT.equals(result)) {
-//            return RestResponseBo.fail(result);
-//        }
-//        return RestResponseBo.ok();
-//    }
+    @RequestMapping(value = "delete")
+    @ResponseBody
+    public RestResponseBo delete(@RequestParam int mid) {
+        String result = metasService.deleteMeta(mid);
+        if (!WebConst.SUCCESS_RESULT.equals(result)) {
+            return RestResponseBo.fail(result);
+        }
+        return RestResponseBo.ok();
+    }
 
-
-
-//    @RequestMapping(value = "/status", method = RequestMethod.POST)
-//    @ResponseBody
-//    public RestResponseBo status(@RequestParam Integer coid, @RequestParam String status) {
-//        try {
-//            Comment comments = commentService.getCommentById(coid);
-//            if (comments != null) {
-//                comments.setCoid(coid);
-//                comments.setStatus(status);
-//                commentService.updateComment(comments);
-//            } else {
-//                return RestResponseBo.fail("操作失败");
-//            }
-//        } catch (Exception e) {
-//            String msg = "操作失败";
-//            return RestResponseBo.fail(msg);
-//        }
-//        return RestResponseBo.ok();
-//    }
 
 }

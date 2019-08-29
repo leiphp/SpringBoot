@@ -33,8 +33,7 @@
                                                 <span class="caret"></span>
                                             </button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="javascript:void(0)" mid=${c.mid},cname=${c.name} class="edit-category">修改</a>
-                                                </li>
+                                                <li><a href="javascript:void(0)" mid=${c.mid} cname=${c.name} class="edit-category">修改</a></li>
                                                 <li><a href="javascript:void(0)" mid=${c.mid} class="del-category">删除</a></li>
                                             </ul>
                                         </#if>
@@ -57,7 +56,7 @@
                                             ${c.name}(${c.count})
                                             <span class="caret"></span></button>
                                         <ul class="dropdown-menu" role="menu">
-                                            <li><a href="javascript:void(0)" mid=${c.mid}class="del-category">删除</a></li>
+                                            <li><a href="javascript:void(0)" mid=${c.mid} class="del-category">删除</a></li>
                                         </ul>
                                     </div>
 

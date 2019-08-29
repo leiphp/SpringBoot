@@ -50,8 +50,8 @@ public class MetasService {
 
     }
 
-    public String deleteByCid(Integer cid){
-        int deleteArticleResult = metasMapper.delete(cid);
+    public String deleteMeta(Integer mid){
+        int deleteArticleResult = metasMapper.delete(mid);
         if(deleteArticleResult==1){
             return WebConst.SUCCESS_RESULT;
         }else{
