@@ -51,6 +51,20 @@ public class MetasService {
         }
     }
 
+    public String saveLink(String type, String cname,String slug, Integer sort, Integer mid){
+        int insertArticleResult;
+        if(mid>0){
+            insertArticleResult = metasMapper.updateLink(type, cname, slug, sort, mid);
+        }else{
+            insertArticleResult = metasMapper.insertLink(type, cname, slug, sort);
+        }
+        if(insertArticleResult==1){
+            return WebConst.SUCCESS_RESULT;
+        }else{
+            return WebConst.FAILURE_RESULT;
+        }
+    }
+
     public Article getArticle(Integer cid){
         Article article = metasMapper.selectByCid(cid);
        return article;

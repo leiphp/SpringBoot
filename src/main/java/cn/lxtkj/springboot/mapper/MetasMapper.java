@@ -12,6 +12,9 @@ public interface MetasMapper {
     @Insert("INSERT INTO METAS(type, name) VALUES(#{type}, #{name})")
     int insert(@Param("type") String type, @Param("name") String name);
 
+    @Insert("INSERT INTO METAS(type, name, slug, sort) VALUES(#{type}, #{name}, #{slug}, #{sort})")
+    int insertLink(@Param("type") String type, @Param("name") String name, @Param("slug") String slug, @Param("sort") Integer sort);
+
     @Select("SELECT * FROM METAS WHERE TYPE = #{type} ORDER BY ${sort}")
     List<Article> findArticleList(@Param("type") String type, @Param("sort") String sort);
 
@@ -20,6 +23,9 @@ public interface MetasMapper {
 
     @Update("UPDATE METAS SET name=#{name},type=#{type} where mid=#{mid}")
     int update(@Param("type") String type, @Param("name") String name, @Param("mid") Integer mid);
+
+    @Update("UPDATE METAS SET name=#{name},type=#{type},slug=#{slug},sort=#{sort} where mid=#{mid}")
+    int updateLink(@Param("type") String type, @Param("name") String name,  @Param("slug") String slug, @Param("sort") Integer sort, @Param("mid") Integer mid);
 
     @Delete("DELETE FROM METAS WHERE mid = #{mid}")
     int delete(@Param("mid") Integer mid);
