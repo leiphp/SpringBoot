@@ -15,6 +15,9 @@ public interface ArticleMapper {
     @Select("SELECT * FROM ARTICLES WHERE TYPE = #{type} ORDER BY ${sort}")
     List<Article> findArticleList(@Param("type") String type, @Param("sort") String sort);
 
+    @Select("SELECT * FROM ARTICLES ")
+    List<Article> getList();
+
     @Select("SELECT * FROM ARTICLES WHERE cid = #{cid}")
     Article selectByCid(@Param("cid") Integer cid);
 

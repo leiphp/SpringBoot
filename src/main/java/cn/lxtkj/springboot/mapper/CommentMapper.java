@@ -13,6 +13,9 @@ public interface CommentMapper {
     @Select("SELECT * FROM COMMENTS WHERE TYPE = #{type} ORDER BY ${sort}")
     List<Comment> list(@Param("type") String type, @Param("sort") String sort);
 
+    @Select("SELECT * FROM COMMENTS ")
+    List<Comment> getList();
+
     @Select("SELECT * FROM COMMENTS WHERE coid = #{coid}")
     Comment selectByCoid(@Param("coid") Integer coid);
 
