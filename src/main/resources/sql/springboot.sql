@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-08-29 18:46:39
+Date: 2019-09-01 00:16:46
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -120,6 +120,28 @@ INSERT INTO `comments` VALUES ('2', '19', '1566912607', 'xiao', '0', '1', '11243
 INSERT INTO `comments` VALUES ('3', '17', '1566912678', '雷小天', '0', '1', '1124378213@qq.com', 'https://github.com/leiphp/sshflower', '0:0:0:0:0:0:0:1', null, '我可以看看 你的源码吗', 'comment', 'approved', '0');
 
 -- ----------------------------
+-- Table structure for logs
+-- ----------------------------
+DROP TABLE IF EXISTS `logs`;
+CREATE TABLE `logs` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `action` varchar(100) DEFAULT NULL,
+  `data` varchar(2000) DEFAULT NULL,
+  `author_id` int(10) DEFAULT NULL,
+  `ip` varchar(20) DEFAULT NULL,
+  `created` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of logs
+-- ----------------------------
+INSERT INTO `logs` VALUES ('1', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566312818');
+INSERT INTO `logs` VALUES ('2', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566400842');
+INSERT INTO `logs` VALUES ('3', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566489734');
+INSERT INTO `logs` VALUES ('4', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566569572');
+
+-- ----------------------------
 -- Table structure for metas
 -- ----------------------------
 DROP TABLE IF EXISTS `metas`;
@@ -133,7 +155,7 @@ CREATE TABLE `metas` (
   `parent` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`mid`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of metas
@@ -143,6 +165,32 @@ INSERT INTO `metas` VALUES ('6', 'my github', 'https://github.com/ZHENFENG13', '
 INSERT INTO `metas` VALUES ('9', '运维', null, 'category', null, '0', '0');
 INSERT INTO `metas` VALUES ('11', 'html5', null, 'category', null, '0', '0');
 INSERT INTO `metas` VALUES ('12', 'python', null, 'category', null, '0', '0');
+INSERT INTO `metas` VALUES ('13', '雷小天博客', 'https://www.100txy.com', 'link', null, '0', '0');
+INSERT INTO `metas` VALUES ('14', '雷小天科技', 'http://www.lxtkj.cn', 'link', null, '2', '0');
+
+-- ----------------------------
+-- Table structure for options
+-- ----------------------------
+DROP TABLE IF EXISTS `options`;
+CREATE TABLE `options` (
+  `name` varchar(32) NOT NULL DEFAULT '',
+  `value` varchar(1000) DEFAULT '',
+  `description` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of options
+-- ----------------------------
+INSERT INTO `options` VALUES ('site_description', '13 Blog', null);
+INSERT INTO `options` VALUES ('site_keywords', '13 Blog', null);
+INSERT INTO `options` VALUES ('site_record', '', '备案号');
+INSERT INTO `options` VALUES ('site_theme', 'default', null);
+INSERT INTO `options` VALUES ('site_title', 'My Blog', '');
+INSERT INTO `options` VALUES ('social_github', '', null);
+INSERT INTO `options` VALUES ('social_twitter', '', null);
+INSERT INTO `options` VALUES ('social_weibo', '', null);
+INSERT INTO `options` VALUES ('social_zhihu', '', null);
 
 -- ----------------------------
 -- Table structure for relationships
@@ -299,35 +347,6 @@ CREATE TABLE `t_metas` (
 -- ----------------------------
 INSERT INTO `t_metas` VALUES ('1', 'default', null, 'category', null, '0', '0');
 INSERT INTO `t_metas` VALUES ('6', '默认分类', 'https://github.com/ZHENFENG13', 'link', null, '0', '0');
-
--- ----------------------------
--- Table structure for t_metas_copy
--- ----------------------------
-DROP TABLE IF EXISTS `t_metas_copy`;
-CREATE TABLE `t_metas_copy` (
-  `mid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) DEFAULT NULL,
-  `slug` varchar(200) DEFAULT NULL,
-  `type` varchar(32) NOT NULL DEFAULT '',
-  `description` varchar(200) DEFAULT NULL,
-  `sort` int(10) unsigned DEFAULT '0',
-  `parent` int(10) unsigned DEFAULT '0',
-  PRIMARY KEY (`mid`),
-  KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_metas_copy
--- ----------------------------
-INSERT INTO `t_metas_copy` VALUES ('1', 'default', null, 'category', null, '0', '0');
-INSERT INTO `t_metas_copy` VALUES ('6', 'my github', 'https://github.com/ZHENFENG13', 'link', null, '0', '0');
-INSERT INTO `t_metas_copy` VALUES ('7', 'mysql', null, 'category', null, '0', '0');
-INSERT INTO `t_metas_copy` VALUES ('8', 'java', null, 'category', null, '0', '0');
-INSERT INTO `t_metas_copy` VALUES ('9', 'python', null, 'category', null, '0', '0');
-INSERT INTO `t_metas_copy` VALUES ('10', 'html', null, 'category', null, '0', '0');
-INSERT INTO `t_metas_copy` VALUES ('11', 'python', 'python', 'tag', null, '0', '0');
-INSERT INTO `t_metas_copy` VALUES ('12', '架构', '架构', 'tag', null, '0', '0');
-INSERT INTO `t_metas_copy` VALUES ('13', '默认分类', null, 'category', null, '0', '0');
 
 -- ----------------------------
 -- Table structure for t_options
