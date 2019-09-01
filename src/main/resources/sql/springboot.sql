@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : 本地
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : springboot
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-09-01 00:16:46
+Date: 2019-09-01 23:37:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -131,7 +131,7 @@ CREATE TABLE `logs` (
   `ip` varchar(20) DEFAULT NULL,
   `created` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logs
@@ -140,6 +140,12 @@ INSERT INTO `logs` VALUES ('1', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1
 INSERT INTO `logs` VALUES ('2', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566400842');
 INSERT INTO `logs` VALUES ('3', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566489734');
 INSERT INTO `logs` VALUES ('4', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566569572');
+INSERT INTO `logs` VALUES ('5', '保存系统设置', '{\"site_record\":\"21000\",\"site_description\":\"13 Blog\",\"site_title\":\"My Blog\",\"site_theme\":\"default\",\"allow_install\":\"\"}', '4', '0:0:0:0:0:0:0:1', '1567348241');
+INSERT INTO `logs` VALUES ('6', '保存系统设置', '{\"site_record\":\"666666666\",\"site_description\":\"13 Blog\",\"site_title\":\"My Blog\",\"site_theme\":\"default\",\"allow_install\":\"\"}', '4', '0:0:0:0:0:0:0:1', '1567348465');
+INSERT INTO `logs` VALUES ('7', '保存系统设置', '{\"site_record\":\"\",\"site_description\":\"13 Blog\",\"site_title\":\"My Blog\",\"site_theme\":\"default\",\"allow_install\":\"\"}', '4', '0:0:0:0:0:0:0:1', '1567348471');
+INSERT INTO `logs` VALUES ('8', '保存系统设置', '{\"social_zhihu\":\"22\",\"social_github\":\"33\",\"social_twitter\":\"\",\"social_weibo\":\"11\"}', '4', '0:0:0:0:0:0:0:1', '1567348506');
+INSERT INTO `logs` VALUES ('9', '保存系统设置', '{\"social_zhihu\":\"22\",\"social_github\":\"33\",\"social_twitter\":\"666\",\"social_weibo\":\"11\"}', '4', '0:0:0:0:0:0:0:1', '1567348540');
+INSERT INTO `logs` VALUES ('10', '保存系统设置', '{\"social_zhihu\":\"22\",\"social_github\":\"33\",\"social_twitter\":\"677\",\"social_weibo\":\"11\"}', '4', '0:0:0:0:0:0:0:1', '1567349218');
 
 -- ----------------------------
 -- Table structure for metas
@@ -155,7 +161,7 @@ CREATE TABLE `metas` (
   `parent` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`mid`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of metas
@@ -182,15 +188,16 @@ CREATE TABLE `options` (
 -- ----------------------------
 -- Records of options
 -- ----------------------------
+INSERT INTO `options` VALUES ('allow_install', '', null);
 INSERT INTO `options` VALUES ('site_description', '13 Blog', null);
 INSERT INTO `options` VALUES ('site_keywords', '13 Blog', null);
 INSERT INTO `options` VALUES ('site_record', '', '备案号');
 INSERT INTO `options` VALUES ('site_theme', 'default', null);
 INSERT INTO `options` VALUES ('site_title', 'My Blog', '');
-INSERT INTO `options` VALUES ('social_github', '', null);
-INSERT INTO `options` VALUES ('social_twitter', '', null);
-INSERT INTO `options` VALUES ('social_weibo', '', null);
-INSERT INTO `options` VALUES ('social_zhihu', '', null);
+INSERT INTO `options` VALUES ('social_github', '33', null);
+INSERT INTO `options` VALUES ('social_twitter', '677', null);
+INSERT INTO `options` VALUES ('social_weibo', '11', null);
+INSERT INTO `options` VALUES ('social_zhihu', '22', null);
 
 -- ----------------------------
 -- Table structure for relationships
