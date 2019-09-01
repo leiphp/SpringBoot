@@ -11,6 +11,7 @@ import cn.lxtkj.springboot.entity.Metas;
 import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.File;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.*;
 
+@Service
 public class SiteService {
     private static Logger log = Logger.getLogger(SiteService.class);
 

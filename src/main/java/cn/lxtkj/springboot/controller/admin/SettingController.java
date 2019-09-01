@@ -13,6 +13,7 @@ import cn.lxtkj.springboot.service.SiteService;
 import cn.lxtkj.springboot.utils.GsonUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,21 +29,21 @@ import java.util.Map;
 @Controller
 @RequestMapping("/admin/setting")
 public class SettingController extends BaseController {
-    private static Logger log = Logger.getLogger(FTLArticleController.class);
+    private static Logger log = Logger.getLogger(SettingController.class);
 
-    @Resource
+    @Autowired
     private OptionsService optionService;
 
-    @Resource
+    @Autowired
     private LogsService logService;
 
-    @Resource
+    @Autowired
     private SiteService siteService;
 
     /**
      * 系统设置
      */
-    @GetMapping(value = "")
+    @RequestMapping(value = "")
     public String setting(HttpServletRequest request) {
         List<Options> voList = optionService.getOptions();
         Map<String, String> options = new HashMap<>();

@@ -9,10 +9,12 @@ import com.github.pagehelper.PageHelper;
 import org.apache.log4j.Logger;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class LogsService {
     private static Logger log = Logger.getLogger(OptionsService.class);
 
