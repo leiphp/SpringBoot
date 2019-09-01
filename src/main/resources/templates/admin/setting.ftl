@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:with="title='系统设置',active='settings'">
-<header th:replace="admin/header::headerFragment(${title},${active})"></header>
+<html lang="en" >
+<#--<header th:replace="admin/header::headerFragment(${title},${active})"></header>-->
+<#assign title = "系统设置">
+<#include "head.ftl">
 <link th:href="@{/admin/plugins/toggles/toggles.css}" rel="stylesheet"/>
 <body class="fixed-left">
 <div id="wrapper">
-    <div th:replace="admin/header::header-body"></div>
+    <#include "header-body.ftl">
     <div class="content-page">
         <div class="content">
             <div class="container">
@@ -22,22 +24,21 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">站点名称</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="site_title" placeholder="站点名称"
-                                                   th:value="${options.site_title}" required="required" aria-required="true"/>
+                                            <input type="text" class="form-control" name="site_title" placeholder="站点名称" value="${options.site_title}" required="required" aria-required="true"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">站点描述</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="site_description" placeholder="站点描述"
-                                                   th:value="${options.site_description}" required="required" aria-required="true"/>
+                                                   value="${options.site_description}" required="required" aria-required="true"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">ICP备案号</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="site_record" placeholder="ICP备案号"
-                                                   th:value="${options.site_record}" required="required" aria-required="true"/>
+                                                   value="${options.site_record}" required="required" aria-required="true"/>
                                         </div>
                                     </div>
 
@@ -45,7 +46,7 @@
                                         <label class="col-md-3 control-label">博客主题</label>
                                         <div class="col-md-9">
                                             <select name="site_theme" class="form-control">
-                                                <option value="default" th:selected="${options.site_theme=='default'}?true:false">默认主题</option>
+                                                <option value="default" selected="true">默认主题</option>
                                             </select>
                                         </div>
                                     </div>
@@ -71,14 +72,14 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">微博账号</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="social_weibo" th:value="${options.social_weibo}"
+                                            <input type="text" class="form-control" name="social_weibo" value="${options.social_weibo}"
                                                    placeholder="微博账号，不输入则不显示"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">知乎账号</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="social_zhihu" th:value="${options.social_zhihu}"
+                                            <input type="text" class="form-control" name="social_zhihu" value="${options.social_zhihu}"
                                                    placeholder="知乎账号，不输入则不显示"/>
                                         </div>
                                     </div>
@@ -86,19 +87,18 @@
                                         <label class="col-md-3 control-label">Github账号</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="social_github"
-                                                   th:value="${options.social_github}" placeholder="Github账号，不输入则不显示"/>
+                                                   value="${options.social_github}" placeholder="Github账号，不输入则不显示"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">Twitter账号</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="social_twitter"
-                                                   th:value="${options.social_twitter}" placeholder="Twitter账号，不输入则不显示"/>
+                                                   value="${options.social_twitter}" placeholder="Twitter账号，不输入则不显示"/>
                                         </div>
                                     </div>
                                     <div class="clearfix pull-right">
-                                        <button type="button" class="btn btn-inverse waves-effect waves-light"
-                                                onclick="saveIndiviSetting()">
+                                        <button type="button" class="btn btn-inverse waves-effect waves-light" onclick="saveIndiviSetting()">
                                             保存设置
                                         </button>
                                     </div>
@@ -132,13 +132,14 @@
                     </div>
 
                 </div>
-                <div th:replace="admin/footer :: footer-content"></div>
+                <#include "footer-content.ftl">
             </div>
         </div>
     </div>
 </div>
-<div th:replace="admin/footer :: footer"></div>
-<script src="//cdn.bootcss.com/jquery-toggles/2.0.4/toggles.min.js"></script>
+<#include "footer-content.ftl">
+<#include "footer.ftl">
+<script src="http://cdn.bootcss.com/jquery-toggles/2.0.4/toggles.min.js"></script>
 <script type="text/javascript">
     /*<![CDATA[*/
     var tale = new $.tale();

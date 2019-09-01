@@ -20,7 +20,7 @@ public class OptionsService {
 
     public void insertOption(Options option) {
         log.debug("Enter insertOption method:optionVo={}"+option);
-        optionsMapper.insert(option.getName(),option.getValue(),option.getDescription());
+        optionsMapper.insert(option.getName(),option.getValue());
         log.debug("Exit insertOption method.");
     }
 
@@ -32,9 +32,9 @@ public class OptionsService {
         option.setName(name);
         option.setValue(value);
         if (optionsMapper.selectByName(name) == null) {
-            optionsMapper.insert(option.getName(),option.getValue(),option.getDescription());
+            optionsMapper.insert(option.getName(),option.getValue());
         } else {
-            optionsMapper.update(option.getName(),option.getValue(),option.getDescription());
+            optionsMapper.update(option.getName(),option.getValue());
         }
         log.debug("Exit insertOption method.");
     }

@@ -1,5 +1,6 @@
 package cn.lxtkj.springboot.service;
 
+import cn.lxtkj.springboot.controller.admin.AttachController;
 import cn.lxtkj.springboot.mapper.CommentMapper;
 import cn.lxtkj.springboot.entity.Comment;
 import cn.lxtkj.springboot.mapper.ArticleMapper;
@@ -8,11 +9,16 @@ import cn.lxtkj.springboot.mapper.AttachMapper;
 import cn.lxtkj.springboot.entity.Attach;
 import cn.lxtkj.springboot.mapper.MetasMapper;
 import cn.lxtkj.springboot.entity.Metas;
+import cn.lxtkj.springboot.utils.DateKit;
+import cn.lxtkj.springboot.utils.TaleUtils;
+import cn.lxtkj.springboot.utils.ZipUtils;
+import cn.lxtkj.springboot.utils.backup.Backup;
 import com.github.pagehelper.PageHelper;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
-
+import cn.lxtkj.springboot.model.Bo.BackResponseBo;
+import cn.lxtkj.springboot.exception.TipException;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -59,68 +65,68 @@ public class SiteService {
         return list;
     }
 
-//    public BackResponseBo backup(String bk_type, String bk_path, String fmt) throws Exception {
-//        BackResponseBo backResponse = new BackResponseBo();
-//        if (bk_type.equals("attach")) {
-//            if (StringUtils.isBlank(bk_path)) {
-//                throw new TipException("请输入备份文件存储路径");
-//            }
-//            if (!(new File(bk_path)).isDirectory()) {
-//                throw new TipException("请输入一个存在的目录");
-//            }
-//            String bkAttachDir = AttachController.CLASSPATH + "upload";
-//            String bkThemesDir = AttachController.CLASSPATH + "templates/themes";
-//
-//            String fname = DateKit.dateFormat(new Date(), fmt) + "_" + TaleUtils.getRandomNumber(5) + ".zip";
-//
-//            String attachPath = bk_path + "/" + "attachs_" + fname;
-//            String themesPath = bk_path + "/" + "themes_" + fname;
-//
-//            ZipUtils.zipFolder(bkAttachDir, attachPath);
-//            ZipUtils.zipFolder(bkThemesDir, themesPath);
-//
-//            backResponse.setAttachPath(attachPath);
-//            backResponse.setThemePath(themesPath);
-//        }
-//        if (bk_type.equals("db")) {
-//
-//            String bkAttachDir = AttachController.CLASSPATH + "upload/";
-//            if (!(new File(bkAttachDir)).isDirectory()) {
-//                File file = new File(bkAttachDir);
-//                if (!file.exists()) {
-//                    file.mkdirs();
-//                }
-//            }
-//            String sqlFileName = "tale_" + DateKit.dateFormat(new Date(), fmt) + "_" + TaleUtils.getRandomNumber(5) + ".sql";
-//            String zipFile = sqlFileName.replace(".sql", ".zip");
-//
-//            Backup backup = new Backup(TaleUtils.getNewDataSource().getConnection());
-//            String sqlContent = backup.execute();
-//
-//            File sqlFile = new File(bkAttachDir + sqlFileName);
-//            write(sqlContent, sqlFile, Charset.forName("UTF-8"));
-//
-//            String zip = bkAttachDir + zipFile;
-//            ZipUtils.zipFile(sqlFile.getPath(), zip);
-//
-//            if (!sqlFile.exists()) {
-//                throw new TipException("数据库备份失败");
-//            }
-//            sqlFile.delete();
-//
-//            backResponse.setSqlPath(zipFile);
-//
-//            // 10秒后删除备份文件
-//            new Timer().schedule(new TimerTask() {
-//                @Override
-//                public void run() {
-//                    new File(zip).delete();
-//                }
-//            }, 10 * 1000);
-//        }
-//        return backResponse;
-//    }
-//
+    public BackResponseBo backup(String bk_type, String bk_path, String fmt) throws Exception {
+        BackResponseBo backResponse = new BackResponseBo();
+        if (bk_type.equals("attach")) {
+            if (StringUtils.isBlank(bk_path)) {
+                throw new TipException("请输入备份文件存储路径");
+            }
+            if (!(new File(bk_path)).isDirectory()) {
+                throw new TipException("请输入一个存在的目录");
+            }
+            String bkAttachDir = AttachController.CLASSPATH + "upload";
+            String bkThemesDir = AttachController.CLASSPATH + "templates/themes";
+
+            String fname = DateKit.dateFormat(new Date(), fmt) + "_" + TaleUtils.getRandomNumber(5) + ".zip";
+
+            String attachPath = bk_path + "/" + "attachs_" + fname;
+            String themesPath = bk_path + "/" + "themes_" + fname;
+
+            ZipUtils.zipFolder(bkAttachDir, attachPath);
+            ZipUtils.zipFolder(bkThemesDir, themesPath);
+
+            backResponse.setAttachPath(attachPath);
+            backResponse.setThemePath(themesPath);
+        }
+        if (bk_type.equals("db")) {
+
+            String bkAttachDir = AttachController.CLASSPATH + "upload/";
+            if (!(new File(bkAttachDir)).isDirectory()) {
+                File file = new File(bkAttachDir);
+                if (!file.exists()) {
+                    file.mkdirs();
+                }
+            }
+            String sqlFileName = "tale_" + DateKit.dateFormat(new Date(), fmt) + "_" + TaleUtils.getRandomNumber(5) + ".sql";
+            String zipFile = sqlFileName.replace(".sql", ".zip");
+
+            Backup backup = new Backup(TaleUtils.getNewDataSource().getConnection());
+            String sqlContent = backup.execute();
+
+            File sqlFile = new File(bkAttachDir + sqlFileName);
+            write(sqlContent, sqlFile, Charset.forName("UTF-8"));
+
+            String zip = bkAttachDir + zipFile;
+            ZipUtils.zipFile(sqlFile.getPath(), zip);
+
+            if (!sqlFile.exists()) {
+                throw new TipException("数据库备份失败");
+            }
+            sqlFile.delete();
+
+            backResponse.setSqlPath(zipFile);
+
+            // 10秒后删除备份文件
+            new Timer().schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    new File(zip).delete();
+                }
+            }, 10 * 1000);
+        }
+        return backResponse;
+    }
+
 //    @Override
 //    public CommentVo getComment(Integer coid) {
 //        if (null != coid) {
@@ -198,23 +204,23 @@ public class SiteService {
 //        return retList;
 //    }
 //
-//
-//    private void write(String data, File file, Charset charset) {
-//        FileOutputStream os = null;
-//        try {
-//            os = new FileOutputStream(file);
-//            os.write(data.getBytes(charset));
-//        } catch (IOException var8) {
-//            throw new IllegalStateException(var8);
-//        } finally {
-//            if(null != os) {
-//                try {
-//                    os.close();
-//                } catch (IOException var2) {
-//                    var2.printStackTrace();
-//                }
-//            }
-//        }
-//
-//    }
+
+    private void write(String data, File file, Charset charset) {
+        FileOutputStream os = null;
+        try {
+            os = new FileOutputStream(file);
+            os.write(data.getBytes(charset));
+        } catch (IOException var8) {
+            throw new IllegalStateException(var8);
+        } finally {
+            if(null != os) {
+                try {
+                    os.close();
+                } catch (IOException var2) {
+                    var2.printStackTrace();
+                }
+            }
+        }
+
+    }
 }
