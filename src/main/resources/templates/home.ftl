@@ -5,6 +5,7 @@
     <title>雷小天SpringBoot开源博客</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
+    <link rel="shortcut icon" href="/admin/images/favicon.png"/>
     <link href="css/base.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <link href="css/media.css" rel="stylesheet">
