@@ -1,19 +1,17 @@
 package cn.lxtkj.springboot.service;
 
 import cn.lxtkj.springboot.controller.admin.AttachController;
+import cn.lxtkj.springboot.entity.*;
 import cn.lxtkj.springboot.mapper.CommentMapper;
-import cn.lxtkj.springboot.entity.Comment;
 import cn.lxtkj.springboot.mapper.ArticleMapper;
-import cn.lxtkj.springboot.entity.Article;
 import cn.lxtkj.springboot.mapper.AttachMapper;
-import cn.lxtkj.springboot.entity.Attach;
 import cn.lxtkj.springboot.mapper.MetasMapper;
-import cn.lxtkj.springboot.entity.Metas;
 import cn.lxtkj.springboot.utils.DateKit;
 import cn.lxtkj.springboot.utils.TaleUtils;
 import cn.lxtkj.springboot.utils.ZipUtils;
 import cn.lxtkj.springboot.utils.backup.Backup;
 import com.github.pagehelper.PageHelper;
+import cn.lxtkj.springboot.dto.Types;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
@@ -137,29 +135,31 @@ public class SiteService {
 //    }
 //
 
-//    public StatisticsBo getStatistics() {
-//        log.debug("Enter getStatistics method");
-//        StatisticsBo statistics = new StatisticsBo();
-//
-//        ContentVoExample contentVoExample = new ContentVoExample();
-//        contentVoExample.createCriteria().andTypeEqualTo(Types.ARTICLE.getType()).andStatusEqualTo(Types.PUBLISH.getType());
-//        Long articles =   contentDao.countByExample(contentVoExample);
-//
-//        Long comments = articleMapper.countByExample(new CommentVoExample());
-//
-//        Long attachs = attachMapper.countByExample(new AttachVoExample());
-//
-//        MetaVoExample metaVoExample = new MetaVoExample();
-//        metaVoExample.createCriteria().andTypeEqualTo(Types.LINK.getType());
-//        Long links = metasMapper.countByExample(metaVoExample);
-//
-//        statistics.setArticles(articles);
-//        statistics.setComments(comments);
-//        statistics.setAttachs(attachs);
-//        statistics.setLinks(links);
-//        log.debug("Exit getStatistics method");
-//        return statistics;
-//    }
+    public StatisticsBo getStatistics() {
+        log.debug("Enter getStatistics method");
+        StatisticsBo statistics = new StatisticsBo();
+
+        Article article = new Article();
+        ContentVo contentVo = new ContentVo();
+
+        contentVo.createCriteria().andTypeEqualTo(Types.ARTICLE.getType()).andStatusEqualTo(Types.PUBLISH.getType());
+        Long articles =   articleMapper.countByExample(contentVo);
+
+        Long comments = commentMapper.countByExample(new CommentVo());
+
+        Long attachs = attachMapper.countByExample(new AttachVo());
+
+        MetasVo metasVo = new MetasVo();
+        metasVo.createCriteria().andTypeEqualTo(Types.LINK.getType());
+        Long links = metasMapper.countByExample(metasVo);
+
+        statistics.setArticles(articles);
+        statistics.setComments(comments);
+        statistics.setAttachs(attachs);
+        statistics.setLinks(links);
+        log.debug("Exit getStatistics method");
+        return statistics;
+    }
 //
 //    @Override
 //    public List<ArchiveBo> getArchives() {

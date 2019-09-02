@@ -2,6 +2,7 @@ package cn.lxtkj.springboot.mapper;
 
 import cn.lxtkj.springboot.entity.Article;
 import cn.lxtkj.springboot.entity.Metas;
+import cn.lxtkj.springboot.entity.MetasVo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -32,4 +33,7 @@ public interface MetasMapper {
     
     @Select("select a.*, count(b.cid) as count from metas a left join `relationships` b on a.mid = b.mid where a.type = #{type} group by a.mid order by #{order} limit #{limit}")
     List<Metas> selectByParm(Map<String,Object> paraMap);
+
+    @Select("SELECT count(*) FROM METAS WHERE type = 'link'")
+    Long countByExample(MetasVo metasVo);
 }

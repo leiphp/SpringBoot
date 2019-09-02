@@ -1,6 +1,7 @@
 package cn.lxtkj.springboot.mapper;
 
 import cn.lxtkj.springboot.entity.Article;
+import cn.lxtkj.springboot.entity.ContentVo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -29,4 +30,7 @@ public interface ArticleMapper {
 
     @Delete("DELETE FROM ARTICLES WHERE cid = #{cid}")
     int delete(@Param("cid") Integer cid);
+
+    @Select("SELECT count(*) FROM ARTICLES WHERE status = 'publish' AND type = 'post'")
+    Long countByExample(ContentVo contentVo);
 }

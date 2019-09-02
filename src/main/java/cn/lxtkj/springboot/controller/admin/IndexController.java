@@ -59,14 +59,14 @@ public class IndexController extends BaseController {
         log.info("Enter admin index method");
         List<Comment> comments = siteService.recentComments(5);
         List<Article> articles = siteService.recentContents(5);
-//        StatisticsBo statistics = siteService.getStatistics();
+        StatisticsBo statistics = siteService.getStatistics();
         // 取最新的20条日志
         String sort ="created desc";
         List<Logs> logs = logsService.getLogs(1, 5, sort);
 
         request.setAttribute("comments", comments);
         request.setAttribute("articles", articles);
-//        request.setAttribute("statistics", statistics);
+        request.setAttribute("statistics", statistics);
         request.setAttribute("logs", logs);
         request.setAttribute("commons", commons);
         log.info("Exit admin index method");

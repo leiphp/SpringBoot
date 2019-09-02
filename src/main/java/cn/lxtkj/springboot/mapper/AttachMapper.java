@@ -1,6 +1,7 @@
 package cn.lxtkj.springboot.mapper;
 
 import cn.lxtkj.springboot.entity.Attach;
+import cn.lxtkj.springboot.entity.AttachVo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -23,4 +24,7 @@ public interface AttachMapper {
 
     @Delete("DELETE FROM ATTACH WHERE cid = #{cid}")
     int delete(@Param("cid") Integer cid);
+
+    @Select("SELECT count(*) FROM ATTACH ")
+    Long countByExample(AttachVo attachVo);
 }

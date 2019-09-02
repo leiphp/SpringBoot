@@ -20,7 +20,7 @@
                             <div class="mini-stat clearfix bx-shadow bg-info">
                                 <span class="mini-stat-icon"><i class="fa fa-quote-right" aria-hidden="true"></i></span>
                                 <div class="mini-stat-info text-right">
-                                    发表了<span class="counter" >1</span>篇文章
+                                    发表了<span class="counter" >${statistics.articles}</span>篇文章
                                 </div>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                             <div class="mini-stat clearfix bg-purple bx-shadow">
                                 <span class="mini-stat-icon"><i class="fa fa-comments-o" aria-hidden="true"></i></span>
                                 <div class="mini-stat-info text-right">
-                                    收到了<span class="counter" >0</span>条留言
+                                    收到了<span class="counter" >${statistics.comments}</span>条留言
                                 </div>
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                             <div class="mini-stat clearfix bg-success bx-shadow">
                                 <span class="mini-stat-icon"><i class="fa fa-cloud-upload" aria-hidden="true"></i></span>
                                 <div class="mini-stat-info text-right">
-                                    上传了<span class="counter">0</span>个附件
+                                    上传了<span class="counter">${statistics.attachs}</span>个附件
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                             <div class="mini-stat clearfix bg-primary bx-shadow">
                                 <span class="mini-stat-icon"><i class="fa fa-link" aria-hidden="true"></i></span>
                                 <div class="mini-stat-info text-right">
-                                    友链了<span class="counter">0</span>个好友
+                                    友链了<span class="counter">${statistics.links}</span>个好友
                                 </div>
                             </div>
                         </div>

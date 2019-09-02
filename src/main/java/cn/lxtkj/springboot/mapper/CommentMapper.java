@@ -1,6 +1,7 @@
 package cn.lxtkj.springboot.mapper;
 
 import cn.lxtkj.springboot.entity.Comment;
+import cn.lxtkj.springboot.entity.CommentVo;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -24,4 +25,7 @@ public interface CommentMapper {
 
     @Delete("DELETE FROM COMMENTS WHERE coid = #{coid}")
     int delete(@Param("coid") Integer coid);
+
+    @Select("SELECT count(*) FROM COMMENTS ")
+    Long countByExample(CommentVo commentVo);
 }
