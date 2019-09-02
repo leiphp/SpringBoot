@@ -35,8 +35,7 @@
 
                         <div class="col-sm-6 col-lg-3">
                             <div class="mini-stat clearfix bg-success bx-shadow">
-                                <span class="mini-stat-icon"><i class="fa fa-cloud-upload"
-                                                                aria-hidden="true"></i></span>
+                                <span class="mini-stat-icon"><i class="fa fa-cloud-upload" aria-hidden="true"></i></span>
                                 <div class="mini-stat-info text-right">
                                     上传了<span class="counter">0</span>个附件
                                 </div>
@@ -61,14 +60,12 @@
                                 </div>
                                 <div class="panel-body">
                                     <ul class="list-group">
+                                        <#list articles as article>
                                         <li class="list-group-item">
-                                            <span class="badge badge-primary" title="0条评论">0</span>
-                                            <a target="_blank" href="/article/2">Hello My Blog</a>
+                                            <span class="badge badge-primary" title="${article.comments_num}条评论" >${article.comments_num}</span>
+                                            <a target="_blank" href="/article/${article.cid}">${article.title}</a>
                                         </li>
-                                        <#--<li class="list-group-item" each="article : ${articles}">-->
-                                            <#--<span class="badge badge-primary" title="0条评论" >0</span>-->
-                                            <#--<a target="_blank" href="${commons.site_url('/article/')}+${article.cid}">测试文章</a>-->
-                                        <#--</li>-->
+                                        </#list>
                                     </ul>
                                 </div>
                             </div>

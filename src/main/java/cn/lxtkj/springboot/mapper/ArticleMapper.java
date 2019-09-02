@@ -18,6 +18,9 @@ public interface ArticleMapper {
     @Select("SELECT * FROM ARTICLES ")
     List<Article> getList();
 
+    @Select("SELECT a.*,count(c.coid)as count FROM ARTICLES as a LEFT JOIN comments as c on c.cid=a.cid WHERE a.type='post' GROUP BY a.cid ORDER BY a.created desc LIMIT  #{limit} ")
+    List<Article> getRecentList(@Param("limit") Integer limit);
+
     @Select("SELECT * FROM ARTICLES WHERE cid = #{cid}")
     Article selectByCid(@Param("cid") Integer cid);
 

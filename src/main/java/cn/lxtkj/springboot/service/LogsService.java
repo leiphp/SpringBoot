@@ -38,13 +38,13 @@ public class LogsService {
     }
 
 
-    public PageInfo<Logs> getLogs(int page, int limit,  String sort) {
+    public List<Logs> getLogs(int page, int limit,  String sort) {
         //mysql查询limit
         //pageHelper 帮我们生产分页语句
         PageHelper.startPage(page, limit);
-        List<Logs> listArticle = logsMapper.getList(sort);
+        List<Logs> listLogs = logsMapper.getList(sort);
         //返回给客户端展示
-        PageInfo<Logs> pageInfoLogsList = new PageInfo<Logs>(listArticle);
-        return pageInfoLogsList;
+//        PageInfo<Logs> pageInfoLogsList = new PageInfo<Logs>(listArticle);
+        return listLogs;
     }
 }

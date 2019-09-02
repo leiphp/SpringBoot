@@ -11,7 +11,15 @@ public class Article {
     private String status;
     private String categories;
     private Integer hits;
+    private Integer comments_num;
 
+    public Integer getComments_num() {
+        return comments_num;
+    }
+
+    public void setComments_num(Integer comments_num) {
+        this.comments_num = comments_num;
+    }
 
     public Integer getCid() {
         return cid;
@@ -84,4 +92,6 @@ public class Article {
     public void setHits(Integer hits) {
         this.hits = hits;
     }
+
+
 }

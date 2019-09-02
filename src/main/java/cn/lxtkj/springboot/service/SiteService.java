@@ -18,6 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import cn.lxtkj.springboot.model.Bo.BackResponseBo;
+import cn.lxtkj.springboot.model.Bo.StatisticsBo;
 import cn.lxtkj.springboot.exception.TipException;
 import javax.annotation.Resource;
 import java.io.File;
@@ -59,8 +60,8 @@ public class SiteService {
         if (limit < 0 || limit > 10) {
             limit = 10;
         }
-        PageHelper.startPage(1, limit);
-        List<Article> list = articleMapper.getList();
+//        PageHelper.startPage(1, limit);
+        List<Article> list = articleMapper.getRecentList(limit);
         log.debug("Exit recentContents method");
         return list;
     }
@@ -135,9 +136,9 @@ public class SiteService {
 //        return null;
 //    }
 //
-//    @Override
+
 //    public StatisticsBo getStatistics() {
-//        LOGGER.debug("Enter getStatistics method");
+//        log.debug("Enter getStatistics method");
 //        StatisticsBo statistics = new StatisticsBo();
 //
 //        ContentVoExample contentVoExample = new ContentVoExample();
@@ -156,7 +157,7 @@ public class SiteService {
 //        statistics.setComments(comments);
 //        statistics.setAttachs(attachs);
 //        statistics.setLinks(links);
-//        LOGGER.debug("Exit getStatistics method");
+//        log.debug("Exit getStatistics method");
 //        return statistics;
 //    }
 //
