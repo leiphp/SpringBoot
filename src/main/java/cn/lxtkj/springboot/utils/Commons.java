@@ -4,7 +4,7 @@ package cn.lxtkj.springboot.utils;
 import com.github.pagehelper.PageInfo;
 import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.model.Vo.ContentVo;
-//import com.vdurmont.emoji.EmojiParser;
+import com.vdurmont.emoji.EmojiParser;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -260,13 +260,13 @@ public final class Commons {
      * @param value
      * @return
      */
-//    public static String article(String value) {
-//        if (StringUtils.isNotBlank(value)) {
-//            value = value.replace("<!--more-->", "\r\n");
-//            return TaleUtils.mdToHtml(value);
-//        }
-//        return "";
-//    }
+    public static String article(String value) {
+        if (StringUtils.isNotBlank(value)) {
+            value = value.replace("<!--more-->", "\r\n");
+            return TaleUtils.mdToHtml(value);
+        }
+        return "";
+    }
 
     /**
      * 显示文章缩略图，顺序为：文章第一张图 -> 随机获取
@@ -289,9 +289,9 @@ public final class Commons {
      * @param value
      * @return
      */
-//    public static String emoji(String value) {
-//        return EmojiParser.parseToUnicode(value);
-//    }
+    public static String emoji(String value) {
+        return EmojiParser.parseToUnicode(value);
+    }
 
     /**
      * 获取文章第一张图片

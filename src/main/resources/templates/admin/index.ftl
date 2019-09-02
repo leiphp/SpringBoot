@@ -76,12 +76,29 @@
                                     <h4 class="panel-title">最新留言</h4>
                                 </div>
                                 <div class="panel-body">
-                                    <div >
-                                        <div class="alert alert-warning">
-                                            还没有收到留言.
+                                    <#if comments??>
+                                        <ul class="list-group">
+                                        <#list comments as comment>
+                                            <li class="list-group-item">
+                                                <#if comment.url??>
+                                                    <div>
+                                                        <a href="${comment.url}" target="_blank" >${comment.author}</a>
+                                                    </div>
+                                                <#else>
+                                                    ${comment.author}
+                                                </#if>
+                                                于${commons.fmtdate(comment.created,'MM月dd日HH:mm')}：
+                                                <a href="/article/${comment.cid}#comments" target="_blank">${commons.article(comment.content)}</a>
+                                            </li>
+                                        </#list>
+                                        </ul>
+                                    <#else>
+                                        <div >
+                                            <div class="alert alert-warning">
+                                                还没有收到留言.
+                                            </div>
                                         </div>
-                                    </div>
-
+                                    </#if>
                                 </div>
                             </div>
                         </div>

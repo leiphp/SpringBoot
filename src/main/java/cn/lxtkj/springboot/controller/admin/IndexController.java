@@ -14,6 +14,7 @@ import cn.lxtkj.springboot.model.Vo.UserVo;
 import cn.lxtkj.springboot.service.LogsService;
 import cn.lxtkj.springboot.service.SiteService;
 import cn.lxtkj.springboot.service.UserService;
+import cn.lxtkj.springboot.utils.Commons;
 import cn.lxtkj.springboot.utils.GsonUtils;
 import cn.lxtkj.springboot.utils.TaleUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -46,6 +47,9 @@ public class IndexController extends BaseController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private Commons commons;
+
     /**
      * 页面跳转
      * @return
@@ -64,6 +68,7 @@ public class IndexController extends BaseController {
         request.setAttribute("articles", articles);
 //        request.setAttribute("statistics", statistics);
         request.setAttribute("logs", logs);
+        request.setAttribute("commons", commons);
         log.info("Exit admin index method");
         return "admin/index";
     }
