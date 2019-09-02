@@ -109,15 +109,11 @@
                                 </div>
                                 <div class="panel-body">
                                     <ul class="list-group" >
+                                        <#list logs as log>
                                         <li class="list-group-item">
-                                            <span>2019-08-22 15:09:27 =&gt; 登录后台</span>
+                                            <span >${commons.fmtdate(log.created, 'yyyy-MM-dd HH:mm:ss')} =>  ${log.action}</span>
                                         </li>
-                                        <li class="list-group-item">
-                                            <span>2019-08-21 15:17:00 =&gt; 登录后台</span>
-                                        </li>
-                                        <#--<li class="list-group-item" each="log : ${logs}">-->
-                                            <#--<span text="${commons.fmtdate(log.created, 'yyyy-MM-dd HH:mm:ss')} +' => '+ ${log.action}"></span>-->
-                                        <#--</li>-->
+                                        </#list>
                                     </ul>
                                 </div>
                             </div>
