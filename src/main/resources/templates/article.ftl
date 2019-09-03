@@ -5,6 +5,7 @@
     <title>雷小天SpringBoot开源博客</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
+    <link href="/css/index.css" rel="stylesheet">
     <link href="/css/base.css" rel="stylesheet">
     <link href="/css/view.css" rel="stylesheet">
     <link href="/css/media.css" rel="stylesheet">
@@ -110,96 +111,22 @@
         </div>
 
         <!--banner代码 结束 -->
-        <div class="ms-top">
-            <ul class="hd" id="tab">
-                <li class="cur"><a href="/">点击排行</a></li>
-                <li><a href="/">最新文章</a></li>
-                <li><a href="/">站长推荐</a></li>
-            </ul>
-        </div>
-        <div class="ms-main" id="ms-main">
-            <div style="display: block;" class="bd bd-news" >
-                <ul>
-                    <li><a href="/" target="_blank">住在手机里的朋友</a></li>
-                    <li><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></li>
-                    <li><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码...</a></li>
-                    <li><a href="/" target="_blank">手机的16个惊人小秘密，据说99.999%的人都不知</a></li>
-                    <li><a href="/" target="_blank">你面对的是生活而不是手机</a></li>
-                    <li><a href="/" target="_blank">豪雅手机正式发布! 在法国全手工打造的奢侈品</a></li>
-                </ul>
-            </div>
-            <div  class="bd bd-news">
-                <ul>
-                    <li><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码...</a></li>
-                    <li><a href="/" target="_blank">手机的16个惊人小秘密，据说99.999%的人都不知</a></li>
-                    <li><a href="/" target="_blank">住在手机里的朋友</a></li>
-                    <li><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></li>
-                    <li><a href="/" target="_blank">你面对的是生活而不是手机</a></li>
-                    <li><a href="/" target="_blank">豪雅手机正式发布! 在法国全手工打造的奢侈品</a></li>
-                </ul>
-            </div>
-            <div class="bd bd-news">
-                <ul>
-                    <li><a href="/" target="_blank">手机的16个惊人小秘密，据说99.999%的人都不知</a></li>
-                    <li><a href="/" target="_blank">你面对的是生活而不是手机</a></li>
-                    <li><a href="/" target="_blank">住在手机里的朋友</a></li>
-                    <li><a href="/" target="_blank">豪雅手机正式发布! 在法国全手工打造的奢侈品</a></li>
-                    <li><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></li>
-                    <li><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码...</a></li>
-                </ul>
-            </div>
-        </div>
-        <!--ms-main end -->
-
-        <!--切换卡 moreSelect end -->
-
-        <div class="cloud">
-            <h3>标签云</h3>
-            <ul>
-                <li><a href="/">手机配件</a></li>
-                <li><a href="/">手机</a></li>
-                <li><a href="/">苹果Apple</a></li>
-                <li><a href="/">SumSung</a></li>
-                <li><a href="/">Sony</a></li>
-                <li><a href="/">华维荣耀</a></li>
-                <li><a href="/">手机</a></li>
-                <li><a href="/">三星</a></li>
-                <li><a href="/">索尼</a></li>
-                <li><a href="/">华维荣耀</a></li>
-                <li><a href="/">三星</a></li>
-                <li><a href="/">索尼</a></li>
-            </ul>
-        </div>
-        <div class="ad" id="r_ad"> <img src="/images/03.jpg"> </div>
-        <script type="text/javascript">
-            jQuery.noConflict();
-            jQuery(function() {
-                var elm = jQuery('#r_ad');
-                var startPos = jQuery(elm).offset().top;
-                jQuery.event.add(window, "scroll", function() {
-                    var p = jQuery(window).scrollTop();
-                    jQuery(elm).css('position',((p) > startPos) ? 'fixed' : 'static');
-                    jQuery(elm).css('top',((p) > startPos) ? '30px' : '');
-                });
-            });
-        </script>
+        <#include "/comm/public_right.ftl">
+        <#--<script type="text/javascript">-->
+            <#--jQuery.noConflict();-->
+            <#--jQuery(function() {-->
+                <#--var elm = jQuery('#r_ad');-->
+                <#--var startPos = jQuery(elm).offset().top;-->
+                <#--jQuery.event.add(window, "scroll", function() {-->
+                    <#--var p = jQuery(window).scrollTop();-->
+                    <#--jQuery(elm).css('position',((p) > startPos) ? 'fixed' : 'static');-->
+                    <#--jQuery(elm).css('top',((p) > startPos) ? '30px' : '');-->
+                <#--});-->
+            <#--});-->
+        <#--</script>-->
     </div>
     <!--r_box end -->
 </article>
-<footer>
-    <div class="endfoot">
-        <div class="ft-info f_l">
-            <div class="ftlogo"><a href="#" target="_blank"><img src="/images/ftlogo.png"></a></div>
-            <div class="ft-title">
-                <p>时尚设计，国内最优化的模板设计平台! </p>
-            </div>
-        </div>
-        <div class="ft-list f_r">
-            <div class="ft-nav"> <a href="#" target="_blank">关于我们</a> <a href="#" target="_blank">联系我们</a> <a href="#" target="_blank">版权声明</a> <a href="#" id="qaurl">问题反馈</a> <a href="#" target="_blank">商务合作</a> </div>
-            <p class="ft-copyright"> Copyright 2014 Comsenz Inc. Powered by Discuz! X3.2. 粤ICP2014008000-3号</p>
-        </div>
-    </div>
-    <div id="tbox"> <a id="togbook" href="/"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
-</footer>
+<#include "/comm/public_footer.ftl">
 </body>
 </html>
