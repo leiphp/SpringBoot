@@ -92,11 +92,11 @@
                                         <#list categories as c>
 
                                             <option value=${c.name}
-                                                    <#if (contents.categories) == (c.name)>
-                                                     selected="true"
-                                                    <#else>
-                                                     selected="false"
-                                                    </#if>
+                                                    <#--<#if contents.categories == c.name>-->
+                                                     <#--selected="true"-->
+                                                    <#--<#else>-->
+                                                     <#--selected="false"-->
+                                                    <#--</#if>-->
                                             >
                                                 ${c.name}
                                             </option>
