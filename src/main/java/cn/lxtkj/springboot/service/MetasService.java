@@ -36,6 +36,18 @@ public class MetasService {
         }
         return null;
     }
+
+
+    public List<Metas> getMetas(String type) {
+        if (StringUtils.isNotBlank(type)) {
+            String orderby = "count desc, a.mid desc";
+            Map<String, Object> paraMap = new HashMap<>();
+            paraMap.put("type", type);
+            paraMap.put("order", orderby);
+            return metasMapper.selectMetas(paraMap);
+        }
+        return null;
+    }
     
     public String saveMeta(String type, String cname, Integer  mid){
         int insertArticleResult;

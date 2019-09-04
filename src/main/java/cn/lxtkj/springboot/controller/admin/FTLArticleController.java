@@ -2,10 +2,13 @@ package cn.lxtkj.springboot.controller.admin;
 
 import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.entity.Article;
+import cn.lxtkj.springboot.entity.Metas;
 import cn.lxtkj.springboot.model.Bo.RestResponseBo;
 import cn.lxtkj.springboot.model.Vo.ContentVo;
 import cn.lxtkj.springboot.service.ArticleService;
+import cn.lxtkj.springboot.service.MetasService;
 import cn.lxtkj.springboot.dto.Types;
+import cn.lxtkj.springboot.utils.AdminCommons;
 import cn.lxtkj.springboot.utils.DateKit;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -14,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 
 @Controller
@@ -24,6 +29,10 @@ public class FTLArticleController {
 
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private MetasService metasService;
+    @Resource
+    private AdminCommons adminCommons;
 
     @RequestMapping(value = "")
     public String index(@RequestParam(value = "type", defaultValue = "post") String type,@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "limit", defaultValue = "10") int limit,@RequestParam(value = "sort", defaultValue = "created desc") String sort, HttpServletRequest request) {
@@ -34,7 +43,10 @@ public class FTLArticleController {
         return "admin/article_list";
     }
     @RequestMapping(value = "/publish")
-    public String newArticle() {
+    public String newArticle( HttpServletRequest request) {
+        List<Metas> categories = metasService.getMetas(Types.CATEGORY.getType());
+        request.setAttribute("categories", categories);
+        request.setAttribute("adminCommons", adminCommons);
         return "admin/article_edit";
     }
 
@@ -43,6 +55,9 @@ public class FTLArticleController {
         log.info("cid是："+cid);
         Article article = articleService.getArticle(Integer.valueOf(cid));
         request.setAttribute("contents", article);
+        List<Metas> categories = metasService.getMetas(Types.CATEGORY.getType());
+        request.setAttribute("categories", categories);
+        request.setAttribute("adminCommons", adminCommons);
         return "admin/article_edit";
     }
 

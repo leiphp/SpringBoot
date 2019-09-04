@@ -34,6 +34,9 @@ public interface MetasMapper {
     @Select("select a.*, count(b.cid) as count from metas a left join `relationships` b on a.mid = b.mid where a.type = #{type} group by a.mid order by #{order} limit #{limit}")
     List<Metas> selectByParm(Map<String,Object> paraMap);
 
+    @Select("select * from metas   where type = #{type} group by mid order by #{order}")
+    List<Metas> selectMetas(Map<String,Object> paraMap);
+
     @Select("SELECT count(*) FROM METAS WHERE type = 'link'")
     Long countByExample(MetasVo metasVo);
 }
