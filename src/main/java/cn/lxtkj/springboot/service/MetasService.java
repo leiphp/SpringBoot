@@ -3,13 +3,18 @@ package cn.lxtkj.springboot.service;
 import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.entity.Article;
 import cn.lxtkj.springboot.entity.Metas;
+import cn.lxtkj.springboot.entity.MetasVo;
+import cn.lxtkj.springboot.entity.Relationship;
 import cn.lxtkj.springboot.mapper.MetasMapper;
+import cn.lxtkj.springboot.service.RelationshipService;
 import cn.lxtkj.springboot.model.Vo.ContentVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
+import cn.lxtkj.springboot.exception.TipException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
@@ -91,6 +96,52 @@ public class MetasService {
             return WebConst.FAILURE_RESULT;
         }
 
+    }
+
+
+    @Transactional
+    public void saveMetas(Integer cid, String names, String type) {
+        if (null == cid) {
+            throw new TipException("项目关联id不能为空");
+        }
+        if (StringUtils.isNotBlank(names) && StringUtils.isNotBlank(type)) {
+            String[] nameArr = StringUtils.split(names, ",");
+            for (String name : nameArr) {
+                this.saveOrUpdate(cid, name, type);
+            }
+        }
+    }
+
+    private void saveOrUpdate(Integer cid, String name, String type) {
+        MetasVo metasVo = new MetasVo();
+        metasVo.createCriteria().andTypeEqualTo(type).andNameEqualTo(name);
+        List<Metas> metaVos = metasMapper.selectByExample(metasVo);
+
+        int mid;
+        Metas metas;
+        if (metaVos.size() == 1) {
+            metas = metaVos.get(0);
+            mid = metas.getMid();
+        } else if (metaVos.size() > 1) {
+            throw new TipException("查询到多条数据");
+        } else {
+            metas = new Metas();
+            metas.setSlug(name);
+            metas.setName(name);
+            metas.setType(type);
+            metasMapper.insertSelective(metas);
+            mid = metas.getMid();
+        }
+        if (mid != 0) {
+            RelationshipService relationshipService = new RelationshipService();
+            Long count = relationshipService.countById(cid, mid);
+            if (count == 0) {
+                Relationship relationships = new Relationship();
+                relationships.setCid(cid);
+                relationships.setMid(mid);
+                relationshipService.insertVo(relationships);
+            }
+        }
     }
 
 }

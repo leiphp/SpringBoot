@@ -39,4 +39,11 @@ public interface MetasMapper {
 
     @Select("SELECT count(*) FROM METAS WHERE type = 'link'")
     Long countByExample(MetasVo metasVo);
+
+    //下面要调试
+    @Select("select * from metas  where type = #{type} group by mid order by #{order}")
+    List<Metas> selectByExample(MetasVo metasVo);
+
+    @Select("select * from metas   where type = #{type} group by mid order by #{order}")
+    List<Metas> insertSelective(Metas metas);
 }

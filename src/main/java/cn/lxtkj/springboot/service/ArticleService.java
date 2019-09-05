@@ -4,6 +4,7 @@ import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.entity.Article;
 import cn.lxtkj.springboot.mapper.ArticleMapper;
 import cn.lxtkj.springboot.model.Vo.ContentVo;
+import cn.lxtkj.springboot.dto.Types;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -16,6 +17,8 @@ import java.util.List;
 public class ArticleService {
     @Autowired
     private ArticleMapper articleMapper;
+    @Autowired
+    private MetasService metasService;
 
     public int insertArticle(String title, String slug, String tags, String content, Integer author_id, String type, String categories, Integer created, Integer modified){
         int insertArticleResult = articleMapper.insert(title, slug, tags, content, author_id, type, categories,created, modified);
@@ -63,6 +66,8 @@ public class ArticleService {
         }
         int insertArticleResult = articleMapper.insert(contents.getTitle(),contents.getSlug(), contents.getTags(), contents.getContent(), contents.getAuthorId(),contents.getType(), contents.getCategories(), contents.getCreated(), contents.getModified());
         if(insertArticleResult==1){
+//要开放的            metasService.saveMetas(contents.getCid(), contents.getTags(), Types.TAG.getType());
+//要开放的            metasService.saveMetas(contents.getCid(), contents.getCategories(), Types.CATEGORY.getType());
             return WebConst.SUCCESS_RESULT;
         }else{
             return WebConst.FAILURE_RESULT;
