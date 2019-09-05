@@ -90,17 +90,17 @@
                                 <select id="multiple-sel" class="select2 form-control" multiple="multiple" data-placeholder="请选择分类..." tabindex="-1">
                                     <#if categories??>
                                         <#list categories as c>
-
-                                            <option value=${c.name}
-                                                    <#--<#if contents.categories == c.name>-->
-                                                     <#--selected="true"-->
-                                                    <#--<#else>-->
-                                                     <#--selected="false"-->
-                                                    <#--</#if>-->
-                                            >
-                                                ${c.name}
-                                            </option>
-
+                                            <#--<#if contents?exists && contents.categories??>-->
+                                                <option value=${c.name}
+                                                 <#if contents?exists && contents.categories??>
+                                                        <#if contents.categories?string == c.name>selected</#if>
+                                                 </#if>
+                                                >
+                                                    ${c.name}
+                                                </option>
+                                                <#--<#else>-->
+                                                    <#--<option value="默认分类" selected="selected">默认分类</option>-->
+                                            <#--</#if>-->
                                         </#list>
                                     <#else>
                                         <option value="默认分类" selected="selected">默认分类</option>
