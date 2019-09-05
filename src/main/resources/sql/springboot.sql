@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
+Source Server         : localhost
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : springboot
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-09-01 23:37:15
+Date: 2019-09-05 19:29:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,7 +30,7 @@ CREATE TABLE `articles` (
   `type` varchar(16) DEFAULT 'post',
   `status` varchar(16) DEFAULT 'publish',
   `tags` varchar(200) DEFAULT NULL,
-  `categories` varchar(200) DEFAULT NULL,
+  `categories` varchar(200) DEFAULT '',
   `hits` int(10) unsigned DEFAULT '0',
   `comments_num` int(10) unsigned DEFAULT '0',
   `allow_comment` tinyint(1) DEFAULT '1',
@@ -39,35 +39,36 @@ CREATE TABLE `articles` (
   PRIMARY KEY (`cid`),
   UNIQUE KEY `slug` (`slug`),
   KEY `created` (`created`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of articles
 -- ----------------------------
 INSERT INTO `articles` VALUES ('1', 'about my blog', 'about', '1487853610', '1487872488', '### Hello World\r\n\r\nabout me\r\n\r\n### ...\r\n\r\n...', '1', 'page', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('2', 'Hello My Blog', null, '1487861184', '1487872798', '## Hello  World.\r\n\r\n> ...\r\n\r\n----------\r\n\r\n\r\n<!--more-->\r\n\r\n```java\r\npublic static void main(String[] args){\r\n    System.out.println(\"Hello 13 Blog.\");\r\n}\r\n```', '1', 'post', 'publish', '', 'default', '10', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('3', '雷小天测试文章', '20', '1566569614', '1566569614', '这是一篇测试的文章', '1', 'post', 'publish', '测试', 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('4', 'PHP程序员这行能干多久？', 'test', '0', '0', '沉甸甸的多多', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('14', '测试标题2', '11', '0', '1566920424', '哒哒哒哒哒哒多多', '0', 'post', 'publish', '', '', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('15', 'PHP程序员这行能干多久？22', '22', '0', '0', '哒哒哒哒哒哒', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('16', '到订单 的', '33', '0', '0', '哒哒哒哒哒哒多多多多多多多多', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('17', '网站架构设计之高可用原则', '44', '0', '0', '88888888888888888888888888888', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('19', 'git工具分支创建管理案例分析', '55', '0', '0', '1111\r\n2133333333333333', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('21', '3333', '66', '0', '0', '8888888888888', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('22', 'PHP程序员这行能干多久？9999', '77', '0', '0', '分隔符', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('23', 'PHP程序员这行能干多久？88', '88', '0', '0', '888888888888888888', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('25', 'PHP程序员这行能干多久？77', '99', '0', '0', '7777777777', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('26', 'PHP程序员这行能干多久？123', '100', '0', '0', '123', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('28', 'PHP程序员这行能干多久？1234', '101', '0', '0', '444545', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('29', 'PHP程序员这行能干多久？1234', '102', '0', '0', '444545', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('30', 'PHP程序员这行能干多久？7879', '103', '0', '0', '1111111', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('31', '测试标题45454', '104', '0', '0', '454545', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('32', 'PHP程序员这行能干多久？888', '105', '0', '0', '88888888888888', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('33', '雷小天测试', '106', '0', '0', '雷小天', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('36', 'PHP程序员这行能干多久？', '1010', '0', '0', 'ddddddddd ', '0', 'post', 'publish', null, null, '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('2', 'Hello My Blog', null, '1487861184', '1487872798', '## Hello  World.\r\n\r\n> ...\r\n\r\n----------\r\n\r\n\r\n<!--more-->\r\n\r\n```java\r\npublic static void main(String[] args){\r\n    System.out.println(\"Hello 13 Blog.\");\r\n}\r\n```', '1', 'post', 'publish', '', 'default', '10', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('3', '雷小天测试文章', '20', '1566569614', '1566569614', '这是一篇测试的文章', '1', 'post', 'publish', '测试', 'default', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('4', 'PHP程序员这行能干多久？', 'test', '0', '0', '沉甸甸的多多', '0', 'post', 'publish', null, 'default', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('14', '测试标题2aaa', '11', '0', '1567682829', '哒哒哒哒哒哒多多2222222', '0', 'post', 'publish', 'dddddd', 'python', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('15', 'PHP程序员这行能干多久？22', '22', '0', '0', '哒哒哒哒哒哒', '0', 'post', 'publish', null, 'default', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('16', '到订单 的', '33', '0', '0', '哒哒哒哒哒哒多多多多多多多多', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('17', '网站架构设计之高可用原则', '44', '0', '0', '88888888888888888888888888888', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('19', 'git工具分支创建管理案例分析', '55', '0', '0', '1111\r\n2133333333333333', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('21', '3333', '66', '0', '0', '8888888888888', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('22', 'PHP程序员这行能干多久？9999', '77', '0', '0', '分隔符', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('23', 'PHP程序员这行能干多久？88', '88', '0', '0', '888888888888888888', '0', 'post', 'publish', null, ' ', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('25', 'PHP程序员这行能干多久？77', '99', '0', '0', '7777777777', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('26', 'PHP程序员这行能干多久？123', '100', '0', '0', '123', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('28', 'PHP程序员这行能干多久？1234', '101', '0', '0', '444545', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('29', 'PHP程序员这行能干多久？1234', '102', '0', '0', '444545', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('30', 'PHP程序员这行能干多久？7879', '103', '0', '0', '1111111', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('31', '测试标题45454', '104', '0', '0', '454545', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('32', 'PHP程序员这行能干多久？888', '105', '0', '0', '88888888888888', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('33', '雷小天测试', '106', '0', '0', '雷小天', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('36', 'PHP程序员这行能干多久？', '1010', '0', '0', 'ddddddddd ', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('37', '雷小天继续', null, '0', '0', '侧是是是', '0', 'post', 'publish', '测试', 'default', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('42', '关于', 'aboutme', '1566920166', '1566977785', 'aboutme', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('43', '相册', 'pincture', '1566921035', '1566921035', '这是相册页面', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('44', '雷小天博客文章', null, '1567677494', '1567677494', '雷小天顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶', '4', 'post', 'publish', '雷小天', 'html5', '0', '0', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for attach
