@@ -41,9 +41,9 @@ public interface MetasMapper {
     Long countByExample(MetasVo metasVo);
 
     //下面要调试
-    @Select("select * from metas  where type = #{type} group by mid order by #{order}")
+    @Select("select distinct name from metas  where name = #{name}")
     List<Metas> selectByExample(MetasVo metasVo);
 
-    @Select("select * from metas   where type = #{type} group by mid order by #{order}")
+    @Insert("INSERT INTO METAS(type, name, slug, sort) VALUES(#{type}, #{name}, #{slug}, #{sort})")
     List<Metas> insertSelective(Metas metas);
 }

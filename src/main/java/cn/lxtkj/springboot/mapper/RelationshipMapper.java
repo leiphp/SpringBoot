@@ -11,7 +11,7 @@ public interface RelationshipMapper {
     @Select("SELECT * FROM OPTIONS WHERE name = #{name}")
     List<Relationship> selectByExample(RelationshipVo relationshipVo);
 
-    @Insert("INSERT INTO OPTIONS(name, value) VALUES(#{name}, #{value})")
+    @Insert("INSERT INTO relationships(cid, mid) VALUES(#{cid}, #{mid})")
     int insert(Relationship relationship);
 
 
@@ -21,6 +21,6 @@ public interface RelationshipMapper {
     @Delete("DELETE FROM OPTIONS WHERE cid = #{cid}")
     int deleteByExample(RelationshipVo relationshipVo);
 
-    @Select("SELECT count(*) FROM METAS WHERE type = 'link'")
-    Long countByExample(RelationshipVo relationshipVo);
+    @Select("SELECT count(*) FROM relationships WHERE cid = #{cid} AND mid=#{mid}")
+    Long countByExample(@Param("cid") Integer cid,@Param("mid") Integer mid);
 }

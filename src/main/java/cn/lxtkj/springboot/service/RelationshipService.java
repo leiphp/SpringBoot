@@ -54,7 +54,7 @@ public class RelationshipService {
         if (mid != null) {
             criteria.andMidEqualTo(mid);
         }
-        long num = relationshipMapper.countByExample(relationshipVo);
+        long num = relationshipMapper.countByExample(cid, mid);
         log.debug("Exit countById method return num={}"+num);
         return num;
     }
