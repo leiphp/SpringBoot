@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : 本地
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : springboot
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-09-05 19:29:28
+Date: 2019-09-07 00:43:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,7 +39,7 @@ CREATE TABLE `articles` (
   PRIMARY KEY (`cid`),
   UNIQUE KEY `slug` (`slug`),
   KEY `created` (`created`)
-) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of articles
@@ -68,7 +68,9 @@ INSERT INTO `articles` VALUES ('36', 'PHP程序员这行能干多久？', '1010'
 INSERT INTO `articles` VALUES ('37', '雷小天继续', null, '0', '0', '侧是是是', '0', 'post', 'publish', '测试', 'default', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('42', '关于', 'aboutme', '1566920166', '1566977785', 'aboutme', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('43', '相册', 'pincture', '1566921035', '1566921035', '这是相册页面', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('44', '雷小天博客文章', null, '1567677494', '1567677494', '雷小天顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶', '4', 'post', 'publish', '雷小天', 'html5', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('44', '雷小天博客文章', null, '1567677494', '1567786942', '雷小天顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶', '4', 'post', 'publish', '雷', 'html5', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('45', '测试tag标题', null, '1567787007', '1567787007', '哒哒哒哒哒哒多多多多多多多', '4', 'post', 'publish', '雷小天', '运维', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('46', '测试标题', null, '1567787141', '1567788028', '哒哒哒哒哒哒', '4', 'post', 'publish', '应用', '运维', '0', '0', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for attach
@@ -162,7 +164,7 @@ CREATE TABLE `metas` (
   `parent` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`mid`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of metas
