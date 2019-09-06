@@ -102,6 +102,8 @@ public class ArticleService {
         }
         int insertArticleResult = articleMapper.update(contents.getCid(),contents.getTitle(), contents.getTags(), contents.getContent(), contents.getCategories(), contents.getModified());
         if(insertArticleResult==1){
+            metasService.saveMetas(contents.getCid(), contents.getTags(), Types.TAG.getType());
+            metasService.saveMetas(contents.getCid(), contents.getCategories(), Types.CATEGORY.getType());
             return WebConst.SUCCESS_RESULT;
         }else{
             return WebConst.FAILURE_RESULT;

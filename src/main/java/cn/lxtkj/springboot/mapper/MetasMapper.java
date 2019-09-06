@@ -42,8 +42,8 @@ public interface MetasMapper {
 
     //下面要调试
     @Select("select distinct name from metas  where name = #{name}")
-    List<Metas> selectByExample(MetasVo metasVo);
+    List<Metas> selectByExample(Metas metas);
 
     @Insert("INSERT INTO METAS(type, name, slug, sort) VALUES(#{type}, #{name}, #{slug}, #{sort})")
-    List<Metas> insertSelective(Metas metas);
+    int insertSelective(Metas metas);
 }

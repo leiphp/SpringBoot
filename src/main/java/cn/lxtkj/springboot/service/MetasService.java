@@ -113,12 +113,13 @@ public class MetasService {
     }
 
     private void saveOrUpdate(Integer cid, String name, String type) {
+        Metas metas = new Metas();
         MetasVo metasVo = new MetasVo();
         metasVo.createCriteria().andTypeEqualTo(type).andNameEqualTo(name);
-        List<Metas> metaVos = metasMapper.selectByExample(metasVo);
+        List<Metas> metaVos = metasMapper.selectByExample(metas);
 
         int mid;
-        Metas metas;
+
         if (metaVos.size() == 1) {
             metas = metaVos.get(0);
             mid = metas.getMid();
@@ -130,7 +131,7 @@ public class MetasService {
             metas.setName(name);
             metas.setType(type);
             metasMapper.insertSelective(metas);
-            mid = metas.getMid();
+            mid = metas.getMid();//报错
         }
         if (mid != 0) {
             RelationshipService relationshipService = new RelationshipService();
