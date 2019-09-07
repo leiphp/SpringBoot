@@ -44,6 +44,7 @@ public interface MetasMapper {
     @Select("select distinct name from metas  where name = #{name}")
     List<Metas> selectByExample(Metas metas);
 
-    @Insert("INSERT INTO METAS(type, name, slug, sort) VALUES(#{type}, #{name}, #{slug}, #{sort})")
+    @Insert("INSERT INTO METAS(type, name, slug) VALUES(#{type}, #{name}, #{slug})")
+    @Options(useGeneratedKeys=true,keyProperty="mid",  keyColumn="id")
     int insertSelective(Metas metas);
 }

@@ -4,6 +4,7 @@ import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.entity.Article;
 import cn.lxtkj.springboot.entity.Metas;
 import cn.lxtkj.springboot.entity.MetasVo;
+import org.apache.log4j.Logger;
 import cn.lxtkj.springboot.entity.Relationship;
 import cn.lxtkj.springboot.mapper.MetasMapper;
 import cn.lxtkj.springboot.service.RelationshipService;
@@ -22,6 +23,8 @@ import java.util.Map;
 
 @Service
 public class MetasService {
+    private static Logger log = Logger.getLogger(MetasService.class);
+
     @Autowired
     private MetasMapper metasMapper;
 
@@ -106,6 +109,7 @@ public class MetasService {
         }
         if (StringUtils.isNotBlank(names) && StringUtils.isNotBlank(type)) {
             String[] nameArr = StringUtils.split(names, ",");
+            log.info("nameArr是："+nameArr);
             for (String name : nameArr) {
                 this.saveOrUpdate(cid, name, type);
             }
@@ -132,6 +136,7 @@ public class MetasService {
             metas.setType(type);
             metasMapper.insertSelective(metas);
             mid = metas.getMid();//报错
+            log.info("mid是："+mid);
         }
         if (mid != 0) {
             RelationshipService relationshipService = new RelationshipService();

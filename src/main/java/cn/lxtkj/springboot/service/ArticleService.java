@@ -67,7 +67,7 @@ public class ArticleService {
         int insertArticleResult = articleMapper.insert(contents.getTitle(),contents.getSlug(), contents.getTags(), contents.getContent(), contents.getAuthorId(),contents.getType(), contents.getCategories(), contents.getCreated(), contents.getModified());
         if(insertArticleResult==1){
             metasService.saveMetas(contents.getCid(), contents.getTags(), Types.TAG.getType());
-            metasService.saveMetas(contents.getCid(), contents.getCategories(), Types.CATEGORY.getType());
+//撤销            metasService.saveMetas(contents.getCid(), contents.getCategories(), Types.CATEGORY.getType());
             return WebConst.SUCCESS_RESULT;
         }else{
             return WebConst.FAILURE_RESULT;
