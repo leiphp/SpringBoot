@@ -40,9 +40,13 @@ public interface MetasMapper {
     @Select("SELECT count(*) FROM METAS WHERE type = 'link'")
     Long countByExample(MetasVo metasVo);
 
+    //根据条件获取mid
+    @Select("select mid FROM METAS WHERE type = #{type} AND name = #{name}")
+    int selectMidByWhere(@Param("type") String type, @Param("name") String name);
+
     //下面要调试
-    @Select("select distinct name from metas  where name = #{name}")
-    List<Metas> selectByExample(Metas metas);
+    @Select("select count(*) FROM METAS WHERE type = #{type} AND name = #{name}")
+    int selectByExample(@Param("type") String type, @Param("name") String name);
 
     @Insert("INSERT INTO METAS(type, name, slug) VALUES(#{type}, #{name}, #{slug})")
     @Options(useGeneratedKeys=true,keyProperty="mid",  keyColumn="id")

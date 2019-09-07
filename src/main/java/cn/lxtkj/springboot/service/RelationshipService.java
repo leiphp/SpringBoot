@@ -4,9 +4,13 @@ import org.apache.log4j.Logger;
 import cn.lxtkj.springboot.mapper.RelationshipMapper;
 import cn.lxtkj.springboot.entity.RelationshipVo;
 import cn.lxtkj.springboot.entity.Relationship;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service
 public class RelationshipService {
     private static Logger log = Logger.getLogger(RelationshipService.class);
 
@@ -44,17 +48,9 @@ public class RelationshipService {
     }
 
 
-    public Long countById(Integer cid, Integer mid) {
+    public int countById(Integer cid, int mid) {
         log.debug("Enter countById method:cid={},mid={}"+cid+mid);
-        RelationshipVo relationshipVo = new RelationshipVo();
-        RelationshipVo.Criteria criteria = relationshipVo.createCriteria();
-        if (cid != null) {
-            criteria.andCidEqualTo(cid);
-        }
-        if (mid != null) {
-            criteria.andMidEqualTo(mid);
-        }
-        long num = relationshipMapper.countByExample(cid, mid);
+        int num = relationshipMapper.countByExample(cid, mid);
         log.debug("Exit countById method return num={}"+num);
         return num;
     }

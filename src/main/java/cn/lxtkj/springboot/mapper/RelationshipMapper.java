@@ -1,6 +1,6 @@
 package cn.lxtkj.springboot.mapper;
 
-import cn.lxtkj.springboot.entity.Options;
+
 import cn.lxtkj.springboot.entity.Relationship;
 import cn.lxtkj.springboot.entity.RelationshipVo;
 import org.apache.ibatis.annotations.*;
@@ -21,6 +21,6 @@ public interface RelationshipMapper {
     @Delete("DELETE FROM OPTIONS WHERE cid = #{cid}")
     int deleteByExample(RelationshipVo relationshipVo);
 
-    @Select("SELECT count(*) FROM relationships WHERE cid = #{cid} AND mid=#{mid}")
-    Long countByExample(@Param("cid") Integer cid,@Param("mid") Integer mid);
+    @Select("SELECT count(*) FROM RELATIONSHIPS WHERE cid = #{cid} AND mid=#{mid}")
+    int countByExample(@Param("cid") Integer cid,@Param("mid") int mid);
 }

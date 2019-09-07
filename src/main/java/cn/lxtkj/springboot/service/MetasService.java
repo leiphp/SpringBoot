@@ -117,17 +117,14 @@ public class MetasService {
     }
 
     private void saveOrUpdate(Integer cid, String name, String type) {
+
         Metas metas = new Metas();
-        MetasVo metasVo = new MetasVo();
-        metasVo.createCriteria().andTypeEqualTo(type).andNameEqualTo(name);
-        List<Metas> metaVos = metasMapper.selectByExample(metas);
-
+        int num = metasMapper.selectByExample(name,type);
         int mid;
-
-        if (metaVos.size() == 1) {
-            metas = metaVos.get(0);
-            mid = metas.getMid();
-        } else if (metaVos.size() > 1) {
+        if (num == 1) {
+            mid = metasMapper.selectMidByWhere(name,type);
+//            mid = metas.getMid();
+        } else if (num > 1) {
             throw new TipException("查询到多条数据");
         } else {
             metas = new Metas();
@@ -140,7 +137,7 @@ public class MetasService {
         }
         if (mid != 0) {
             RelationshipService relationshipService = new RelationshipService();
-            Long count = relationshipService.countById(cid, mid);
+            int count = relationshipService.countById(cid, mid);
             if (count == 0) {
                 Relationship relationships = new Relationship();
                 relationships.setCid(cid);
