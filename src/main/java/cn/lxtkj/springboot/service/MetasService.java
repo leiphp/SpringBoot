@@ -7,7 +7,7 @@ import cn.lxtkj.springboot.entity.MetasVo;
 import org.apache.log4j.Logger;
 import cn.lxtkj.springboot.entity.Relationship;
 import cn.lxtkj.springboot.mapper.MetasMapper;
-import cn.lxtkj.springboot.service.RelationshipService;
+import cn.lxtkj.springboot.service.RelationshipsService;
 import cn.lxtkj.springboot.model.Vo.ContentVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -27,6 +27,8 @@ public class MetasService {
 
     @Autowired
     private MetasMapper metasMapper;
+    @Autowired
+    private RelationshipsService relationshipsService;
 
     public List<Metas> getMetaList(String type, String orderby, int limit) {
         if (StringUtils.isNotBlank(type)) {
@@ -120,6 +122,7 @@ public class MetasService {
 
         Metas metas = new Metas();
         int num = metasMapper.selectByExample(name,type);
+        log.info("num是："+num);
         int mid;
         if (num == 1) {
             mid = metasMapper.selectMidByWhere(name,type);
@@ -136,13 +139,13 @@ public class MetasService {
             log.info("mid是："+mid);
         }
         if (mid != 0) {
-            RelationshipService relationshipService = new RelationshipService();
-            int count = relationshipService.countById(cid, mid);
+            int count = relationshipsService.countById(cid, mid);
+            log.info("count是："+count);
             if (count == 0) {
                 Relationship relationships = new Relationship();
                 relationships.setCid(cid);
                 relationships.setMid(mid);
-                relationshipService.insertVo(relationships);
+                relationshipsService.insertVo(relationships);
             }
         }
     }

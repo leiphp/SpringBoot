@@ -1,11 +1,10 @@
 package cn.lxtkj.springboot.entity;
 
-import java.io.Serializable;
 
 /**
  * @author 
  */
-public class Relationship implements Serializable {
+public class Relationship {
     /**
      * 内容主键
      */

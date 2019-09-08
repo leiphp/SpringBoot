@@ -42,11 +42,11 @@ public interface MetasMapper {
 
     //根据条件获取mid
     @Select("select mid FROM METAS WHERE type = #{type} AND name = #{name}")
-    int selectMidByWhere(@Param("type") String type, @Param("name") String name);
+    int selectMidByWhere(@Param("name") String name, @Param("type") String type);
 
     //下面要调试
     @Select("select count(*) FROM METAS WHERE type = #{type} AND name = #{name}")
-    int selectByExample(@Param("type") String type, @Param("name") String name);
+    int selectByExample(@Param("name") String name, @Param("type") String type);
 
     @Insert("INSERT INTO METAS(type, name, slug) VALUES(#{type}, #{name}, #{slug})")
     @Options(useGeneratedKeys=true,keyProperty="mid",  keyColumn="id")
