@@ -1,6 +1,7 @@
 package cn.lxtkj.springboot.mapper;
 
 import cn.lxtkj.springboot.entity.User;
+import cn.lxtkj.springboot.entity.UserVoExample;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -34,4 +35,10 @@ public interface UserMapper {
 
     @Select("SELECT * FROM USERS WHERE id = #{id}")
     User selectById(@Param("id") Integer id);
+
+    @Select("SELECT count(*) FROM USERS ")
+    long countByExample(UserVoExample userVoExample);
+
+    @Select("SELECT * FROM USERS ")
+    List<User> selectByExample(UserVoExample userVoExample);
 }

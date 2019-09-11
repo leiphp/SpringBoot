@@ -29,7 +29,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i>查看网站</a></li>
-                                <li><a href="admin/profile"><i class="fa fa-sun-o"></i> 个人设置</a></li>
+                                <li><a href="/admin/profile"><i class="fa fa-sun-o"></i> 个人设置</a></li>
                                 <li><a href="/logout"><i class="fa fa-sign-out"></i> 注销</a></li>
                             </ul>
                         </li>
