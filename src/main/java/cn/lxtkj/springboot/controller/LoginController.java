@@ -5,6 +5,7 @@ import cn.lxtkj.springboot.mapper.UserMapper;
 import cn.lxtkj.springboot.model.ResultMap;
 import cn.lxtkj.springboot.entity.User;
 import cn.lxtkj.springboot.service.UserService;
+import cn.lxtkj.springboot.utils.TaleUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
@@ -85,10 +86,13 @@ public class LoginController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResultMap login(String username, String password, HttpServletRequest request) {
+        //重新对密码进行加密
+         String md5Password = TaleUtils.MD5encode(username + password);
+        log.info("md5Password是什么："+md5Password);
         // 从SecurityUtils里边创建一个 subject
         Subject subject = SecurityUtils.getSubject();
         // 在认证提交前准备 token（令牌）
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        UsernamePasswordToken token = new UsernamePasswordToken(username, md5Password);
         // 执行认证登陆
         subject.login(token);
         //新增session设置

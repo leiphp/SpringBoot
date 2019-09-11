@@ -8,6 +8,7 @@ import cn.lxtkj.springboot.utils.TaleUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,8 @@ import java.util.List;
 
 @Service
 public class UserService {
+    private static Logger log = Logger.getLogger(UserService.class);
+
     @Autowired
     private UserMapper userMapper;
 
@@ -50,7 +53,8 @@ public class UserService {
         }
         String pwd = TaleUtils.MD5encode(username + password);
         criteria.andPasswordEqualTo(pwd);
-        List<User> userVos = userMapper.selectByExample(example);
+        List<User> userVos = userMapper.selectByExample(new User());
+        log.info("userVos对象是："+userVos);
         if (userVos.size() != 1) {
             throw new TipException("用户名或密码错误222");
         }

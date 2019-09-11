@@ -5,6 +5,7 @@ public class User {
     private Integer id;
     private Integer age;
     private String name;
+    private String username;
 
     public Integer getId() {
         return id;
@@ -28,5 +29,13 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
