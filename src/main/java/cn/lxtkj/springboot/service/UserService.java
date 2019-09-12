@@ -1,5 +1,6 @@
 package cn.lxtkj.springboot.service;
 
+import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.entity.User;
 import cn.lxtkj.springboot.entity.UserVoExample;
 import cn.lxtkj.springboot.exception.TipException;
@@ -38,6 +39,15 @@ public class UserService {
     public User queryUserById(Integer id){
         User user = userMapper.selectById(id);
         return user;
+
+    }
+    public String updateById(User user){
+        int count = userMapper.update(user);
+        if(count==1){
+            return WebConst.SUCCESS_RESULT;
+        }else{
+            return WebConst.FAILURE_RESULT;
+        }
 
     }
     public User login(String username, String password) {

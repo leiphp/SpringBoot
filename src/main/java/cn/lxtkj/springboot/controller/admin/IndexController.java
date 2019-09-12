@@ -10,6 +10,7 @@ import cn.lxtkj.springboot.model.Bo.StatisticsBo;
 import cn.lxtkj.springboot.entity.Comment;
 import cn.lxtkj.springboot.entity.Article;
 import cn.lxtkj.springboot.entity.Logs;
+import cn.lxtkj.springboot.entity.User;
 import cn.lxtkj.springboot.model.Vo.UserVo;
 import cn.lxtkj.springboot.service.LogsService;
 import cn.lxtkj.springboot.service.SiteService;
@@ -82,30 +83,31 @@ public class IndexController extends BaseController {
     }
 
 
-//    /**
-//     * 保存个人信息
-//     */
-//    @PostMapping(value = "/profile")
-//    @ResponseBody
-//    public RestResponseBo saveProfile(@RequestParam String screenName, @RequestParam String email, HttpServletRequest request, HttpSession session) {
-//        UserVo users = this.user(request);
-//        if (StringUtils.isNotBlank(screenName) && StringUtils.isNotBlank(email)) {
-//            UserVo temp = new UserVo();
-//            temp.setUid(users.getUid());
-//            temp.setScreenName(screenName);
-//            temp.setEmail(email);
-//            userService.updateByUid(temp);
-//            logsService.insertLog(LogActions.UP_INFO.getAction(), GsonUtils.toJsonString(temp), request.getRemoteAddr(), this.getUid(request));
-//
-//            //更新session中的数据
-//            UserVo original= (UserVo)session.getAttribute(WebConst.LOGIN_SESSION_KEY);
-//            original.setScreenName(screenName);
-//            original.setEmail(email);
-//            session.setAttribute(WebConst.LOGIN_SESSION_KEY,original);
-//        }
-//        return RestResponseBo.ok();
-//    }
-//
+    /**
+     * 保存个人信息
+     */
+    @PostMapping(value = "/profile")
+    @ResponseBody
+    public RestResponseBo saveProfile(@RequestParam String name, @RequestParam String email, HttpServletRequest request, HttpSession session) {
+        User user = this.user(request);
+        if (StringUtils.isNotBlank(name) && StringUtils.isNotBlank(email)) {
+            User temp = new User();
+            log.info("获取到的Id为："+user.getId());
+            temp.setId(user.getId());
+            temp.setName(name);
+            temp.setEmail(email);
+            userService.updateById(temp);
+            logsService.insertLog(LogActions.UP_INFO.getAction(), GsonUtils.toJsonString(temp), request.getRemoteAddr(), this.getUid(request));
+
+            //更新session中的数据
+            User original= (User)session.getAttribute(WebConst.LOGIN_SESSION_KEY);
+            original.setName(name);
+            original.setEmail(email);
+            session.setAttribute(WebConst.LOGIN_SESSION_KEY,original);
+        }
+        return RestResponseBo.ok();
+    }
+
 //    /**
 //     * 修改密码
 //     */

@@ -24,21 +24,21 @@
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">账号</label>
                                         <div class="col-md-9">
-                                            <input type="text" value="${session.login_user.username}" class="form-control"  readonly="readonly" disabled="disabled"/>
+                                            <input type="text" <#if Session.login_user??>value=${Session.login_user.username}</#if> class="form-control"  readonly="readonly" disabled="disabled"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">姓名</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="screenName" placeholder="输入您的姓名"
-                                                   value="${session.login_user.screenName}" required="required" aria-required="true"/>
+                                            <input type="text" class="form-control" name="name" placeholder="输入您的姓名"
+                                                   value="${Session.login_user.name}" required="required" aria-required="true"/>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-md-3 control-label">邮箱</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="email" placeholder="输入您的邮箱"
-                                                   value="${session.login_user.email}" required="required" aria-required="true"/>
+                                                   value="${Session.login_user.email}" required="required" aria-required="true"/>
                                         </div>
                                     </div>
                                     <div class="clearfix pull-right">
