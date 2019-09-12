@@ -39,6 +39,6 @@ public interface UserMapper {
     @Select("SELECT count(*) FROM USERS ")
     long countByExample(UserVoExample userVoExample);
 
-    @Select("SELECT * FROM USERS WHERE username =  #{user.getUsername}")
-    List<User> selectByExample(User user);
+    @Select("SELECT * FROM USERS WHERE username =  #{username}")
+    List<User> selectByExample(@Param("username")String username);
 }

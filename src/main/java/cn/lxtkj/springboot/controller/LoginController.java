@@ -103,7 +103,8 @@ public class LoginController {
         String role = userMapper.getRole(username);
         log.info("role是什么："+role);
         if ("user".equals(role)) {
-            return resultMap.success().message("欢迎登陆");
+//            return resultMap.success().message("欢迎登陆");
+            return resultMap.success().status(true);
         }
         if ("admin".equals(role)) {
 //            return resultMap.success().message("欢迎来到管理员页面");

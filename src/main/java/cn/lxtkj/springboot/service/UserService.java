@@ -53,7 +53,7 @@ public class UserService {
         }
         String pwd = TaleUtils.MD5encode(username + password);
         criteria.andPasswordEqualTo(pwd);
-        List<User> userVos = userMapper.selectByExample(new User());
+        List<User> userVos = userMapper.selectByExample(username);
         log.info("userVos对象是："+userVos);
         if (userVos.size() != 1) {
             throw new TipException("用户名或密码错误222");
