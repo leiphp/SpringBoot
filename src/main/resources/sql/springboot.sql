@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
+Source Server         : localhost
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : springboot
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-09-07 00:43:02
+Date: 2019-09-12 19:23:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -46,12 +46,12 @@ CREATE TABLE `articles` (
 -- ----------------------------
 INSERT INTO `articles` VALUES ('1', 'about my blog', 'about', '1487853610', '1487872488', '### Hello World\r\n\r\nabout me\r\n\r\n### ...\r\n\r\n...', '1', 'page', 'publish', null, null, '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('2', 'Hello My Blog', null, '1487861184', '1487872798', '## Hello  World.\r\n\r\n> ...\r\n\r\n----------\r\n\r\n\r\n<!--more-->\r\n\r\n```java\r\npublic static void main(String[] args){\r\n    System.out.println(\"Hello 13 Blog.\");\r\n}\r\n```', '1', 'post', 'publish', '', 'default', '10', '1', '1', '1', '1');
-INSERT INTO `articles` VALUES ('3', '雷小天测试文章', '20', '1566569614', '1566569614', '这是一篇测试的文章', '1', 'post', 'publish', '测试', 'default', '0', '1', '1', '1', '1');
-INSERT INTO `articles` VALUES ('4', 'PHP程序员这行能干多久？', 'test', '0', '0', '沉甸甸的多多', '0', 'post', 'publish', null, 'default', '0', '1', '1', '1', '1');
-INSERT INTO `articles` VALUES ('14', '测试标题2aaa', '11', '0', '1567682829', '哒哒哒哒哒哒多多2222222', '0', 'post', 'publish', 'dddddd', 'python', '0', '1', '1', '1', '1');
-INSERT INTO `articles` VALUES ('15', 'PHP程序员这行能干多久？22', '22', '0', '0', '哒哒哒哒哒哒', '0', 'post', 'publish', null, 'default', '0', '1', '1', '1', '1');
-INSERT INTO `articles` VALUES ('16', '到订单 的', '33', '0', '0', '哒哒哒哒哒哒多多多多多多多多', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('17', '网站架构设计之高可用原则', '44', '0', '0', '88888888888888888888888888888', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('3', '雷小天测试文章', '20', '1566569614', '1567856548', '这是一篇测试的文章', '1', 'post', 'publish', 'uu', 'default,default', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('4', 'PHP程序员这行能干多久？', 'test', '0', '1567854739', '沉甸甸的多多', '0', 'post', 'publish', '钉钉', 'default,default', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('14', '测试标题2aaa', '11', '0', '1567856070', '哒哒哒哒哒哒多多2222222', '0', 'post', 'publish', '一样', 'python,python', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('15', 'PHP程序员这行能干多久？22', '22', '0', '1567855351', '哒哒哒哒哒哒', '0', 'post', 'publish', '刚刚', 'html5', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('16', '雷小天测试tag保存', '33', '0', '1567860198', '哒哒哒哒哒哒多多多多多多多多', '0', 'post', 'publish', '钉钉', '运维', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('17', '网站架构设计之高可用原则22', '44', '0', '1567861188', '88888888888888888888888888888', '0', 'post', 'publish', '222', '', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('19', 'git工具分支创建管理案例分析', '55', '0', '0', '1111\r\n2133333333333333', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('21', '3333', '66', '0', '0', '8888888888888', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('22', 'PHP程序员这行能干多久？9999', '77', '0', '0', '分隔符', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
@@ -68,9 +68,9 @@ INSERT INTO `articles` VALUES ('36', 'PHP程序员这行能干多久？', '1010'
 INSERT INTO `articles` VALUES ('37', '雷小天继续', null, '0', '0', '侧是是是', '0', 'post', 'publish', '测试', 'default', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('42', '关于', 'aboutme', '1566920166', '1566977785', 'aboutme', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('43', '相册', 'pincture', '1566921035', '1566921035', '这是相册页面', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('44', '雷小天博客文章', null, '1567677494', '1567786942', '雷小天顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶', '4', 'post', 'publish', '雷', 'html5', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('45', '测试tag标题', null, '1567787007', '1567787007', '哒哒哒哒哒哒多多多多多多多', '4', 'post', 'publish', '雷小天', '运维', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('46', '测试标题', null, '1567787141', '1567788028', '哒哒哒哒哒哒', '4', 'post', 'publish', '应用', '运维', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('44', '雷小天博客文章', null, '1567677494', '1567856387', '雷小天顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶', '4', 'post', 'publish', '当达', 'html5,html5', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('45', '测试tag标题', null, '1567787007', '1567861245', '哒哒哒哒哒哒多多多多多多多', '4', 'post', 'publish', '顶顶顶', '', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('46', '测试标题', null, '1567787141', '1567860881', '哒哒哒哒哒哒', '4', 'post', 'publish', '的', '运维', '0', '0', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for attach
@@ -134,7 +134,7 @@ CREATE TABLE `logs` (
   `ip` varchar(20) DEFAULT NULL,
   `created` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logs
@@ -149,6 +149,14 @@ INSERT INTO `logs` VALUES ('7', '保存系统设置', '{\"site_record\":\"\",\"s
 INSERT INTO `logs` VALUES ('8', '保存系统设置', '{\"social_zhihu\":\"22\",\"social_github\":\"33\",\"social_twitter\":\"\",\"social_weibo\":\"11\"}', '4', '0:0:0:0:0:0:0:1', '1567348506');
 INSERT INTO `logs` VALUES ('9', '保存系统设置', '{\"social_zhihu\":\"22\",\"social_github\":\"33\",\"social_twitter\":\"666\",\"social_weibo\":\"11\"}', '4', '0:0:0:0:0:0:0:1', '1567348540');
 INSERT INTO `logs` VALUES ('10', '保存系统设置', '{\"social_zhihu\":\"22\",\"social_github\":\"33\",\"social_twitter\":\"677\",\"social_weibo\":\"11\"}', '4', '0:0:0:0:0:0:0:1', '1567349218');
+INSERT INTO `logs` VALUES ('11', '修改个人信息', '{\"id\":4,\"name\":\"admin22\",\"email\":\"tian-lei-happy@163.com\"}', '4', '0:0:0:0:0:0:0:1', '1568285445');
+INSERT INTO `logs` VALUES ('12', '修改个人信息', '{\"id\":4,\"name\":\"admin33\",\"email\":\"tian-lei-happy@163.com\"}', '4', '0:0:0:0:0:0:0:1', '1568285660');
+INSERT INTO `logs` VALUES ('13', '修改个人信息', '{\"id\":4,\"name\":\"admin222\",\"email\":\"tian-lei-happy@163.com\"}', '4', '0:0:0:0:0:0:0:1', '1568285850');
+INSERT INTO `logs` VALUES ('14', '修改个人信息', '{\"id\":4,\"name\":\"admin\",\"email\":\"tian-lei-happy@163.com\"}', '4', '0:0:0:0:0:0:0:1', '1568285868');
+INSERT INTO `logs` VALUES ('15', '修改密码', null, '4', '0:0:0:0:0:0:0:1', '1568286893');
+INSERT INTO `logs` VALUES ('16', '修改密码', null, '4', '0:0:0:0:0:0:0:1', '1568287022');
+INSERT INTO `logs` VALUES ('17', '修改密码', null, '4', '0:0:0:0:0:0:0:1', '1568287213');
+INSERT INTO `logs` VALUES ('18', '修改密码', null, '4', '0:0:0:0:0:0:0:1', '1568287240');
 
 -- ----------------------------
 -- Table structure for metas
@@ -164,7 +172,7 @@ CREATE TABLE `metas` (
   `parent` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`mid`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of metas
@@ -432,17 +440,18 @@ CREATE TABLE `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL DEFAULT '',
   `username` varchar(20) NOT NULL DEFAULT '',
-  `password` varchar(20) NOT NULL DEFAULT '',
+  `password` varchar(64) NOT NULL DEFAULT '',
   `age` int(3) NOT NULL DEFAULT '1',
   `role` varchar(20) NOT NULL DEFAULT '',
+  `email` varchar(200) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'leixiaotian', 'leixiaotian', '123456', '28', 'test');
-INSERT INTO `users` VALUES ('2', 'leixiaotian', 'user', '112233', '28', 'user');
-INSERT INTO `users` VALUES ('3', 'leiwen', 'vip', '112233', '23', 'vip');
-INSERT INTO `users` VALUES ('4', 'admin', 'admin', '123456', '28', 'admin');
-INSERT INTO `users` VALUES ('5', 'test', '', '', '33', '');
+INSERT INTO `users` VALUES ('1', 'leixiaotian', 'leixiaotian', '123456', '28', 'test', '');
+INSERT INTO `users` VALUES ('2', 'leixiaotian', 'user', '35c5c7aa87c4d6915be5a44b0181b370', '28', 'user', '');
+INSERT INTO `users` VALUES ('3', 'leiwen', 'vip', '112233', '23', 'vip', '');
+INSERT INTO `users` VALUES ('4', 'admin', 'admin', 'a66abb5684c45962d887564f08346e8d', '28', 'admin', 'tian-lei-happy@163.com');
+INSERT INTO `users` VALUES ('5', 'test', '', '', '33', '', '');
