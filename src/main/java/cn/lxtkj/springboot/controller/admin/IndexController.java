@@ -108,45 +108,45 @@ public class IndexController extends BaseController {
         return RestResponseBo.ok();
     }
 
-//    /**
-//     * 修改密码
-//     */
-//    @PostMapping(value = "/password")
-//    @ResponseBody
-//    public RestResponseBo upPwd(@RequestParam String oldPassword, @RequestParam String password, HttpServletRequest request, HttpSession session) {
-//        UserVo users = this.user(request);
-//        if (StringUtils.isBlank(oldPassword) || StringUtils.isBlank(password)) {
-//            return RestResponseBo.fail("请确认信息输入完整");
-//        }
-//
-//        if (!users.getPassword().equals(TaleUtils.MD5encode(users.getUsername() + oldPassword))) {
-//            return RestResponseBo.fail("旧密码错误");
-//        }
-//        if (password.length() < 6 || password.length() > 14) {
-//            return RestResponseBo.fail("请输入6-14位密码");
-//        }
-//
-//        try {
-//            UserVo temp = new UserVo();
-//            temp.setUid(users.getUid());
-//            String pwd = TaleUtils.MD5encode(users.getUsername() + password);
-//            temp.setPassword(pwd);
-//            userService.updateByUid(temp);
-//            logService.insertLog(LogActions.UP_PWD.getAction(), null, request.getRemoteAddr(), this.getUid(request));
-//
-//            //更新session中的数据
-//            UserVo original= (UserVo)session.getAttribute(WebConst.LOGIN_SESSION_KEY);
-//            original.setPassword(pwd);
-//            session.setAttribute(WebConst.LOGIN_SESSION_KEY,original);
-//            return RestResponseBo.ok();
-//        } catch (Exception e){
-//            String msg = "密码修改失败";
-//            if (e instanceof TipException) {
-//                msg = e.getMessage();
-//            } else {
-//                LOGGER.error(msg, e);
-//            }
-//            return RestResponseBo.fail(msg);
-//        }
-//    }
+    /**
+     * 修改密码
+     */
+    @PostMapping(value = "/password")
+    @ResponseBody
+    public RestResponseBo upPwd(@RequestParam String oldPassword, @RequestParam String password, HttpServletRequest request, HttpSession session) {
+        User user = this.user(request);
+        if (StringUtils.isBlank(oldPassword) || StringUtils.isBlank(password)) {
+            return RestResponseBo.fail("请确认信息输入完整");
+        }
+
+        if (!user.getPassword().equals(TaleUtils.MD5encode(user.getUsername() + oldPassword))) {
+            return RestResponseBo.fail("旧密码错误");
+        }
+        if (password.length() < 6 || password.length() > 14) {
+            return RestResponseBo.fail("请输入6-14位密码");
+        }
+
+        try {
+            User temp = new User();
+            temp.setId(user.getId());
+            String pwd = TaleUtils.MD5encode(user.getUsername() + password);
+            temp.setPassword(pwd);
+            userService.updatePasswordById(temp);
+            logsService.insertLog(LogActions.UP_PWD.getAction(), null, request.getRemoteAddr(), this.getUid(request));
+
+            //更新session中的数据
+            User original= (User)session.getAttribute(WebConst.LOGIN_SESSION_KEY);
+            original.setPassword(pwd);
+            session.setAttribute(WebConst.LOGIN_SESSION_KEY,original);
+            return RestResponseBo.ok();
+        } catch (Exception e){
+            String msg = "密码修改失败";
+            if (e instanceof TipException) {
+                msg = e.getMessage();
+            } else {
+                log.error(msg, e);
+            }
+            return RestResponseBo.fail(msg);
+        }
+    }
 }

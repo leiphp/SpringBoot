@@ -45,4 +45,7 @@ public interface UserMapper {
 
     @Update("UPDATE USERS SET name=#{name},email=#{email} where id=#{id}")
     int update(User user);
+
+    @Update("UPDATE USERS SET password=#{password} where id=#{id}")
+    int updatePassword(User user);
 }

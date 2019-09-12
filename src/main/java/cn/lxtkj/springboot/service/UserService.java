@@ -50,6 +50,15 @@ public class UserService {
         }
 
     }
+    public String updatePasswordById(User user){
+        int count = userMapper.updatePassword(user);
+        if(count==1){
+            return WebConst.SUCCESS_RESULT;
+        }else{
+            return WebConst.FAILURE_RESULT;
+        }
+
+    }
     public User login(String username, String password) {
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)) {
             throw new TipException("用户名和密码不能为空222");
