@@ -10,6 +10,7 @@ public class Article {
     private String content;
     private String status;
     private String categories;
+    private String tags;
     private Integer hits;
     private Integer comments_num;
 
@@ -75,6 +76,14 @@ public class Article {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 
     public String getCategories() {

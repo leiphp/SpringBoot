@@ -54,6 +54,7 @@ public class FTLArticleController {
     public String editArticle(@PathVariable String cid, HttpServletRequest request) {
         log.info("cid是："+cid);
         Article article = articleService.getArticle(Integer.valueOf(cid));
+        log.info("article是："+article);
         request.setAttribute("contents", article);
         List<Metas> categories = metasService.getMetas(Types.CATEGORY.getType());
         request.setAttribute("categories", categories);
