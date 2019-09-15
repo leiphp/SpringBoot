@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : 本地
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : springboot
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-09-12 19:23:26
+Date: 2019-09-15 22:59:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -64,13 +64,11 @@ INSERT INTO `articles` VALUES ('30', 'PHP程序员这行能干多久？7879', '1
 INSERT INTO `articles` VALUES ('31', '测试标题45454', '104', '0', '0', '454545', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('32', 'PHP程序员这行能干多久？888', '105', '0', '0', '88888888888888', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('33', '雷小天测试', '106', '0', '0', '雷小天', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('36', 'PHP程序员这行能干多久？', '1010', '0', '0', 'ddddddddd ', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('37', '雷小天继续', null, '0', '0', '侧是是是', '0', 'post', 'publish', '测试', 'default', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('42', '关于', 'aboutme', '1566920166', '1566977785', 'aboutme', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('43', '相册', 'pincture', '1566921035', '1566921035', '这是相册页面', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('44', '雷小天博客文章', null, '1567677494', '1567856387', '雷小天顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶', '4', 'post', 'publish', '当达', 'html5,html5', '0', '0', '1', '1', '1');
 INSERT INTO `articles` VALUES ('45', '测试tag标题', null, '1567787007', '1567861245', '哒哒哒哒哒哒多多多多多多多', '4', 'post', 'publish', '顶顶顶', '', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('46', '测试标题', null, '1567787141', '1567860881', '哒哒哒哒哒哒', '4', 'post', 'publish', '的', '运维', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('46', '住在手机里的朋友', null, '1567787141', '1568480525', '通信时代，无论是初次相见还是老友重逢，交换联系方式，常常是彼此交换名片，然后郑重或是出于礼貌用手机记下对方的电话号码。在快节奏的生活里，我们不知不觉中就成为住在别人手机里的朋友。又因某些意外，变成了别人手机里匆忙的过客，这种快餐式的友谊 ...', '4', 'post', 'publish', '手机配件', '手机', '0', '0', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for attach
@@ -172,18 +170,19 @@ CREATE TABLE `metas` (
   `parent` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`mid`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of metas
 -- ----------------------------
-INSERT INTO `metas` VALUES ('1', 'default', null, 'category', null, '0', '0');
+INSERT INTO `metas` VALUES ('1', 'iPad', null, 'category', null, '0', '0');
 INSERT INTO `metas` VALUES ('6', 'my github', 'https://github.com/ZHENFENG13', 'link', null, '0', '0');
-INSERT INTO `metas` VALUES ('9', '运维', null, 'category', null, '0', '0');
-INSERT INTO `metas` VALUES ('11', 'html5', null, 'category', null, '0', '0');
-INSERT INTO `metas` VALUES ('12', 'python', null, 'category', null, '0', '0');
+INSERT INTO `metas` VALUES ('9', '手机', null, 'category', null, '0', '0');
+INSERT INTO `metas` VALUES ('11', '笔记本', null, 'category', null, '0', '0');
+INSERT INTO `metas` VALUES ('12', '电脑', null, 'category', null, '0', '0');
 INSERT INTO `metas` VALUES ('13', '雷小天博客', 'https://www.100txy.com', 'link', null, '0', '0');
 INSERT INTO `metas` VALUES ('14', '雷小天科技', 'http://www.lxtkj.cn', 'link', null, '2', '0');
+INSERT INTO `metas` VALUES ('15', '手机配件', '手机配件', 'tag', null, '0', '0');
 
 -- ----------------------------
 -- Table structure for options
@@ -226,6 +225,8 @@ CREATE TABLE `relationships` (
 INSERT INTO `relationships` VALUES ('2', '1');
 INSERT INTO `relationships` VALUES ('3', '1');
 INSERT INTO `relationships` VALUES ('3', '7');
+INSERT INTO `relationships` VALUES ('46', '9');
+INSERT INTO `relationships` VALUES ('46', '15');
 
 -- ----------------------------
 -- Table structure for role
