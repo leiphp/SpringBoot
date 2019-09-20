@@ -13,6 +13,10 @@ public class Article {
     private String tags;
     private Integer hits;
     private Integer comments_num;
+    /**
+     * 是否允许评论
+     */
+    private Boolean allowComment;
 
     public Integer getComments_num() {
         return comments_num;
@@ -100,6 +104,14 @@ public class Article {
 
     public void setHits(Integer hits) {
         this.hits = hits;
+    }
+
+    public Boolean getAllowComment() {
+        return allowComment;
+    }
+
+    public void setAllowComment(Boolean allowComment) {
+        this.allowComment = allowComment;
     }
 
 
