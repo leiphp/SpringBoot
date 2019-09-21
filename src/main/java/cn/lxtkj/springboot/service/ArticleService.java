@@ -119,4 +119,10 @@ public class ArticleService {
         }
 
     }
+    //获取最新7条数据
+    public List<Article> getNewArticleList(int limit){
+        //mysql查询limit
+        List<Article> listArticle = articleMapper.getRecentList(limit);
+        return listArticle;
+    }
 }

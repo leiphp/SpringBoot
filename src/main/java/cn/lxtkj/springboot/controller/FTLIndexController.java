@@ -40,7 +40,9 @@ public class FTLIndexController extends BaseController{
         return "ftlIndex";
     }
     @RequestMapping("/")
-    public String Index(){
+    public String Index(HttpServletRequest request){
+        List<Article> articles = articleService.getNewArticleList(7);
+        request.setAttribute("articles", articles);
         return "home";
     }
     @RequestMapping("/list")
