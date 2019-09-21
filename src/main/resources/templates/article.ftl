@@ -50,7 +50,7 @@
     <div class="l_box f_l">
         <div class="topnews">
             <h2>您现在的位置是：<a href="/">门户</a>><a href="/">新闻频道</a>> 查看内容</h2>
-            <div class="news_title">2014万里户外川藏线阿里北线转山新疆看花</div>
+            <div class="news_title">${article.title}</div>
             <div class="news_author"><span class="au01">admin</span><span class="au02">2015-1-10</span><span class="au03">共<b>118</b>人围观</span><strong class="au04 f_r">暂无评论</strong></div>
             <div class="tags"><a href="/" target="_blank">手机</a> <a href="/" target="_blank">电话</a> <a href="/" target="_blank">欠费</a></div>
 

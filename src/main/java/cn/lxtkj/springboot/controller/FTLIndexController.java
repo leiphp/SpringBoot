@@ -1,7 +1,10 @@
 package cn.lxtkj.springboot.controller;
 
+import cn.lxtkj.springboot.dto.Types;
 import cn.lxtkj.springboot.entity.Article;
 import cn.lxtkj.springboot.entity.Comment;
+import cn.lxtkj.springboot.entity.Metas;
+import cn.lxtkj.springboot.service.MetasService;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -14,6 +17,7 @@ import cn.lxtkj.springboot.service.ArticleService;
 import cn.lxtkj.springboot.service.CommentService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -22,6 +26,8 @@ public class FTLIndexController extends BaseController{
 
     @Autowired
     private ArticleService articleService;
+    @Autowired
+    private MetasService metasService;
 
     @Autowired
     private CommentService commentService;
@@ -43,17 +49,25 @@ public class FTLIndexController extends BaseController{
     }
     @RequestMapping(value="/article/{id}", method = RequestMethod.GET)
     public String Article(HttpServletRequest request, @PathVariable String id){
-        Article article = articleService.getArticle(Integer.valueOf(id));
-        if (null == article || "draft".equals(article.getStatus())) {
-            return this.render_404();
-        }
-        request.setAttribute("article", article);
-        request.setAttribute("is_post", true);
+//        Article article = articleService.getArticle(Integer.valueOf(id));
+//        if (null == article || "draft".equals(article.getStatus())) {
+//            return this.render_404();
+//        }
+//        request.setAttribute("article", article);
+//        request.setAttribute("is_post", true);
 //        completeArticle(request, article);
 //        if (!checkHitsFrequency(request, cid)) {
 //            updateArticleHit(contents.getCid(), contents.getHits());
 //        }
 //        return this.render("post");
+
+
+        log.info("cid是："+id);
+        Article article = articleService.getArticle(Integer.valueOf(id));
+        log.info("article是："+article);
+        request.setAttribute("article", article);
+        List<Metas> categories = metasService.getMetas(Types.CATEGORY.getType());
+        request.setAttribute("categories", categories);
         return "article";
     }
     @RequestMapping("/login")
