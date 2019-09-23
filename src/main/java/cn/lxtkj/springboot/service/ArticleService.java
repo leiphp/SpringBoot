@@ -20,8 +20,8 @@ public class ArticleService {
     @Autowired
     private MetasService metasService;
 
-    public int insertArticle(String title, String slug, String tags, String content, Integer author_id, String type, String categories, Integer created, Integer modified){
-        int insertArticleResult = articleMapper.insert(title, slug, tags, content, author_id, type, categories,created, modified);
+    public int insertArticle(String title, String slug, String tags, String description, String content, Integer author_id, String type, String categories, Integer created, Integer modified){
+        int insertArticleResult = articleMapper.insert(title, slug, tags, description, content, author_id, type, categories,created, modified);
         return insertArticleResult;
     }
 
@@ -64,7 +64,7 @@ public class ArticleService {
         } else {
             contents.setSlug(null);
         }
-        int insertArticleResult = articleMapper.insert(contents.getTitle(),contents.getSlug(), contents.getTags(), contents.getContent(), contents.getAuthorId(),contents.getType(), contents.getCategories(), contents.getCreated(), contents.getModified());
+        int insertArticleResult = articleMapper.insert(contents.getTitle(),contents.getSlug(), contents.getTags(), contents.getDescription(), contents.getContent(), contents.getAuthorId(),contents.getType(), contents.getCategories(), contents.getCreated(), contents.getModified());
         if(insertArticleResult==1){
             metasService.saveMetas(contents.getCid(), contents.getTags(), Types.TAG.getType());
 //撤销            metasService.saveMetas(contents.getCid(), contents.getCategories(), Types.CATEGORY.getType());
@@ -100,7 +100,7 @@ public class ArticleService {
         if (null == contents.getAuthorId()) {
             return "请登录后发布文章";
         }
-        int insertArticleResult = articleMapper.update(contents.getCid(),contents.getTitle(), contents.getTags(), contents.getContent(), contents.getCategories(), contents.getModified());
+        int insertArticleResult = articleMapper.update(contents.getCid(),contents.getTitle(), contents.getTags(), contents.getDescription(), contents.getContent(), contents.getCategories(), contents.getModified());
         if(insertArticleResult==1){
             metasService.saveMetas(contents.getCid(), contents.getTags(), Types.TAG.getType());
             metasService.saveMetas(contents.getCid(), contents.getCategories(), Types.CATEGORY.getType());

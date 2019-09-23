@@ -7,6 +7,7 @@ public class Article {
     private String slug;
     private Integer created;
     private Integer modified;
+    private String description;
     private String content;
     private String status;
     private String categories;
@@ -64,6 +65,14 @@ public class Article {
 
     public void setModified(Integer modified) {
         this.modified = modified;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getContent() {

@@ -109,6 +109,10 @@
                             </div>
                             <div class="clearfix"></div>
                             <div class="form-group">
+                                <textarea style="height: 90px" autocomplete="off"  id="description" name="description" class="markdown-textarea"><#if contents?? && contents.description??>${contents.description}<#else>请填写文章描述...</#if></textarea>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="form-group">
                                 <textarea style="height: 450px" autocomplete="off" id="text" name="text" class="markdown-textarea"><#if contents?? && contents.content??>${contents.content}<#else></#if></textarea>
                             </div>
 

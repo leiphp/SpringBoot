@@ -80,7 +80,10 @@ public class ContentVo implements Serializable {
      * 允许出现在聚合中
      */
     private Boolean allowFeed;
-
+    /**
+     * 简介文字
+     */
+    private String description;
     /**
      * 内容文字
      */
@@ -206,6 +209,14 @@ public class ContentVo implements Serializable {
 
     public void setAllowFeed(Boolean allowFeed) {
         this.allowFeed = allowFeed;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getContent() {
