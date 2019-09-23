@@ -142,4 +142,15 @@ public class ArticleService {
         List<Article> listArticle = articleMapper.selectLike();
         return listArticle;
     }
+
+    //获取tag所有文章
+    public PageInfo<Article> getArticleByTag(int page, int pageSize, String tag){
+        //mysql查询limit
+        //pageHelper 帮我们生产分页语句
+        PageHelper.startPage(page, pageSize);
+        List<Article> listArticle = articleMapper.getTagArticleList(tag);
+        //返回给客户端展示
+        PageInfo<Article> pageInfoArticleList = new PageInfo<Article>(listArticle);
+        return pageInfoArticleList;
+    }
 }

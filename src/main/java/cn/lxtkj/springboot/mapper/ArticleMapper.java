@@ -42,4 +42,7 @@ public interface ArticleMapper {
 
     @Select("SELECT count(*) FROM ARTICLES WHERE status = 'publish' AND type = 'post'")
     Long countByExample(ContentVo contentVo);
+
+    @Select("SELECT * FROM ARTICLES WHERE TYPE = 'post' AND tags LIKE  #{tag} ORDER BY created desc")
+    List<Article> getTagArticleList(@Param("tag") String tag);
 }
