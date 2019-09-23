@@ -1,6 +1,7 @@
 package cn.lxtkj.springboot.utils;
 
 
+import cn.lxtkj.springboot.entity.Article;
 import com.github.pagehelper.PageInfo;
 import cn.lxtkj.springboot.constant.WebConst;
 import cn.lxtkj.springboot.model.Vo.ContentVo;
@@ -273,11 +274,11 @@ public final class Commons {
      *
      * @return
      */
-    public static String show_thumb(ContentVo contents) {
-        int cid = contents.getCid();
-        int size = cid % 20;
+    public static String show_thumb(Article article) {
+        int cid = article.getCid();
+        int size = cid % 10;
         size = size == 0 ? 1 : size;
-        return "/user/img/rand/" + size + ".jpg";
+        return "/images/thumb/0" + size + ".jpg";
     }
 
 

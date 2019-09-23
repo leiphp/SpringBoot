@@ -5,6 +5,7 @@ import cn.lxtkj.springboot.entity.Article;
 import cn.lxtkj.springboot.entity.Comment;
 import cn.lxtkj.springboot.entity.Metas;
 import cn.lxtkj.springboot.service.MetasService;
+import cn.lxtkj.springboot.utils.Commons;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import cn.lxtkj.springboot.service.ArticleService;
 import cn.lxtkj.springboot.service.CommentService;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +34,9 @@ public class FTLIndexController extends BaseController{
     @Autowired
     private CommentService commentService;
 
+    @Resource
+    private Commons commons;
+
     @RequestMapping("/ftlindex")
     public String ftlIndex(Map<String, Object> map){
         map.put("name","雷小天");
@@ -43,6 +48,7 @@ public class FTLIndexController extends BaseController{
     public String Index(HttpServletRequest request){
         List<Article> articles = articleService.getNewArticleList(7);
         request.setAttribute("articles", articles);
+        request.setAttribute("commons", commons);
         return "home";
     }
     @RequestMapping("/list")
