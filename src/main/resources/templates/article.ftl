@@ -60,9 +60,10 @@
                 <strong class="au04 f_r">暂无评论</strong>
             </div>
             <div class="tags">
-                <a href="/" target="_blank">手机</a>
-                <a href="/" target="_blank">电话</a>
-                <a href="/" target="_blank">欠费</a>
+                ${commons.show_tags(article.tags)}
+                <#--<a href="/" target="_blank">手机</a>-->
+                <#--<a href="/" target="_blank">电话</a>-->
+                <#--<a href="/" target="_blank">欠费</a>-->
             </div>
 
             <div class="news_about"><strong>简介</strong> ${article.description}</div>
