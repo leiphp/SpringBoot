@@ -9,8 +9,10 @@
     <link href="/css/base.css" rel="stylesheet">
     <link href="/css/view.css" rel="stylesheet">
     <link href="/css/media.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/9.9.0/styles/xcode.min.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/myfocus-2.0.4.min.js"></script>
+
 
     <!--[if lt IE 9]>
     <script src="/js/modernizr.js"></script>
@@ -49,26 +51,28 @@
 <article>
     <div class="l_box f_l">
         <div class="topnews">
-            <h2>您现在的位置是：<a href="/">门户</a>><a href="/">新闻频道</a>> 查看内容</h2>
+            <h2>您现在的位置是：<a href="/">门户</a>><a href="/">文章</a>> 查看内容</h2>
             <div class="news_title">${article.title}</div>
-            <div class="news_author"><span class="au01">admin</span><span class="au02">2015-1-10</span><span class="au03">共<b>118</b>人围观</span><strong class="au04 f_r">暂无评论</strong></div>
-            <div class="tags"><a href="/" target="_blank">手机</a> <a href="/" target="_blank">电话</a> <a href="/" target="_blank">欠费</a></div>
+            <div class="news_author">
+                <span class="au01">admin</span>
+                <span class="au02">${commons.fmtdate(article.created)}</span>
+                <span class="au03">共<b>${article.hits}</b>人围观</span>
+                <strong class="au04 f_r">暂无评论</strong>
+            </div>
+            <div class="tags">
+                <a href="/" target="_blank">手机</a>
+                <a href="/" target="_blank">电话</a>
+                <a href="/" target="_blank">欠费</a>
+            </div>
 
-            <div class="news_about"><strong>简介</strong> :公共物资：我们涉及露营的深度西藏自驾线路（川藏16天、阿里小北17天），随车会配置炉头、气罐、炊具等野炊装备、常规外伤药、高原急救药品、氧气瓶，构成公共物资。</div>
+            <div class="news_about"><strong>简介</strong> ${article.description}</div>
             <div class="news_content">
-                <ul>
-                    <p><img src="/images/a1.jpg"></p>
-                    <p>公共物资：我们涉及露营的深度西藏自驾线路（川藏16天、阿里小北17天），随车会配置炉头、气罐、炊具等野炊装备、常规外伤药、高原急救药品、氧气瓶，构成公共物资。</p>
-                    <p><img src="/images/ex01.jpg"></p>
-                    <p><img src="/images/a1.jpg"></p>
-                    <p>公共物资：我们涉及露营的深度西藏自驾线路（川藏16天、阿里小北17天），随车会配置炉头、气罐、炊具等野炊装备、常规外伤药、高原急救药品、氧气瓶，构成公共物资。</p>
-                    <p><img src="/images/ex01.jpg"></p>
-                </ul>
+                ${commons.article(article.content)}
             </div>
             <div class="fenx">分享：</div>
             <div class="nextinfo">
-                <p>上一篇：<a href="/" >传微软将把入门级Surface平板价格下调150美元</a></p>
-                <p>下一篇：<a href="/">云南之行——大理洱海一日游</a></p>
+                <p>上一篇：<#if prevarticle?? ><a href="/article/${prevarticle.cid}" >${prevarticle.title}</a><#else>没有了</#if> </p>
+                <p>下一篇：<#if nextarticle?? ><a href="/article/${nextarticle.cid}" >${nextarticle.title}</a><#else>没有了</#if> </p>
             </div>
             <div class="otherlink">
                 <h2>相关文章</h2>

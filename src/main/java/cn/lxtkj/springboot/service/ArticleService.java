@@ -79,6 +79,16 @@ public class ArticleService {
        return article;
 
     }
+    public Article getNextArticle(Integer cid){
+        Article article = articleMapper.selectNextByCid(cid);
+        return article;
+
+    }
+    public Article getPrevArticle(Integer cid){
+        Article article = articleMapper.selectPrevByCid(cid);
+        return article;
+
+    }
     public String updateArticle(ContentVo contents){
         if (null == contents) {
             return "文章对象为空";

@@ -44,6 +44,7 @@ public class FTLIndexController extends BaseController{
         map.put("sex","0");
         return "ftlIndex";
     }
+
     @RequestMapping("/")
     public String Index(HttpServletRequest request){
         List<Article> articles = articleService.getNewArticleList(7);
@@ -51,10 +52,12 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("commons", commons);
         return "home";
     }
+
     @RequestMapping("/list")
     public String List(){
         return "list";
     }
+
     @RequestMapping(value="/article/{id}", method = RequestMethod.GET)
     public String Article(HttpServletRequest request, @PathVariable String id){
 //        Article article = articleService.getArticle(Integer.valueOf(id));
@@ -74,8 +77,16 @@ public class FTLIndexController extends BaseController{
         Article article = articleService.getArticle(Integer.valueOf(id));
         log.info("article是："+article);
         request.setAttribute("article", article);
+
+        Article nextArticle = articleService.getNextArticle(Integer.valueOf(id));
+        request.setAttribute("nextarticle", nextArticle);
+
+        Article prevArticle = articleService.getPrevArticle(Integer.valueOf(id));
+        request.setAttribute("prevarticle", prevArticle);
+
         List<Metas> categories = metasService.getMetas(Types.CATEGORY.getType());
         request.setAttribute("categories", categories);
+        request.setAttribute("commons", commons);
         return "article";
     }
     @RequestMapping("/login")

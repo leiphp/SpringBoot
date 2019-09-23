@@ -25,6 +25,12 @@ public interface ArticleMapper {
     @Select("SELECT * FROM ARTICLES WHERE cid = #{cid}")
     Article selectByCid(@Param("cid") Integer cid);
 
+    @Select("SELECT * FROM ARTICLES WHERE cid > #{cid} AND type='post' limit 1")
+    Article selectNextByCid(@Param("cid") Integer cid);
+
+    @Select("SELECT * FROM ARTICLES WHERE cid < #{cid} AND type='post' limit 1")
+    Article selectPrevByCid(@Param("cid") Integer cid);
+
     @Update("UPDATE ARTICLES SET title=#{title},tags=#{tags},description=#{description},content=#{content}, categories=#{categories},modified=#{modified} where cid=#{cid}")
     int update(@Param("cid") Integer cid, @Param("title") String title, @Param("tags") String tags,@Param("description") String description, @Param("content") String content,  @Param("categories") String categories,  @Param("modified") Integer modified);
 
