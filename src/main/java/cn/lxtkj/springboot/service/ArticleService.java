@@ -135,4 +135,11 @@ public class ArticleService {
         List<Article> listArticle = articleMapper.getRecentList(limit);
         return listArticle;
     }
+
+    //获取最新6条数据
+    public List<Article> getLikeArticleList(){
+        //mysql查询limit
+        List<Article> listArticle = articleMapper.selectLike();
+        return listArticle;
+    }
 }

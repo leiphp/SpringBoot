@@ -84,6 +84,9 @@ public class FTLIndexController extends BaseController{
         Article prevArticle = articleService.getPrevArticle(Integer.valueOf(id));
         request.setAttribute("prevarticle", prevArticle);
 
+        List<Article> likeArticles = articleService.getLikeArticleList();
+        request.setAttribute("likearticles", likeArticles);
+
         List<Metas> categories = metasService.getMetas(Types.CATEGORY.getType());
         request.setAttribute("categories", categories);
         request.setAttribute("commons", commons);

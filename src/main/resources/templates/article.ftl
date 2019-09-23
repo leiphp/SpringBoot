@@ -78,12 +78,15 @@
             <div class="otherlink">
                 <h2>相关文章</h2>
                 <ul>
-                    <li><a href="/" title="云南之行——丽江古镇玉龙雪山">云南之行——丽江古镇玉龙雪山</a></li>
-                    <li><a href="/" title="云南之行——大理洱海一日游">云南之行——大理洱海一日游</a></li>
-                    <li><a href="/" target="_blank">住在手机里的朋友</a></li>
-                    <li><a href="/" target="_blank">豪雅手机正式发布! 在法国全手工打造的奢侈品</a></li>
-                    <li><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></li>
-                    <li><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码...</a></li>
+                    <#list likearticles as article>
+                        <li><a href="/article/${article.cid}" title="${article.title}">${article.title}</a></li>
+                    </#list>
+                    <#--<li><a href="/" title="云南之行——丽江古镇玉龙雪山">云南之行——丽江古镇玉龙雪山</a></li>-->
+                    <#--<li><a href="/" title="云南之行——大理洱海一日游">云南之行——大理洱海一日游</a></li>-->
+                    <#--<li><a href="/" target="_blank">住在手机里的朋友</a></li>-->
+                    <#--<li><a href="/" target="_blank">豪雅手机正式发布! 在法国全手工打造的奢侈品</a></li>-->
+                    <#--<li><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></li>-->
+                    <#--<li><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码...</a></li>-->
                 </ul>
             </div>
             <div class="news_pl">
