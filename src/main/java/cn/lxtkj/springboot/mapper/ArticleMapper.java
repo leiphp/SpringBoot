@@ -34,6 +34,9 @@ public interface ArticleMapper {
     @Select("SELECT * FROM ARTICLES WHERE type='post' ORDER BY rand() limit 6")
     List<Article> selectLike();
 
+    @Select("SELECT * FROM ARTICLES WHERE type='post' ORDER BY hits desc limit #{limit}")
+    List<Article> getTophitList(@Param("limit") Integer limit);
+
     @Update("UPDATE ARTICLES SET title=#{title},tags=#{tags},description=#{description},content=#{content}, categories=#{categories},modified=#{modified} where cid=#{cid}")
     int update(@Param("cid") Integer cid, @Param("title") String title, @Param("tags") String tags,@Param("description") String description, @Param("content") String content,  @Param("categories") String categories,  @Param("modified") Integer modified);
 

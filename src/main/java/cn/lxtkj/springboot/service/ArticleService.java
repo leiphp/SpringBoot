@@ -143,6 +143,13 @@ public class ArticleService {
         return listArticle;
     }
 
+    //获取点击量最高的6条数据
+    public List<Article> getTophitArticleList(int limit){
+        //mysql查询limit
+        List<Article> listArticle = articleMapper.getTophitList(limit);
+        return listArticle;
+    }
+
     //获取tag所有文章
     public PageInfo<Article> getArticleByTag(int page, int pageSize, String tag){
         //mysql查询limit

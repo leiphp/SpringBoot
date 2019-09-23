@@ -51,6 +51,10 @@ public class FTLIndexController extends BaseController{
         List<Article> articles = articleService.getNewArticleList(7);
         request.setAttribute("articles", articles);
         request.setAttribute("commons", commons);
+        List<Article> recentArticle = super.getRecentArticle();
+        request.setAttribute("recentarticle", recentArticle);
+        List<Article> topArticle = super.getTophitArticle();
+        request.setAttribute("toparticle", topArticle);
         return "home";
     }
 

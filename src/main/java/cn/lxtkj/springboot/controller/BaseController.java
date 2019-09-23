@@ -1,16 +1,22 @@
 package cn.lxtkj.springboot.controller;
 
 //import cn.lxtkj.springboot.model.Vo.UserVo;
+import cn.lxtkj.springboot.entity.Article;
 import cn.lxtkj.springboot.entity.User;
+import cn.lxtkj.springboot.service.ArticleService;
 import cn.lxtkj.springboot.utils.MapCache;
 import cn.lxtkj.springboot.utils.TaleUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by 13 on 2017/2/21.
  */
 public abstract class BaseController {
+    @Autowired
+    private ArticleService articleService;
 
     public static String THEME = "themes/default";
 
@@ -51,5 +57,28 @@ public abstract class BaseController {
     public String render_404() {
         return "comm/error_404";
     }
+
+    /**
+     * 获取请求最新6条数据
+     * @return
+     */
+    public  List<Article> getRecentArticle() {
+        List<Article> articles = articleService.getNewArticleList(6);
+       return articles;
+    }
+
+    /**
+     * 获取请求最新6条数据
+     * @return
+     */
+    public  List<Article> getTophitArticle() {
+        List<Article> articles = articleService.getTophitArticleList(6);
+        return articles;
+    }
+//    public String getTophitArticle(HttpServletRequest request) {
+//        List<Article> articles = articleService.getTophitArticleList(6);
+//        request.setAttribute("toparticle", articles);
+//        return "comm/public_right";
+//    }
 
 }
