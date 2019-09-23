@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地
+Source Server         : localhost
 Source Server Version : 50553
 Source Host           : localhost:3306
 Source Database       : springboot
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-09-15 22:59:02
+Date: 2019-09-23 19:54:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,6 +25,7 @@ CREATE TABLE `articles` (
   `slug` varchar(200) DEFAULT NULL,
   `created` int(10) unsigned DEFAULT '0',
   `modified` int(10) unsigned DEFAULT '0',
+  `description` text,
   `content` text COMMENT '内容文字',
   `author_id` int(10) unsigned DEFAULT '0',
   `type` varchar(16) DEFAULT 'post',
@@ -44,31 +45,31 @@ CREATE TABLE `articles` (
 -- ----------------------------
 -- Records of articles
 -- ----------------------------
-INSERT INTO `articles` VALUES ('1', 'about my blog', 'about', '1487853610', '1487872488', '### Hello World\r\n\r\nabout me\r\n\r\n### ...\r\n\r\n...', '1', 'page', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('2', 'Hello My Blog', null, '1487861184', '1487872798', '## Hello  World.\r\n\r\n> ...\r\n\r\n----------\r\n\r\n\r\n<!--more-->\r\n\r\n```java\r\npublic static void main(String[] args){\r\n    System.out.println(\"Hello 13 Blog.\");\r\n}\r\n```', '1', 'post', 'publish', '', 'default', '10', '1', '1', '1', '1');
-INSERT INTO `articles` VALUES ('3', '雷小天测试文章', '20', '1566569614', '1567856548', '这是一篇测试的文章', '1', 'post', 'publish', 'uu', 'default,default', '0', '1', '1', '1', '1');
-INSERT INTO `articles` VALUES ('4', 'PHP程序员这行能干多久？', 'test', '0', '1567854739', '沉甸甸的多多', '0', 'post', 'publish', '钉钉', 'default,default', '0', '1', '1', '1', '1');
-INSERT INTO `articles` VALUES ('14', '测试标题2aaa', '11', '0', '1567856070', '哒哒哒哒哒哒多多2222222', '0', 'post', 'publish', '一样', 'python,python', '0', '1', '1', '1', '1');
-INSERT INTO `articles` VALUES ('15', 'PHP程序员这行能干多久？22', '22', '0', '1567855351', '哒哒哒哒哒哒', '0', 'post', 'publish', '刚刚', 'html5', '0', '1', '1', '1', '1');
-INSERT INTO `articles` VALUES ('16', '雷小天测试tag保存', '33', '0', '1567860198', '哒哒哒哒哒哒多多多多多多多多', '0', 'post', 'publish', '钉钉', '运维', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('17', '网站架构设计之高可用原则22', '44', '0', '1567861188', '88888888888888888888888888888', '0', 'post', 'publish', '222', '', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('19', 'git工具分支创建管理案例分析', '55', '0', '0', '1111\r\n2133333333333333', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('21', '3333', '66', '0', '0', '8888888888888', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('22', 'PHP程序员这行能干多久？9999', '77', '0', '0', '分隔符', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('23', 'PHP程序员这行能干多久？88', '88', '0', '0', '888888888888888888', '0', 'post', 'publish', null, ' ', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('25', 'PHP程序员这行能干多久？77', '99', '0', '0', '7777777777', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('26', 'PHP程序员这行能干多久？123', '100', '0', '0', '123', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('28', 'PHP程序员这行能干多久？1234', '101', '0', '0', '444545', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('29', 'PHP程序员这行能干多久？1234', '102', '0', '0', '444545', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('30', 'PHP程序员这行能干多久？7879', '103', '0', '0', '1111111', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('31', '测试标题45454', '104', '0', '0', '454545', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('32', 'PHP程序员这行能干多久？888', '105', '0', '0', '88888888888888', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('33', '雷小天测试', '106', '0', '0', '雷小天', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('42', '关于', 'aboutme', '1566920166', '1566977785', 'aboutme', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('43', '相册', 'pincture', '1566921035', '1566921035', '这是相册页面', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('44', '雷小天博客文章', null, '1567677494', '1567856387', '雷小天顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶', '4', 'post', 'publish', '当达', 'html5,html5', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('45', '测试tag标题', null, '1567787007', '1567861245', '哒哒哒哒哒哒多多多多多多多', '4', 'post', 'publish', '顶顶顶', '', '0', '0', '1', '1', '1');
-INSERT INTO `articles` VALUES ('46', '住在手机里的朋友', null, '1567787141', '1568480525', '通信时代，无论是初次相见还是老友重逢，交换联系方式，常常是彼此交换名片，然后郑重或是出于礼貌用手机记下对方的电话号码。在快节奏的生活里，我们不知不觉中就成为住在别人手机里的朋友。又因某些意外，变成了别人手机里匆忙的过客，这种快餐式的友谊 ...', '4', 'post', 'publish', '手机配件', '手机', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('1', 'about my blog', 'about', '1487853610', '1487872488', '', '### Hello World\r\n\r\nabout me\r\n\r\n### ...\r\n\r\n...', '1', 'page', 'publish', null, null, '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('2', '你面对的是生活而不是手机', null, '1487861184', '1569219016', '每一次与别人吃饭，总会有人会拿出手机。以为他们在打电话或者有紧急的短信，但用余光瞟了一眼之后发现无非就两件事：1、看小说，2、上人人或者QQ...', '## Hello  World.\r\n\r\n> ...\r\n\r\n----------\r\n\r\n\r\n<!--more-->\r\n\r\n```java\r\npublic static void main(String[] args){\r\n    System.out.println(\"Hello 13 Blog.\");\r\n}\r\n```', '1', 'post', 'publish', '生活', '手机', '10', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('3', '手机的16个惊人小秘密，据说99.999%的人都不知', '20', '1566569614', '1569209356', '引导语：知道么，手机有备用电池，手机拨号码12593+电话号码=陷阱……手机具有很多你不知道的小秘密，说出来一定很惊奇！不信的话就来看看吧！...\r\n\r\n', '引导语：知道么，手机有备用电池，手机拨号码12593+电话号码=陷阱……手机具有很多你不知道的小秘密，说出来一定很惊奇！不信的话就来看看吧！...\r\n\r\n这是文章内容', '1', 'post', 'publish', 'uu', '手机', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('4', '豪雅手机正式发布! 在法国全手工打造的奢侈品', 'test', '1567786007', '1569219069', '现在跨界联姻，时尚、汽车以及运动品牌联合手机制造商联合发布手机产品在行业里已经不再新鲜，上周我们给大家报道过著名手表制造商瑞士泰格·豪雅（Tag Heuer） 联合法国的手机制造商Modelabs发布的一款奢华手机的部分谍照，而近日该手机终于被正式发布了...', '现在跨界联姻，时尚、汽车以及运动品牌联合手机制造商联合发布手机产品在行业里已经不再新鲜，上周我们给大家报道过著名手表制造商瑞士泰格·豪雅（Tag Heuer） 联合法国的手机制造商Modelabs发布的一款奢华手机的部分谍照，而近日该手机终于被正式发布了...', '0', 'post', 'publish', '钉钉', '手机', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('14', 'PHP程序员这行能干多久？', '11', '1566977685', '1569219281', 'PHP程序员这行能干多久？我搞了开发这么久怎么还没有找到方向感，我现在非常焦虑，我很困惑，我对未来充满了恐惧，谁来帮帮我...', 'PHP程序员这行能干多久？我搞了开发这么久怎么还没有找到方向感，我现在非常焦虑，我很困惑，我对未来充满了恐惧，谁来帮帮我...', '0', 'post', 'publish', '一样', '工作', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('15', 'PHP程序员这行能干多久？22', '22', '0', '1567855351', '', '哒哒哒哒哒哒', '0', 'post', 'publish', '刚刚', 'html5', '0', '1', '1', '1', '1');
+INSERT INTO `articles` VALUES ('16', '雷小天测试tag保存', '33', '0', '1567860198', '', '哒哒哒哒哒哒多多多多多多多多', '0', 'post', 'publish', '钉钉', '运维', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('17', '网站架构设计之高可用原则22', '44', '0', '1567861188', '', '88888888888888888888888888888', '0', 'post', 'publish', '222', '', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('19', 'git工具分支创建管理案例分析', '55', '0', '0', '', '1111\r\n2133333333333333', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('21', '3333', '66', '0', '0', '', '8888888888888', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('22', 'PHP程序员这行能干多久？9999', '77', '0', '0', '', '分隔符', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('23', 'PHP程序员这行能干多久？88', '88', '0', '0', '', '888888888888888888', '0', 'post', 'publish', null, ' ', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('25', 'PHP程序员这行能干多久？77', '99', '0', '0', '', '7777777777', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('26', 'PHP程序员这行能干多久？123', '100', '0', '0', '', '123', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('28', 'PHP程序员这行能干多久？1234', '101', '0', '0', '', '444545', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('29', 'PHP程序员这行能干多久？1234', '102', '0', '0', '', '444545', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('30', 'PHP程序员这行能干多久？7879', '103', '0', '0', '', '1111111', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('31', '测试标题45454', '104', '0', '0', '', '454545', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('32', 'PHP程序员这行能干多久？888', '105', '0', '0', '', '88888888888888', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('33', '雷小天测试', '106', '0', '0', '', '雷小天', '0', 'post', 'publish', null, 'default', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('42', '关于', 'aboutme', '1566920166', '1566977785', '', 'aboutme', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('43', '相册', 'pincture', '1566921035', '1566921035', '', '这是相册页面', '4', 'page', 'publish', null, '', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('44', '原来以为，一个人的勇敢是，删掉他的手机号码...', null, '1567677494', '1569209187', '原来以为，一个人的勇敢是，删掉他的手机号码、QQ号码等等一切，努力和他保持距离。等着有一天，习惯不想念他，习惯他不在身边,习惯时间把他在我记忆里的身影磨蚀干净...', '雷小天顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶顶', '4', 'post', 'publish', '当达', '手机', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('45', ' 教你怎样用欠费手机拨打电话', null, '1567787007', '1569209128', '初次相识的喜悦，让你觉得似乎找到了知音。于是，对于投缘的人，开始了较频繁的交往。渐渐地，初识的喜悦退尽，接下来就是仅仅保持着联系，平淡到偶尔在节假曰发短信互致问候...', '初次相识的喜悦，让你觉得似乎找到了知音。于是，对于投缘的人，开始了较频繁的交往。渐渐地，初识的喜悦退尽，接下来就是仅仅保持着联系，平淡到偶尔在节假曰发短信互致问候...', '4', 'post', 'publish', '电话技巧', '电话', '0', '0', '1', '1', '1');
+INSERT INTO `articles` VALUES ('46', '住在手机里的朋友', null, '1567787141', '1569225318', '通信时代，无论是初次相见还是老友重逢，交换联系方式，常常是彼此交换名片，然后郑重或是出于礼貌用手机记下对方的电话号码。在快节奏的生活里，我们不知不觉中就成为住在别人手机里的朋友。又因某些意外，变成了别人手机里匆忙的过客，这种快餐式的友谊 ...', '通信时代，无论是初次相见还是老友重逢，交换联系方式，常常是彼此交换名片，然后郑重或是出于礼貌用手机记下对方的电话号码。在快节奏的生活里，我们不知不觉中就成为住在别人手机里的朋友。又因某些意外，变成了别人手机里匆忙的过客，这种快餐式的友谊 ...\r\n/upload/2019/08/rj85i5gasejovohqpic80aubf2.jpg\r\n', '4', 'post', 'publish', '手机配件,朋友', '手机', '0', '0', '1', '1', '1');
 
 -- ----------------------------
 -- Table structure for attach
@@ -170,7 +171,7 @@ CREATE TABLE `metas` (
   `parent` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`mid`),
   KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of metas
@@ -183,6 +184,16 @@ INSERT INTO `metas` VALUES ('12', '电脑', null, 'category', null, '0', '0');
 INSERT INTO `metas` VALUES ('13', '雷小天博客', 'https://www.100txy.com', 'link', null, '0', '0');
 INSERT INTO `metas` VALUES ('14', '雷小天科技', 'http://www.lxtkj.cn', 'link', null, '2', '0');
 INSERT INTO `metas` VALUES ('15', '手机配件', '手机配件', 'tag', null, '0', '0');
+INSERT INTO `metas` VALUES ('16', '顶顶顶', '顶顶顶', 'tag', null, '0', '0');
+INSERT INTO `metas` VALUES ('17', '电话', null, 'category', null, '0', '0');
+INSERT INTO `metas` VALUES ('18', '电话技巧', '电话技巧', 'tag', null, '0', '0');
+INSERT INTO `metas` VALUES ('19', '当达', '当达', 'tag', null, '0', '0');
+INSERT INTO `metas` VALUES ('20', 'uu', 'uu', 'tag', null, '0', '0');
+INSERT INTO `metas` VALUES ('21', '生活', '生活', 'tag', null, '0', '0');
+INSERT INTO `metas` VALUES ('22', '钉钉', '钉钉', 'tag', null, '0', '0');
+INSERT INTO `metas` VALUES ('23', '工作', null, 'category', null, '0', '0');
+INSERT INTO `metas` VALUES ('24', '一样', '一样', 'tag', null, '0', '0');
+INSERT INTO `metas` VALUES ('25', '朋友', '朋友', 'tag', null, '0', '0');
 
 -- ----------------------------
 -- Table structure for options
@@ -223,10 +234,24 @@ CREATE TABLE `relationships` (
 -- Records of relationships
 -- ----------------------------
 INSERT INTO `relationships` VALUES ('2', '1');
+INSERT INTO `relationships` VALUES ('2', '9');
+INSERT INTO `relationships` VALUES ('2', '21');
 INSERT INTO `relationships` VALUES ('3', '1');
 INSERT INTO `relationships` VALUES ('3', '7');
+INSERT INTO `relationships` VALUES ('3', '9');
+INSERT INTO `relationships` VALUES ('3', '20');
+INSERT INTO `relationships` VALUES ('4', '9');
+INSERT INTO `relationships` VALUES ('4', '22');
+INSERT INTO `relationships` VALUES ('14', '23');
+INSERT INTO `relationships` VALUES ('14', '24');
+INSERT INTO `relationships` VALUES ('44', '9');
+INSERT INTO `relationships` VALUES ('44', '19');
+INSERT INTO `relationships` VALUES ('45', '16');
+INSERT INTO `relationships` VALUES ('45', '17');
+INSERT INTO `relationships` VALUES ('45', '18');
 INSERT INTO `relationships` VALUES ('46', '9');
 INSERT INTO `relationships` VALUES ('46', '15');
+INSERT INTO `relationships` VALUES ('46', '25');
 
 -- ----------------------------
 -- Table structure for role
