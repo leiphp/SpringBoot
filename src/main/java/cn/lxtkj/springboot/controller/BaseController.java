@@ -80,5 +80,13 @@ public abstract class BaseController {
 //        request.setAttribute("toparticle", articles);
 //        return "comm/public_right";
 //    }
+    /**
+     * 获取请求站长推荐6条数据
+     * @return
+     */
+    public  List<Article> getRecommendArticle() {
+        List<Article> articles = articleService.getRecommendArticleList(6);
+        return articles;
+    }
 
 }

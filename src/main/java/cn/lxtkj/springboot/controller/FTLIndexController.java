@@ -51,10 +51,14 @@ public class FTLIndexController extends BaseController{
         List<Article> articles = articleService.getNewArticleList(7);
         request.setAttribute("articles", articles);
         request.setAttribute("commons", commons);
+        /*公共数据start*/
         List<Article> recentArticle = super.getRecentArticle();
         request.setAttribute("recentarticle", recentArticle);
         List<Article> topArticle = super.getTophitArticle();
         request.setAttribute("toparticle", topArticle);
+        List<Article> recommendArticle = super.getRecommendArticle();
+        request.setAttribute("recommendarticle", recommendArticle);
+        /*公共数据end*/
         return "home";
     }
 
@@ -85,6 +89,14 @@ public class FTLIndexController extends BaseController{
         List<Metas> categories = metasService.getMetas(Types.CATEGORY.getType());
         request.setAttribute("categories", categories);
         request.setAttribute("commons", commons);
+        /*公共数据start*/
+        List<Article> recentArticle = super.getRecentArticle();
+        request.setAttribute("recentarticle", recentArticle);
+        List<Article> topArticle = super.getTophitArticle();
+        request.setAttribute("toparticle", topArticle);
+        List<Article> recommendArticle = super.getRecommendArticle();
+        request.setAttribute("recommendarticle", recommendArticle);
+        /*公共数据end*/
         return "article";
     }
     @RequestMapping("/login")
@@ -101,6 +113,14 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("articles", articlePaginator);
         request.setAttribute("pageInfo", articlePaginator);
         request.setAttribute("commons", commons);
+        /*公共数据start*/
+        List<Article> recentArticle = super.getRecentArticle();
+        request.setAttribute("recentarticle", recentArticle);
+        List<Article> topArticle = super.getTophitArticle();
+        request.setAttribute("toparticle", topArticle);
+        List<Article> recommendArticle = super.getRecommendArticle();
+        request.setAttribute("recommendarticle", recommendArticle);
+        /*公共数据end*/
         return "list";
 
 

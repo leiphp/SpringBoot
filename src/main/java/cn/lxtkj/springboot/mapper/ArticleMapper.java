@@ -37,6 +37,9 @@ public interface ArticleMapper {
     @Select("SELECT * FROM ARTICLES WHERE type='post' ORDER BY hits desc limit #{limit}")
     List<Article> getTophitList(@Param("limit") Integer limit);
 
+    @Select("SELECT * FROM ARTICLES WHERE type='post' and is_recommend=1 ORDER BY created desc limit #{limit}")
+    List<Article> getRecommList(@Param("limit") Integer limit);
+
     @Update("UPDATE ARTICLES SET title=#{title},tags=#{tags},description=#{description},content=#{content}, categories=#{categories},modified=#{modified} where cid=#{cid}")
     int update(@Param("cid") Integer cid, @Param("title") String title, @Param("tags") String tags,@Param("description") String description, @Param("content") String content,  @Param("categories") String categories,  @Param("modified") Integer modified);
 

@@ -150,6 +150,13 @@ public class ArticleService {
         return listArticle;
     }
 
+    //获取站长推荐的6条数据
+    public List<Article> getRecommendArticleList(int limit){
+        //mysql查询limit
+        List<Article> listArticle = articleMapper.getRecommList(limit);
+        return listArticle;
+    }
+
     //获取tag所有文章
     public PageInfo<Article> getArticleByTag(int page, int pageSize, String tag){
         //mysql查询limit
