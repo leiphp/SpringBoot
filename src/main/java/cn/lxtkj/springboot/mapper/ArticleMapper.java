@@ -51,4 +51,7 @@ public interface ArticleMapper {
 
     @Select("SELECT * FROM ARTICLES WHERE TYPE = 'post' AND tags LIKE  #{tag} ORDER BY created desc")
     List<Article> getTagArticleList(@Param("tag") String tag);
+
+    @Select("SELECT * FROM ARTICLES WHERE TYPE = 'post' AND categories LIKE  #{categories} ORDER BY created desc")
+    List<Article> getCategoriesArticleList(@Param("categories") String categories);
 }

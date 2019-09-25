@@ -130,9 +130,26 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("alltags", alltags);
         /*公共数据end*/
         return "list";
-
-
-
+    }
+    //列表页面
+    @RequestMapping(value="/category/{categories}", method = RequestMethod.GET)
+    public String categories(HttpServletRequest request, @PathVariable String categories, @RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "limit", defaultValue = "7") int limit){
+        log.info("categories是："+categories);
+        PageInfo<Article> articlePaginator = articleService.getArticleByCategories(page, limit, '%'+categories+'%');
+        request.setAttribute("articles", articlePaginator);
+        request.setAttribute("pageInfo", articlePaginator);
+        request.setAttribute("commons", commons);
+        /*公共数据start*/
+        List<Article> recentArticle = super.getRecentArticle();
+        request.setAttribute("recentarticle", recentArticle);
+        List<Article> topArticle = super.getTophitArticle();
+        request.setAttribute("toparticle", topArticle);
+        List<Article> recommendArticle = super.getRecommendArticle();
+        request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> alltags = super.getAllTags();
+        request.setAttribute("alltags", alltags);
+        /*公共数据end*/
+        return "list";
     }
 
     /**

@@ -16,11 +16,11 @@
             </div>
 
             <div class="ft-nav">
-                <a href="javascript:void(0)" target="_blank">关于我们</a>
-                <a href="javascript:void(0)" target="_blank">联系我们</a>
-                <a href="javascript:void(0)" target="_blank">版权声明</a>
+                <a href="javascript:void(0)" >关于我们</a>
+                <a href="javascript:void(0)" >联系我们</a>
+                <a href="javascript:void(0)" >版权声明</a>
                 <a href="javascript:void(0)" id="qaurl">问题反馈</a>
-                <a href="javascript:void(0)" target="_blank">商务合作</a>
+                <a href="javascript:void(0)" >商务合作</a>
             </div>
             <p class="ft-copyright"> Copyright 2019 Comsenz Inc. Powered by Springboot. 粤ICP2014008000-3号</p>
 

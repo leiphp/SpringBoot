@@ -167,4 +167,14 @@ public class ArticleService {
         PageInfo<Article> pageInfoArticleList = new PageInfo<Article>(listArticle);
         return pageInfoArticleList;
     }
+    //获取categories所有文章
+    public PageInfo<Article> getArticleByCategories(int page, int pageSize, String categories){
+        //mysql查询limit
+        //pageHelper 帮我们生产分页语句
+        PageHelper.startPage(page, pageSize);
+        List<Article> listArticle = articleMapper.getCategoriesArticleList(categories);
+        //返回给客户端展示
+        PageInfo<Article> pageInfoArticleList = new PageInfo<Article>(listArticle);
+        return pageInfoArticleList;
+    }
 }

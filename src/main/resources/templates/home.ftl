@@ -50,7 +50,7 @@
                     <ul>
                         <h3><a href="/article/${post.cid}">${post.title}</a></h3>
                         <p>${post.description}</p>
-                        <p class="autor"><span class="lm f_l"><a href="/">${post.categories}</a></span><span class="dtime f_l">${(post.created*1000)?number_to_datetime}</span><span class="viewnum f_r">浏览（<a href="/">${post.hits}</a>）</span><span class="pingl f_r">评论（<a href="/">${post.comments_num}</a>）</span></p>
+                        <p class="autor"><span class="lm f_l"><a href="/">${commons.show_categories(post.categories)}</a></span><span class="dtime f_l">${(post.created*1000)?number_to_datetime}</span><span class="viewnum f_r">浏览（<a href="/">${post.hits}</a>）</span><span class="pingl f_r">评论（<a href="/">${post.comments_num}</a>）</span></p>
                     </ul>
                 </div>
             </#list>
