@@ -3,7 +3,7 @@
     <title>${title}</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <link rel="shortcut icon" href="/admin/images/favicon.png"/>
+    <link rel="shortcut icon" href="/images/favicon.png"/>
     <link href="/css/base.css" rel="stylesheet">
     <link href="/css/index.css" rel="stylesheet">
     <link href="/css/media.css" rel="stylesheet">

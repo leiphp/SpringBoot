@@ -9,6 +9,7 @@
     <link href="/css/base.css" rel="stylesheet">
     <link href="/css/view.css" rel="stylesheet">
     <link href="/css/media.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/favicon.png"/>
     <link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/9.9.0/styles/xcode.min.css">
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/myfocus-2.0.4.min.js"></script>

@@ -8,6 +8,7 @@
     <link href="/css/base.css" rel="stylesheet">
     <link href="/css/list.css" rel="stylesheet">
     <link href="/css/media.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/images/favicon.png"/>
     <script type="text/javascript" src="/js/jquery.min.js"></script>
     <script type="text/javascript" src="/js/lrtk.js"></script>
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
