@@ -1,9 +1,12 @@
 package cn.lxtkj.springboot.controller;
 
 //import cn.lxtkj.springboot.model.Vo.UserVo;
+import cn.lxtkj.springboot.dto.Types;
 import cn.lxtkj.springboot.entity.Article;
+import cn.lxtkj.springboot.entity.Metas;
 import cn.lxtkj.springboot.entity.User;
 import cn.lxtkj.springboot.service.ArticleService;
+import cn.lxtkj.springboot.service.MetasService;
 import cn.lxtkj.springboot.utils.MapCache;
 import cn.lxtkj.springboot.utils.TaleUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,9 @@ import java.util.List;
 public abstract class BaseController {
     @Autowired
     private ArticleService articleService;
+
+    @Autowired
+    private MetasService metasService;
 
     public static String THEME = "themes/default";
 
@@ -87,6 +93,14 @@ public abstract class BaseController {
     public  List<Article> getRecommendArticle() {
         List<Article> articles = articleService.getRecommendArticleList(6);
         return articles;
+    }
+    /**
+     * 获取所有tag数据
+     * @return
+     */
+    public  List<Metas> getAllTags() {
+        List<Metas> tags = metasService.getMetas(Types.TAG.getType());
+        return tags;
     }
 
 }

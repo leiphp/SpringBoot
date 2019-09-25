@@ -58,6 +58,8 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("toparticle", topArticle);
         List<Article> recommendArticle = super.getRecommendArticle();
         request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> alltags = super.getAllTags();
+        request.setAttribute("alltags", alltags);
         /*公共数据end*/
         return "home";
     }
@@ -96,6 +98,8 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("toparticle", topArticle);
         List<Article> recommendArticle = super.getRecommendArticle();
         request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> alltags = super.getAllTags();
+        request.setAttribute("alltags", alltags);
         /*公共数据end*/
         return "article";
     }
@@ -120,6 +124,8 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("toparticle", topArticle);
         List<Article> recommendArticle = super.getRecommendArticle();
         request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> alltags = super.getAllTags();
+        request.setAttribute("alltags", alltags);
         /*公共数据end*/
         return "list";
 

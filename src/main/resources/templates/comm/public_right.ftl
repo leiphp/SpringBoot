@@ -55,17 +55,9 @@
 <div class="cloud">
     <h3>标签云</h3>
     <ul>
-        <a href="/">手机配件</a>
-        <a href="/">手机</a>
-        <a href="/">苹果Apple</a>
-        <a href="/">SumSung</a>
-        <a href="/">Sony</a>
-        <a href="/">华维荣耀</a>
-        <a href="/">手机</a>
-        <a href="/">三星</a><a href="/">索尼</a>
-        <a href="/">华维荣耀</a>
-        <a href="/">三星</a>
-        <a href="/">索尼</a>
+        <#list alltags as tag>
+            <a href="/tag/${tag.name}">${tag.name}</a>
+        </#list>
     </ul>
 </div>
 <div class="tuwen">
