@@ -103,4 +103,13 @@ public abstract class BaseController {
         return tags;
     }
 
+    /**
+     * 获取所有link数据
+     * @return
+     */
+    public  List<Metas> getAllLink() {
+        List<Metas> links = metasService.getMetas(Types.LINK.getType());
+        return links;
+    }
+
 }

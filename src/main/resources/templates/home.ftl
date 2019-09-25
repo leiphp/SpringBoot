@@ -61,10 +61,10 @@
             <h3>关注我们</h3>
             <div class="gzwm">
                 <ul>
-                    <li><a class="xlwb" href="#" target="_blank">新浪微博</a></li>
-                    <li><a class="txwb" href="#" target="_blank">腾讯微博</a></li>
-                    <li><a class="rss" href="portal.php?mod=rss" target="_blank">邮箱</a></li>
-                    <li><a class="wx" href="mailto:admin@admin.com"  onmouseover="tip.start(this)" tips="<font color='#fff'>关注<b>机友汇</b>微信账号</font><br><b><img src='images/weixintop.jpg'></b>">微信</a></li>
+                    <li><a class="xlwb" href="http://weibo.com/100txy" target="_blank">新浪微博</a></li>
+                    <li><a class="txwb" href="https://www.100txy.com" target="_blank">腾讯微博</a></li>
+                    <li><a class="rss" href="https://www.100txy.com" target="_blank">邮箱</a></li>
+                    <li><a class="wx" href="mailto:admin@admin.com"  onmouseover="tip.start(this)" tips="<font color='#fff'>关注<b>雷小天博客</b>公众号</font><br><b><img src='images/weixintop.jpg'></b>">微信</a></li>
                     <div id="mjs:tip" class="tip" style="position:absolute;left:0;top:0;display:none;"> </div>
                     <script>
                         var tip={$:function(ele){
@@ -108,13 +108,16 @@
         <div class="links">
             <h3><span>[<a href="/">申请友情链接</a>]</span>友情链接</h3>
             <ul>
-                <li><a href="/">手机配件</a></li>
-                <li><a href="/">苹果Apple</a></li>
-                <li><a href="/">SumSung</a></li>
-                <li><a href="/">Sony</a></li>
-                <li><a href="/">三星</a></li>
-                <li><a href="/">索尼</a></li>
-                <li><a href="/">华维荣耀</a></li>
+                <#list alllinks as link>
+                    <li><a href="${link.slug}" target="_blank">${link.name}</a></li>
+                </#list>
+                <#--<li><a href="/">手机配件</a></li>-->
+                <#--<li><a href="/">苹果Apple</a></li>-->
+                <#--<li><a href="/">SumSung</a></li>-->
+                <#--<li><a href="/">Sony</a></li>-->
+                <#--<li><a href="/">三星</a></li>-->
+                <#--<li><a href="/">索尼</a></li>-->
+                <#--<li><a href="/">华维荣耀</a></li>-->
             </ul>
         </div>
     </div>

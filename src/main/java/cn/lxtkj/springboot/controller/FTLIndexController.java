@@ -60,6 +60,8 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("recommendarticle", recommendArticle);
         List<Metas> alltags = super.getAllTags();
         request.setAttribute("alltags", alltags);
+        List<Metas> alllinks = super.getAllLink();
+        request.setAttribute("alllinks", alllinks);
         /*公共数据end*/
         return "home";
     }

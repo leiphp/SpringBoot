@@ -1,9 +1,9 @@
 <header>
     <div class="topbg">
         <ul class="topnav">
-            <a href="/ " target="_blank">Home</a>
-            <a href="/ " target="_blank">官方微博</a>
-            <a href="/ " target="_blank">关于我们</a>
+            <a href="https://www.100txy.com" target="_blank">Home</a>
+            <a href="http://weibo.com/100txy" target="_blank">官方微博</a>
+            <a href="https://www.100txy.com" target="_blank">关于我们</a>
         </ul>
     </div>
     <div class="topbgline"></div>
