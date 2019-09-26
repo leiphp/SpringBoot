@@ -74,6 +74,17 @@ public class CommentService {
        return comment;
 
     }
+    //获取categories所有文章
+    public PageInfo<Comment> getCommentById(int page, int pageSize, int cid){
+        //mysql查询limit
+        //pageHelper 帮我们生产分页语句
+        PageHelper.startPage(page, pageSize);
+        List<Comment> listArticle = commentMapper.selectByCid(cid);
+        //返回给客户端展示
+        PageInfo<Comment> pageInfoArticleList = new PageInfo<Comment>(listArticle);
+        return pageInfoArticleList;
+    }
+
     public String updateComment(Comment comment){
         int insertArticleResult = commentMapper.update(comment.getCoid(),comment.getStatus());
         if(insertArticleResult==1){
