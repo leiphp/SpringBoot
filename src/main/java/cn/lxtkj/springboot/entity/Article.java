@@ -17,7 +17,7 @@ public class Article {
     /**
      * 是否允许评论
      */
-    private Boolean allowComment;
+    private Boolean allow_comment;
 
     public Integer getComments_num() {
         return comments_num;
@@ -115,13 +115,11 @@ public class Article {
         this.hits = hits;
     }
 
-    public Boolean getAllowComment() {
-        return allowComment;
+    public Boolean getAllow_comment() {
+        return allow_comment;
     }
 
-    public void setAllowComment(Boolean allowComment) {
-        this.allowComment = allowComment;
+    public void setAllow_comment(Boolean allow_comment) {
+        this.allow_comment = allow_comment;
     }
-
-
 }

@@ -4,11 +4,11 @@
 <div >
     <div class="comment-container">
         <div id="comments" class="clearfix">
-            <#if article.allowComment==1>
+            <#if article.allow_comment??>
             <div >
                 <span class="response">
-                     <#if session.login_user??>
-                        Hi，<a href="${session.login_user.homeUrl}" data-no-instant="" >${session.login_user.username}</a>如果你想 <a href="/logout" title="注销" data-no-instant="">注销</a> ?
+                     <#if Session.login_user??>
+                        Hi，<a href="${Session.login_user.home_url}" data-no-instant="" >${Session.login_user.username}</a>如果你想 <a href="/logout" title="注销" data-no-instant="">注销</a> ?
                      <#else>
 
                      </#if>
@@ -17,7 +17,7 @@
                       onsubmit="return TaleComment.subComment();">
                     <input type="hidden" name="coid" id="coid"/>
                     <input type="hidden" name="cid" id="cid" value="${article.cid}"/>
-                    <input type="hidden" name="_csrf_token" value="${_csrf_token}"/>
+                    <input type="hidden" name="_csrf_token" value="AVB9fVe0HOHSKurxjwwOj-"/>
                     <input type="text" name="author" maxlength="12" id="author"
                            class="form-control input-control clearfix"
                            placeholder="姓名 (*)"
@@ -36,7 +36,7 @@
             </div>
             <#else>
             <div >
-                <span class="response">评论已关闭.</span>
+                <span class="response">评论已关闭.${article.allow_comment}</span>
             </div>
             </#if>
 
@@ -49,7 +49,7 @@
                                 <div class="comment-view" onclick="">
                                     <div class="comment-header">
                                         <!--设置get请求的参数-->
-                                        <img class="avatar"src="${commons.gravatar(comment.mail)}(s='80',r='G',d='')" title="${comment.author}" width="80" height="80"/>
+                                        <img class="avatar"src="${commons.gravatar(comment.mail)}" title="${comment.author}" width="80" height="80"/>
                                         <span class="comment-author">
                                             <a href="##" rel="external nofollow" >${comment.author}</a>
                                         </span>
@@ -73,10 +73,10 @@
                             <li class="prev"><a href="'?cp='+${comments.prePage}+'#comments'">←</a></li>
                         </#if>
                         <#list comments.navigatepageNums as navIndex>
-                            <li class="${comments.pageNum}==${navIndex}?'current':''"><a href="'?cp='+${navIndex}+'#comments'">${navIndex}</a></li>
+                            <li class="${comments.pageNum}==${navIndex}?'current':''"><a href="?cp=${navIndex}#comments">${navIndex}</a></li>
                         </#list>
                         <#if comments.hasNextPage??>
-                            <li class="next"><a href="'?cp='+${comments.nextPage}+'#comments'">→</a></li>
+                            <li class="next"><a href="?cp=${comments.nextPage}#comments">→</a></li>
                         </#if>
                     </ol>
                 </div>

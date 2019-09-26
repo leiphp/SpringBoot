@@ -21,7 +21,7 @@ public interface CommentMapper {
     Comment selectByCoid(@Param("coid") Integer coid);
 
     @Select("SELECT * FROM COMMENTS WHERE cid = #{cid}")
-    List<Comment> selectByCid(@Param("coid") Integer cid);
+    List<Comment> selectByCid(@Param("cid") Integer cid);
 
     @Update("UPDATE COMMENTS SET status=#{status} where coid=#{coid}")
     int update(@Param("coid") Integer coid, @Param("status") String status);
