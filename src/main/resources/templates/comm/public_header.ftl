@@ -12,24 +12,22 @@
         <div class="logo_r f_r"><a href="/"><img src="/images/search.png"></a></div>
     </div>
     <nav id="topnav">
-        <ul>
-            <li><a href="/">首页</a></li>
-            <li><a href="/list">分类</a>
-                <#--<div class="drop-nav ">-->
-                    <#--<ul>-->
-                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>28))}">PHP</a></li>-->
-                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>29))}">Linux</a></li>-->
-                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>36))}">Java</a></li>-->
-                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>39))}">C</a></li>-->
-                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>37))}">Python</a></li>-->
-                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>40))}">Android</a></li>-->
-                    <#--</ul>-->
-                <#--</div>-->
+        <ul class="menu">
+            <li class="stmenu"><a href="/"  class="xialaguang">首页</a></li>
+            <li class="stmenu"><a href="/list"  class="xialaguang">分类</a>
+                    <ul class="children">
+                        <li><a href="{:U('Home/Index/category',array('cid'=>28))}">PHP</a></li>
+                        <li><a href="{:U('Home/Index/category',array('cid'=>29))}">Linux</a></li>
+                        <li><a href="{:U('Home/Index/category',array('cid'=>36))}">Java</a></li>
+                        <li><a href="{:U('Home/Index/category',array('cid'=>39))}">C</a></li>
+                        <li><a href="{:U('Home/Index/category',array('cid'=>37))}">Python</a></li>
+                        <li><a href="{:U('Home/Index/category',array('cid'=>40))}">Android</a></li>
+                    </ul>
             </li>
-            <li><a href="javascript:void(0)">说说</a></li>
-            <li><a href="/contact">联系</a></li>
-            <li><a href="/link">友链</a></li>
-            <li><a href="/about">关于</a></li>
+            <li class="stmenu"><a href="javascript:void(0)"  class="xialaguang">说说</a></li>
+            <li class="stmenu"><a href="/contact"  class="xialaguang">联系</a></li>
+            <li class="stmenu"><a href="/link"  class="xialaguang">友链</a></li>
+            <li class="stmenu"><a href="/about"  class="xialaguang">关于</a></li>
         </ul>
         <script src="/js/silder.js"></script>
     </nav>
