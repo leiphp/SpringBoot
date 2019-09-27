@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-09-26 20:26:09
+Date: 2019-09-27 19:09:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -109,18 +109,23 @@ CREATE TABLE `comments` (
   `agent` varchar(200) DEFAULT NULL,
   `content` text,
   `type` varchar(16) DEFAULT 'comment',
-  `status` varchar(16) DEFAULT 'approved',
+  `status` varchar(16) DEFAULT 'not_audit',
   `parent` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`coid`),
   KEY `cid` (`cid`),
   KEY `created` (`created`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comments
 -- ----------------------------
 INSERT INTO `comments` VALUES ('2', '19', '1566912607', 'xiao', '0', '1', '1124378213@qq.com', 'https://github.com/leiphp/sshflower', '0:0:0:0:0:0:0:1', null, '我来快快快测试', 'comment', 'approved', '0');
 INSERT INTO `comments` VALUES ('3', '17', '1566912678', '雷小天', '0', '1', '1124378213@qq.com', 'https://github.com/leiphp/sshflower', '0:0:0:0:0:0:0:1', null, '我可以看看 你的源码吗', 'comment', 'approved', '0');
+INSERT INTO `comments` VALUES ('4', '17', '1569565403', 'lei', '0', '0', '1124378213@qq.com', 'http://www.lxtkj.cn', '0:0:0:0:0:0:0:1', null, 'ddddddddddddddddddddddddddddd', 'comment', 'approved', '0');
+INSERT INTO `comments` VALUES ('5', '17', '1569565537', 'lei', '0', '0', '1124378213@qq.com', 'http://www.lxtkj.cn', '0:0:0:0:0:0:0:1', null, 'aaaaaaaaaaaaaaddddddddddddddddff', 'comment', 'approved', '0');
+INSERT INTO `comments` VALUES ('6', '17', '1569565877', '雷小天22', '0', '0', '1124378213@qq.com', 'http://www.lxtkj.cn', '0:0:0:0:0:0:0:1', null, '你是睡，拉我来敢来吗', 'comment', 'approved', '0');
+INSERT INTO `comments` VALUES ('7', '17', '1569566649', '雷小天22', '0', '0', '1124378213@qq.com', 'http://www.lxtkj.cn', '0:0:0:0:0:0:0:1', null, '顶顶顶顶顶顶顶顶顶顶啊啊啊啊', 'comment', 'approved', '0');
+INSERT INTO `comments` VALUES ('8', '17', '1569566870', '功林', '0', '0', '1124378213@qq.com', 'http://www.lxtkj.cn', '0:0:0:0:0:0:0:1', null, '啵啵啵啵啵啵啵啵啵啵啵啵宝宝', 'comment', 'approved', '0');
 
 -- ----------------------------
 -- Table structure for logs
