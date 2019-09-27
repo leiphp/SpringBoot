@@ -8,7 +8,7 @@
             <div >
                 <span class="response">
                      <#if Session.login_user??>
-                        Hi，<a href="${Session.login_user.home_url}" data-no-instant="" >${Session.login_user.username}</a>如果你想 <a href="/logout" title="注销" data-no-instant="">注销</a> ?
+                        Hi，<a href="#" data-no-instant="" >${Session.login_user.username}</a>如果你想 <a href="/logout" title="注销" data-no-instant="">注销</a> ?
                      <#else>
 
                      </#if>
