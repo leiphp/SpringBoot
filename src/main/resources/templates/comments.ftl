@@ -69,13 +69,13 @@
                 </ol>
                 <div class="lists-navigator clearfix">
                     <ol class="page-navigator">
-                        <#if comments.hasPreviousPage??>
-                            <li class="prev"><a href="'?cp='+${comments.prePage}+'#comments'">←</a></li>
+                        <#if comments.hasPreviousPage>
+                            <li class="prev"><a href="?cp=${comments.prePage}#comments">←</a></li>
                         </#if>
                         <#list comments.navigatepageNums as navIndex>
-                            <li class="${comments.pageNum}==${navIndex}?'current':''"><a href="?cp=${navIndex}#comments">${navIndex}</a></li>
+                            <li class=${(comments.pageNum==navIndex)?string('current','')}><a href="?cp=${navIndex}#comments">${navIndex}</a></li>
                         </#list>
-                        <#if comments.hasNextPage??>
+                        <#if comments.hasNextPage>
                             <li class="next"><a href="?cp=${comments.nextPage}#comments">→</a></li>
                         </#if>
                     </ol>

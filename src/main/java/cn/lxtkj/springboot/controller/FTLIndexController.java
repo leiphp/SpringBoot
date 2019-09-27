@@ -97,7 +97,7 @@ public class FTLIndexController extends BaseController{
         List<Metas> categories = metasService.getMetas(Types.CATEGORY.getType());
         request.setAttribute("categories", categories);
 
-        completeArticle(request, article,1,7);
+        completeArticle(request, article);
 
         request.setAttribute("commons", commons);
 
@@ -166,14 +166,14 @@ public class FTLIndexController extends BaseController{
      * @param request
      * @param article
      * */
-    private void completeArticle(HttpServletRequest request, Article article, @RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "limit", defaultValue = "7") int limit) {
+    private void completeArticle(HttpServletRequest request, Article article) {
        // if (article.getAllowComment()) {
-//            String cp = request.getParameter("cp");
-//            if (StringUtils.isBlank(cp)) {
-//                cp = "1";
-//            }
-//            request.setAttribute("cp", cp);
-            PageInfo<Comment> commentsPaginator = commentService.getCommentById(page, limit, article.getCid());
+            String cp = request.getParameter("cp");
+            if (StringUtils.isBlank(cp)) {
+                cp = "1";
+            }
+            request.setAttribute("cp", cp);
+            PageInfo<Comment> commentsPaginator = commentService.getCommentById(Integer.parseInt(cp), 5, article.getCid());
             request.setAttribute("comments", commentsPaginator);
        // }
     }
