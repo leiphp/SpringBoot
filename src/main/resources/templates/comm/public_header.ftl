@@ -13,12 +13,23 @@
     </div>
     <nav id="topnav">
         <ul>
-            <a href="/">网站首页</a>
-            <a href="/list">文章列表</a>
-            <a href="/article/1">文章详情</a>
-            <a href="/article/1">关于我们</a>
-            <a href="/article/1">联系我们</a>
-            <a href="/article/1">网上留言</a>
+            <li><a href="/">首页</a></li>
+            <li><a href="/list">分类</a>
+                <#--<div class="drop-nav ">-->
+                    <#--<ul>-->
+                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>28))}">PHP</a></li>-->
+                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>29))}">Linux</a></li>-->
+                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>36))}">Java</a></li>-->
+                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>39))}">C</a></li>-->
+                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>37))}">Python</a></li>-->
+                        <#--<li><a href="{:U('Home/Index/category',array('cid'=>40))}">Android</a></li>-->
+                    <#--</ul>-->
+                <#--</div>-->
+            </li>
+            <li><a href="/talb">说说</a></li>
+            <li><a href="/contact">联系</a></li>
+            <li><a href="/link">友链</a></li>
+            <li><a href="/about">关于</a></li>
         </ul>
         <script src="/js/silder.js"></script>
     </nav>

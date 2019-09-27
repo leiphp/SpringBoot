@@ -23,6 +23,7 @@ header { }
 .logo { width: 1000px; margin: 30px auto; overflow: hidden; clear: both }
 #topnav { width: 100%; background: #31A9B3; height: 50px; line-height: 46px; }
 #topnav ul { width: 1000px; margin: auto }
+#topnav ul li { width: 160px; margin: auto ;float:left;}
 #topnav a { display: inline-block; font-size: 18px; font-family: "Microsoft Yahei", Arial, Helvetica, sans-serif; padding: 0 20px; }
 #topnav a:hover { background: #fff; color: #000; border-top: 4px solid #f77825; }
 #topnav a { color: #FFF }
