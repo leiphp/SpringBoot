@@ -1,8 +1,10 @@
 package cn.lxtkj.springboot.service;
 
 import cn.lxtkj.springboot.constant.WebConst;
+import cn.lxtkj.springboot.entity.Article;
 import cn.lxtkj.springboot.entity.Comment;
 import cn.lxtkj.springboot.mapper.CommentMapper;
+import cn.lxtkj.springboot.utils.TaleUtils;
 import cn.lxtkj.springboot.model.Vo.ContentVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -14,12 +16,19 @@ import java.util.List;
 
 @Service
 public class CommentService {
+
+    @Autowired
+    private ArticleService articleService;
     @Autowired
     private CommentMapper commentMapper;
 
-    public int insert(String title, String slug, String tags, String content, Integer author_id, String type, String categories, Integer created, Integer modified){
-        int insertArticleResult = commentMapper.insert(title, slug, tags, content, author_id, type, categories,created, modified);
-        return insertArticleResult;
+    public String insertComment(Comment comment){
+
+        int insertCommentResult = commentMapper.insert(comment.getCid(), comment.getCreated(), comment.getAuthor(), comment.getMail(), comment.getUrl(), comment.getIp(), comment.getContent(),comment.getParent());
+        if(insertCommentResult==1){
+            return "SUCCESS";
+        }
+        return "FAILURE";
     }
 
     public PageInfo<Comment> getCommentList(String type, int page, int pageSize, String sort){
@@ -31,37 +40,30 @@ public class CommentService {
         PageInfo<Comment> pageInfoArticleList = new PageInfo<Comment>(listArticle);
         return pageInfoArticleList;
     }
-    public String publish(ContentVo contents){
-        if (null == contents) {
-            return "文章对象为空";
+    public String publish(Comment comment){
+        if (null == comment) {
+            return "评论对象为空";
         }
-        if (StringUtils.isBlank(contents.getTitle())) {
-            return "文章标题不能为空";
+        if (StringUtils.isBlank(comment.getAuthor())) {
+            comment.setAuthor("热心网友");
         }
-        if (StringUtils.isBlank(contents.getContent())) {
-            return "文章内容不能为空";
+        if (StringUtils.isNotBlank(comment.getMail()) && !TaleUtils.isEmail(comment.getMail())) {
+            return "请输入正确的邮箱格式";
         }
-        int titleLength = contents.getTitle().length();
-        if (titleLength > WebConst.MAX_TITLE_COUNT) {
-            return "文章标题过长";
+        if (StringUtils.isBlank(comment.getContent())) {
+            return "评论内容不能为空";
         }
-        int contentLength = contents.getContent().length();
-        if (contentLength > WebConst.MAX_TEXT_COUNT) {
-            return "文章内容过长";
+        if (comment.getContent().length() < 5 || comment.getContent().length() > 2000) {
+            return "评论字数在5-2000个字符";
         }
-        if (null == contents.getAuthorId()) {
-            return "请登录后发布文章";
+        if (null == comment.getCid()) {
+            return "评论文章不能为空";
         }
-        if (StringUtils.isNotBlank(contents.getSlug())) {
-            if (contents.getSlug().length() < 5) {
-                return "路径太短了";
-            }
-            long count = 0;
-            if (count > 0) return "该路径已经存在，请重新输入";
-        } else {
-            contents.setSlug(null);
+        Article article = articleService.getArticle(comment.getCid());
+        if (null == article) {
+            return "不存在的文章";
         }
-        int insertArticleResult = commentMapper.insert(contents.getTitle(),contents.getSlug(), contents.getTags(), contents.getContent(), contents.getAuthorId(),contents.getType(), contents.getCategories(), contents.getCreated(), contents.getModified());
+        int insertArticleResult = commentMapper.insert(comment.getCid(), comment.getCreated(), comment.getAuthor(), comment.getMail(), comment.getUrl(), comment.getIp(), comment.getContent(),comment.getParent());
         if(insertArticleResult==1){
             return WebConst.SUCCESS_RESULT;
         }else{

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="tale_comment">
+<html lang="en" xmlns="http://www.thymeleaf.org" tfragment="tale_comment">
 <body>
 <script type="text/javascript">
     /*<![CDATA[*/

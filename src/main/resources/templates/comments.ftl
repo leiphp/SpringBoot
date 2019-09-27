@@ -17,7 +17,7 @@
                       onsubmit="return TaleComment.subComment();">
                     <input type="hidden" name="coid" id="coid"/>
                     <input type="hidden" name="cid" id="cid" value="${article.cid}"/>
-                    <input type="hidden" name="_csrf_token" value="AVB9fVe0HOHSKurxjwwOj-"/>
+                    <input type="hidden" name="_csrf_token" value="${_csrf_token}"/>
                     <input type="text" name="author" maxlength="12" id="author"
                            class="form-control input-control clearfix"
                            placeholder="姓名 (*)"

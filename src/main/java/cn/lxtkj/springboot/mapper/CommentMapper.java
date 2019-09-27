@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface CommentMapper {
 
-    @Insert("INSERT INTO COMMENTS(title, slug, tags, content, author_id, type, categories, created, modified) VALUES(#{title}, #{slug}, #{tags}, #{content}, #{author_id}, #{type}, #{categories}, #{created}, #{modified})")
-    int insert(@Param("title") String title, @Param("slug") String slug, @Param("tags") String tags, @Param("content") String content, @Param("author_id") Integer author_id, @Param("type") String type, @Param("categories") String categories, @Param("created") Integer created, @Param("modified") Integer modified);
+    @Insert("INSERT INTO COMMENTS(cid, created, author, mail, url, ip, content, parent) VALUES(#{cid}, #{created}, #{author}, #{mail}, #{url}, #{ip}, #{content}, #{parent})")
+    int insert(@Param("cid") Integer cid, @Param("created") Integer created, @Param("author") String author, @Param("mail") String mail, @Param("url") String url, @Param("ip") String ip, @Param("content") String content, @Param("parent") Integer parent);
 
     @Select("SELECT * FROM COMMENTS WHERE TYPE = #{type} ORDER BY ${sort}")
     List<Comment> list(@Param("type") String type, @Param("sort") String sort);
