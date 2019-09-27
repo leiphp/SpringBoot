@@ -26,7 +26,35 @@
 /*вСндубап╠М*/
 
 .topnews { margin: 20px 0; }
-.topnews h2 { font-size: 16px; font-weight: bold; line-height: 36px; color: #333; border-bottom: #db6d4c 4px solid; }
+.topnews h2 {
+    background: url(../images/lct.png) left center no-repeat;
+    padding-left: 30px;
+
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 36px;
+    color: #333;
+    border-bottom: #db6d4c 4px solid;
+}
+.news_about {
+    color: #888888;
+    border: 1px solid #F3F3F3;
+    padding: 10px;
+    margin: 20px auto 15px auto;
+    line-height: 23px;
+    background: none repeat 0 0 #F6F6F6;
+}
+.news_content {
+    line-height: 24px;
+    font-size: 14px;
+}
+.news_content p {
+    overflow: hidden;
+    padding-bottom: 4px;
+    padding-top: 6px;
+    word-wrap: break-word;
+}
+
 .topnews h2 b { }
 .topnews h2 span { float: right; font-size: 12px; font-weight: normal; }
 .topnews h2 span a { display: inline-block; padding: 0 5px; }

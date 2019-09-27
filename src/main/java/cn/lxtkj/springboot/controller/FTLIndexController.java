@@ -69,10 +69,56 @@ public class FTLIndexController extends BaseController{
         /*公共数据end*/
         return "home";
     }
-
-    @RequestMapping("/list")
-    public String List(){
-        return "list";
+    @RequestMapping("/contact")
+    public String Contact(HttpServletRequest request){
+        request.setAttribute("commons", commons);
+        /*公共数据start*/
+        List<Article> recentArticle = super.getRecentArticle();
+        request.setAttribute("recentarticle", recentArticle);
+        List<Article> topArticle = super.getTophitArticle();
+        request.setAttribute("toparticle", topArticle);
+        List<Article> recommendArticle = super.getRecommendArticle();
+        request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> alltags = super.getAllTags();
+        request.setAttribute("alltags", alltags);
+        List<Metas> alllinks = super.getAllLink();
+        request.setAttribute("alllinks", alllinks);
+        /*公共数据end*/
+        return "contact";
+    }
+    @RequestMapping("/link")
+    public String Link(HttpServletRequest request){
+        request.setAttribute("commons", commons);
+        /*公共数据start*/
+        List<Article> recentArticle = super.getRecentArticle();
+        request.setAttribute("recentarticle", recentArticle);
+        List<Article> topArticle = super.getTophitArticle();
+        request.setAttribute("toparticle", topArticle);
+        List<Article> recommendArticle = super.getRecommendArticle();
+        request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> alltags = super.getAllTags();
+        request.setAttribute("alltags", alltags);
+        List<Metas> alllinks = super.getAllLink();
+        request.setAttribute("alllinks", alllinks);
+        /*公共数据end*/
+        return "link";
+    }
+    @RequestMapping("/about")
+    public String About(HttpServletRequest request){
+        request.setAttribute("commons", commons);
+        /*公共数据start*/
+        List<Article> recentArticle = super.getRecentArticle();
+        request.setAttribute("recentarticle", recentArticle);
+        List<Article> topArticle = super.getTophitArticle();
+        request.setAttribute("toparticle", topArticle);
+        List<Article> recommendArticle = super.getRecommendArticle();
+        request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> alltags = super.getAllTags();
+        request.setAttribute("alltags", alltags);
+        List<Metas> alllinks = super.getAllLink();
+        request.setAttribute("alllinks", alllinks);
+        /*公共数据end*/
+        return "about";
     }
 
     @RequestMapping(value="/article/{id}", method = RequestMethod.GET)

@@ -39,12 +39,12 @@
     </div>
     <nav id="topnav">
         <ul>
-            <a href="/">网站首页</a>
-            <a href="/list">新闻中心</a>
-            <a href="/article/2">产品中心</a>
-            <a href="a.html">关于我们</a>
-            <a href="c.html">联系我们</a>
-            <a href="b.html">网上留言</a>
+            <li><a href="/">首页</a></li>
+            <li><a href="/list">分类</a></li>
+            <li><a href="javascript:void(0)">说说</a></li>
+            <li><a href="/contact">联系</a></li>
+            <li><a href="/link">友链</a></li>
+            <li><a href="/about">关于</a></li>
         </ul>
         <script src="/js/silder.js"></script>
     </nav>

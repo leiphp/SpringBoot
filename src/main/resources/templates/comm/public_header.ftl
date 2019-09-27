@@ -26,7 +26,7 @@
                     <#--</ul>-->
                 <#--</div>-->
             </li>
-            <li><a href="/talb">说说</a></li>
+            <li><a href="javascript:void(0)">说说</a></li>
             <li><a href="/contact">联系</a></li>
             <li><a href="/link">友链</a></li>
             <li><a href="/about">关于</a></li>
