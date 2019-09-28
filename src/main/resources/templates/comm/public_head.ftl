@@ -25,20 +25,11 @@
         #topnav .menu li a.xialaguang span{height:30px;line-height:25px;display:inline-block;font-weight:bold;}
         #topnav .menu li a.selected span,#topnav .menu li a.navhover span,#topnav .menu li a.xialaguang:hover span{cursor:pointer;}
         #topnav .menu li a.navhover span, #topnav .menu li a.xialaguang:hover span{width:100px;}
-        #topnav .menu ul.children{display:none;position:absolute;top:40px;left:3px;width:100px;background:#FFF;border:2px solid #1a529c;border-top:0;line-height:normal;}
+        #topnav .menu ul.children{display:none;position:absolute;top:50px;left:2px;width:100px;background:#FFF;border:2px solid #31A9B3;border-top:0;line-height:normal;z-index:99;}
         #topnav .menu ul.children li{width:100px;padding:0px;display:inline-block;font-size:12px;border-top:1px solid #ccc;}
         #topnav .menu ul.children li h3{display:block; width:100%;}
         #topnav .menu ul.children li a{width:100%;height:16px;line-height:16px;overflow:hidden;padding:3px 0;display:block;color:#1a529c;text-align:center;
             text-decoration:none; font-size:12px;}
         #topnav .menu ul.children li a:hover{background-color:#eee;text-decoration:none;}
     </style>
-    <script type="text/javascript">
-        $('#topnav .menu > li').hover(function(){
-            $(this).find('.children').animate({ opacity:'show', height:'show' },200);
-            $(this).find('.xialaguang').addClass('navhover');
-        }, function() {
-            $('.children').stop(true,true).hide();
-            $('.xialaguang').removeClass('navhover');
-        });
-    </script>
 </head>

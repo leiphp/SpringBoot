@@ -14,14 +14,11 @@
     <nav id="topnav">
         <ul class="menu">
             <li class="stmenu"><a href="/"  class="xialaguang">首页</a></li>
-            <li class="stmenu"><a href="/list"  class="xialaguang">分类</a>
+            <li class="stmenu"><a href="javascript:void(0)"  class="xialaguang">分类</a>
                     <ul class="children">
-                        <li><a href="{:U('Home/Index/category',array('cid'=>28))}">PHP</a></li>
-                        <li><a href="{:U('Home/Index/category',array('cid'=>29))}">Linux</a></li>
-                        <li><a href="{:U('Home/Index/category',array('cid'=>36))}">Java</a></li>
-                        <li><a href="{:U('Home/Index/category',array('cid'=>39))}">C</a></li>
-                        <li><a href="{:U('Home/Index/category',array('cid'=>37))}">Python</a></li>
-                        <li><a href="{:U('Home/Index/category',array('cid'=>40))}">Android</a></li>
+                        <#list allcategories as category>
+                            <li>${commons.show_categories(category.name)}</li>
+                        </#list>
                     </ul>
             </li>
             <li class="stmenu"><a href="javascript:void(0)"  class="xialaguang">说说</a></li>

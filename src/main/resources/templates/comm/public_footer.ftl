@@ -30,4 +30,18 @@
         <a id="togbook" href="/"></a>
         <a id="gotop" href="javascript:void(0)"></a> 
     </div>
+    <script type="text/javascript">
+        $(document).ready(function(e) {
+            // $('.stmenu').click(function(){
+            //     alert('1111')
+            // })
+            $(".stmenu").hover(function(){
+                $(this).find('.children').animate({ opacity:'show', height:'show' },200);
+                $(this).find('.xialaguang').addClass('navhover');
+            }, function() {
+                $('.children').stop(true,true).hide();
+                $('.xialaguang').removeClass('navhover');
+            });
+        });
+    </script>
 </footer>

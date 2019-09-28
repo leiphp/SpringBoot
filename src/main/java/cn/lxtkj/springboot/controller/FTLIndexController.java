@@ -62,6 +62,8 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("toparticle", topArticle);
         List<Article> recommendArticle = super.getRecommendArticle();
         request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> allCategories= super.getAllCategories();
+        request.setAttribute("allcategories", allCategories);
         List<Metas> alltags = super.getAllTags();
         request.setAttribute("alltags", alltags);
         List<Metas> alllinks = super.getAllLink();
@@ -79,6 +81,8 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("toparticle", topArticle);
         List<Article> recommendArticle = super.getRecommendArticle();
         request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> allCategories= super.getAllCategories();
+        request.setAttribute("allcategories", allCategories);
         List<Metas> alltags = super.getAllTags();
         request.setAttribute("alltags", alltags);
         List<Metas> alllinks = super.getAllLink();
@@ -96,6 +100,8 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("toparticle", topArticle);
         List<Article> recommendArticle = super.getRecommendArticle();
         request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> allCategories= super.getAllCategories();
+        request.setAttribute("allcategories", allCategories);
         List<Metas> alltags = super.getAllTags();
         request.setAttribute("alltags", alltags);
         List<Metas> alllinks = super.getAllLink();
@@ -113,6 +119,8 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("toparticle", topArticle);
         List<Article> recommendArticle = super.getRecommendArticle();
         request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> allCategories= super.getAllCategories();
+        request.setAttribute("allcategories", allCategories);
         List<Metas> alltags = super.getAllTags();
         request.setAttribute("alltags", alltags);
         List<Metas> alllinks = super.getAllLink();
@@ -154,8 +162,12 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("toparticle", topArticle);
         List<Article> recommendArticle = super.getRecommendArticle();
         request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> allCategories= super.getAllCategories();
+        request.setAttribute("allcategories", allCategories);
         List<Metas> alltags = super.getAllTags();
         request.setAttribute("alltags", alltags);
+        List<Metas> alllinks = super.getAllLink();
+        request.setAttribute("alllinks", alllinks);
         /*公共数据end*/
         return "article";
     }
@@ -180,8 +192,12 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("toparticle", topArticle);
         List<Article> recommendArticle = super.getRecommendArticle();
         request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> allCategories= super.getAllCategories();
+        request.setAttribute("allcategories", allCategories);
         List<Metas> alltags = super.getAllTags();
         request.setAttribute("alltags", alltags);
+        List<Metas> alllinks = super.getAllLink();
+        request.setAttribute("alllinks", alllinks);
         /*公共数据end*/
         return "list";
     }
@@ -200,8 +216,12 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("toparticle", topArticle);
         List<Article> recommendArticle = super.getRecommendArticle();
         request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> allCategories= super.getAllCategories();
+        request.setAttribute("allcategories", allCategories);
         List<Metas> alltags = super.getAllTags();
         request.setAttribute("alltags", alltags);
+        List<Metas> alllinks = super.getAllLink();
+        request.setAttribute("alllinks", alllinks);
         /*公共数据end*/
         return "list";
     }

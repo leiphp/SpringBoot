@@ -104,6 +104,15 @@ public abstract class BaseController {
     }
 
     /**
+     * 获取所有category数据
+     * @return
+     */
+    public  List<Metas> getAllCategories() {
+        List<Metas> categories = metasService.getMetas(Types.CATEGORY.getType());
+        return categories;
+    }
+
+    /**
      * 获取所有link数据
      * @return
      */

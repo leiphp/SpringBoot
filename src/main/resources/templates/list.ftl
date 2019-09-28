@@ -20,32 +20,25 @@
     <script type="text/javascript" src="/js/up/jquery.js"></script>
     <script type="text/javascript" src="/js/up/js.js"></script>
     <!-- 返回顶部调用 end-->
-
+    <style type="text/css">
+        /*主导航菜单*/
+        #topnav .menu li{position:relative;float:left;display:inline;font-size:14px;}
+        #topnav .menu li h3{font-weight:normal;display:inline-block;float:left;}
+        #topnav .menu li a.selected,#topnav .menu li a.navhover,#topnav .menu li a.xialaguang:hover{color:#1a529c;}
+        #topnav .menu li a.navhover, #topnav .menu li a.xialaguang:hover{background-color:#FFF;}
+        #topnav .menu li a.xialaguang span{height:30px;line-height:25px;display:inline-block;font-weight:bold;}
+        #topnav .menu li a.selected span,#topnav .menu li a.navhover span,#topnav .menu li a.xialaguang:hover span{cursor:pointer;}
+        #topnav .menu li a.navhover span, #topnav .menu li a.xialaguang:hover span{width:100px;}
+        #topnav .menu ul.children{display:none;position:absolute;top:50px;left:2px;width:100px;background:#FFF;border:2px solid #31A9B3;border-top:0;line-height:normal;z-index:99;}
+        #topnav .menu ul.children li{width:100px;padding:0px;display:inline-block;font-size:12px;border-top:1px solid #ccc;}
+        #topnav .menu ul.children li h3{display:block; width:100%;}
+        #topnav .menu ul.children li a{width:100%;height:16px;line-height:16px;overflow:hidden;padding:3px 0;display:block;color:#1a529c;text-align:center;
+            text-decoration:none; font-size:12px;}
+        #topnav .menu ul.children li a:hover{background-color:#eee;text-decoration:none;}
+    </style>
 </head>
 <body>
-<header>
-    <div class="topbg">
-        <ul class="topnav">
-            <a href="/ " target="_blank">Home</a><a href="/ " target="_blank">官方微博</a><a href="/ " target="_blank">关于我们</a>
-        </ul>
-    </div>
-    <div class="topbgline"></div>
-    <div class="logo">
-        <div class="logo_l f_l"><a href="/"><img src="/images/logo.png"></a></div>
-        <div class="logo_r f_r"><a href="/"><img src="/images/search.png"></a></div>
-    </div>
-    <nav id="topnav">
-        <ul>
-            <a href="/">网站首页</a>
-            <a href="/list">新闻中心</a>
-            <a href="/article/1">产品中心</a>
-            <a href="a.html">关于我们</a>
-            <a href="c.html">联系我们</a>
-            <a href="b.html"">网上留言</a>
-        </ul>
-        <script src="/js/silder.js"></script>
-    </nav>
-</header>
+<#include "/comm/public_header.ftl">
 <article>
     <div class="l_box f_l">
         <div class="topnews">
@@ -119,20 +112,6 @@
     </div>
     <!--r_box end -->
 </article>
-<footer>
-    <div class="endfoot">
-        <div class="ft-info f_l">
-            <div class="ftlogo"><a href="#" target="_blank"><img src="/images/ftlogo.png"></a></div>
-            <div class="ft-title">
-                <p>时尚设计，国内最优化的模板设计平台! </p>
-            </div>
-        </div>
-        <div class="ft-list f_r">
-            <div class="ft-nav"> <a href="#" target="_blank">关于我们</a> <a href="#" target="_blank">联系我们</a> <a href="#" target="_blank">版权声明</a> <a href="#" id="qaurl">问题反馈</a> <a href="#" target="_blank">商务合作</a> </div>
-            <p class="ft-copyright"> Copyright 2014 Comsenz Inc. Powered by Discuz! X3.2. 粤ICP2014008000-3号</p>
-        </div>
-    </div>
-    <div id="tbox"> <a id="togbook" href="/"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
-</footer>
+<#include "/comm/public_footer.ftl">
 </body>
 </html>
