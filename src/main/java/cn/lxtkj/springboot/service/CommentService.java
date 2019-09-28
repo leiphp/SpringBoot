@@ -23,9 +23,14 @@ public class CommentService {
     private CommentMapper commentMapper;
 
     public String insertComment(Comment comment){
-
+        Article article = articleService.getArticle(comment.getCid());
+        if (null == article) {
+            return "不存在的文章";
+        }
         int insertCommentResult = commentMapper.insert(comment.getCid(), comment.getCreated(), comment.getAuthor(), comment.getMail(), comment.getUrl(), comment.getIp(), comment.getContent(),comment.getParent());
         if(insertCommentResult==1){
+            //更新文章评论条数
+            articleService.updateCommentNum(comment.getCid(),article.getComments_num() + 1);
             return "SUCCESS";
         }
         return "FAILURE";

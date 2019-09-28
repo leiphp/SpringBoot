@@ -48,11 +48,14 @@
             <h2>您现在的位置是：<a href="/">门户</a>><a href="/">文章</a>> 查看内容</h2>
             <div class="news_title">${article.title}</div>
             <div class="news_author">
-                <span class="au01">admin</span>
+                <span class="au01">雷小天</span>
                 <span class="au02">${commons.fmtdate(article.created)}</span>
                 <span class="au03">共<b>${article.hits}</b>人围观</span>
-                /<span class="au03">共<b>${article.comments_num}</b>条评论</span>/
-                <strong class="au04 f_r">暂无评论</strong>
+                <#if article.comments_num==0>
+                    <strong class="au04 f_r">暂无评论</strong>
+                <#else>
+                    <strong class="au04 f_r">${article.comments_num}条评论</strong>
+                </#if>
             </div>
             <div class="tags">
                 ${commons.show_tags(article.tags)}

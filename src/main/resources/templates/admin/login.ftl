@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="admin/css/style.min.css">
     <link rel="stylesheet" href="http://cdn.bootcss.com/limonte-sweetalert2/6.4.1/sweetalert2.min.css">
-
+    <link rel="shortcut icon" href="/images/favicon.png"/>
     <script type="text/javascript" src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script type="text/javascript" src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 

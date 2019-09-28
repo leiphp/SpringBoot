@@ -129,6 +129,15 @@ public class ArticleService {
         }
 
     }
+    //更新文章评论数
+    public String updateCommentNum(Integer cid, Integer comments_num){
+        int insertResult = articleMapper.updateCommentNum(cid,comments_num);
+        if(insertResult==1){
+            return WebConst.SUCCESS_RESULT;
+        }else{
+            return WebConst.FAILURE_RESULT;
+        }
+    }
     //获取最新7条数据
     public List<Article> getNewArticleList(int limit){
         //mysql查询limit
