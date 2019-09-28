@@ -54,78 +54,22 @@ public class FTLIndexController extends BaseController{
     public String Index(HttpServletRequest request){
         List<Article> articles = articleService.getNewArticleList(7);
         request.setAttribute("articles", articles);
-        request.setAttribute("commons", commons);
-        /*公共数据start*/
-        List<Article> recentArticle = super.getRecentArticle();
-        request.setAttribute("recentarticle", recentArticle);
-        List<Article> topArticle = super.getTophitArticle();
-        request.setAttribute("toparticle", topArticle);
-        List<Article> recommendArticle = super.getRecommendArticle();
-        request.setAttribute("recommendarticle", recommendArticle);
-        List<Metas> allCategories= super.getAllCategories();
-        request.setAttribute("allcategories", allCategories);
-        List<Metas> alltags = super.getAllTags();
-        request.setAttribute("alltags", alltags);
-        List<Metas> alllinks = super.getAllLink();
-        request.setAttribute("alllinks", alllinks);
-        /*公共数据end*/
+        commonSuperData(request);
         return "home";
     }
     @RequestMapping("/contact")
     public String Contact(HttpServletRequest request){
-        request.setAttribute("commons", commons);
-        /*公共数据start*/
-        List<Article> recentArticle = super.getRecentArticle();
-        request.setAttribute("recentarticle", recentArticle);
-        List<Article> topArticle = super.getTophitArticle();
-        request.setAttribute("toparticle", topArticle);
-        List<Article> recommendArticle = super.getRecommendArticle();
-        request.setAttribute("recommendarticle", recommendArticle);
-        List<Metas> allCategories= super.getAllCategories();
-        request.setAttribute("allcategories", allCategories);
-        List<Metas> alltags = super.getAllTags();
-        request.setAttribute("alltags", alltags);
-        List<Metas> alllinks = super.getAllLink();
-        request.setAttribute("alllinks", alllinks);
-        /*公共数据end*/
+        commonSuperData(request);
         return "contact";
     }
     @RequestMapping("/link")
     public String Link(HttpServletRequest request){
-        request.setAttribute("commons", commons);
-        /*公共数据start*/
-        List<Article> recentArticle = super.getRecentArticle();
-        request.setAttribute("recentarticle", recentArticle);
-        List<Article> topArticle = super.getTophitArticle();
-        request.setAttribute("toparticle", topArticle);
-        List<Article> recommendArticle = super.getRecommendArticle();
-        request.setAttribute("recommendarticle", recommendArticle);
-        List<Metas> allCategories= super.getAllCategories();
-        request.setAttribute("allcategories", allCategories);
-        List<Metas> alltags = super.getAllTags();
-        request.setAttribute("alltags", alltags);
-        List<Metas> alllinks = super.getAllLink();
-        request.setAttribute("alllinks", alllinks);
-        /*公共数据end*/
+        commonSuperData(request);
         return "link";
     }
     @RequestMapping("/about")
     public String About(HttpServletRequest request){
-        request.setAttribute("commons", commons);
-        /*公共数据start*/
-        List<Article> recentArticle = super.getRecentArticle();
-        request.setAttribute("recentarticle", recentArticle);
-        List<Article> topArticle = super.getTophitArticle();
-        request.setAttribute("toparticle", topArticle);
-        List<Article> recommendArticle = super.getRecommendArticle();
-        request.setAttribute("recommendarticle", recommendArticle);
-        List<Metas> allCategories= super.getAllCategories();
-        request.setAttribute("allcategories", allCategories);
-        List<Metas> alltags = super.getAllTags();
-        request.setAttribute("alltags", alltags);
-        List<Metas> alllinks = super.getAllLink();
-        request.setAttribute("alllinks", alllinks);
-        /*公共数据end*/
+        commonSuperData(request);
         return "about";
     }
 
@@ -152,23 +96,7 @@ public class FTLIndexController extends BaseController{
         request.setAttribute("categories", categories);
 
         completeArticle(request, article);
-
-        request.setAttribute("commons", commons);
-
-        /*公共数据start*/
-        List<Article> recentArticle = super.getRecentArticle();
-        request.setAttribute("recentarticle", recentArticle);
-        List<Article> topArticle = super.getTophitArticle();
-        request.setAttribute("toparticle", topArticle);
-        List<Article> recommendArticle = super.getRecommendArticle();
-        request.setAttribute("recommendarticle", recommendArticle);
-        List<Metas> allCategories= super.getAllCategories();
-        request.setAttribute("allcategories", allCategories);
-        List<Metas> alltags = super.getAllTags();
-        request.setAttribute("alltags", alltags);
-        List<Metas> alllinks = super.getAllLink();
-        request.setAttribute("alllinks", alllinks);
-        /*公共数据end*/
+        commonSuperData(request);
         return "article";
     }
     @RequestMapping("/login")
@@ -184,21 +112,7 @@ public class FTLIndexController extends BaseController{
         PageInfo<Article> articlePaginator = articleService.getArticleByTag(page, limit, '%'+tag+'%');
         request.setAttribute("articles", articlePaginator);
         request.setAttribute("pageInfo", articlePaginator);
-        request.setAttribute("commons", commons);
-        /*公共数据start*/
-        List<Article> recentArticle = super.getRecentArticle();
-        request.setAttribute("recentarticle", recentArticle);
-        List<Article> topArticle = super.getTophitArticle();
-        request.setAttribute("toparticle", topArticle);
-        List<Article> recommendArticle = super.getRecommendArticle();
-        request.setAttribute("recommendarticle", recommendArticle);
-        List<Metas> allCategories= super.getAllCategories();
-        request.setAttribute("allcategories", allCategories);
-        List<Metas> alltags = super.getAllTags();
-        request.setAttribute("alltags", alltags);
-        List<Metas> alllinks = super.getAllLink();
-        request.setAttribute("alllinks", alllinks);
-        /*公共数据end*/
+        commonSuperData(request);
         return "list";
     }
     //列表页面
@@ -208,21 +122,7 @@ public class FTLIndexController extends BaseController{
         PageInfo<Article> articlePaginator = articleService.getArticleByCategories(page, limit, '%'+categories+'%');
         request.setAttribute("articles", articlePaginator);
         request.setAttribute("pageInfo", articlePaginator);
-        request.setAttribute("commons", commons);
-        /*公共数据start*/
-        List<Article> recentArticle = super.getRecentArticle();
-        request.setAttribute("recentarticle", recentArticle);
-        List<Article> topArticle = super.getTophitArticle();
-        request.setAttribute("toparticle", topArticle);
-        List<Article> recommendArticle = super.getRecommendArticle();
-        request.setAttribute("recommendarticle", recommendArticle);
-        List<Metas> allCategories= super.getAllCategories();
-        request.setAttribute("allcategories", allCategories);
-        List<Metas> alltags = super.getAllTags();
-        request.setAttribute("alltags", alltags);
-        List<Metas> alllinks = super.getAllLink();
-        request.setAttribute("alllinks", alllinks);
-        /*公共数据end*/
+        commonSuperData(request);
         return "list";
     }
 
@@ -242,6 +142,29 @@ public class FTLIndexController extends BaseController{
             PageInfo<Comment> commentsPaginator = commentService.getCommentById(Integer.parseInt(cp), 5, article.getCid());
             request.setAttribute("comments", commentsPaginator);
        // }
+    }
+
+    /**
+     * 抽取父级公共方法
+     *
+     * @param request
+     * */
+    private void commonSuperData(HttpServletRequest request) {
+        request.setAttribute("commons", commons);
+        /*公共数据start*/
+        List<Article> recentArticle = super.getRecentArticle();
+        request.setAttribute("recentarticle", recentArticle);
+        List<Article> topArticle = super.getTophitArticle();
+        request.setAttribute("toparticle", topArticle);
+        List<Article> recommendArticle = super.getRecommendArticle();
+        request.setAttribute("recommendarticle", recommendArticle);
+        List<Metas> allCategories= super.getAllCategories();
+        request.setAttribute("allcategories", allCategories);
+        List<Metas> alltags = super.getAllTags();
+        request.setAttribute("alltags", alltags);
+        List<Metas> alllinks = super.getAllLink();
+        request.setAttribute("alllinks", alllinks);
+        /*公共数据end*/
     }
 
     /**
