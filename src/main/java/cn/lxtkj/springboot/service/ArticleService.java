@@ -129,6 +129,15 @@ public class ArticleService {
         }
 
     }
+    //更新文章点击数
+    public String updateHitsNum(Integer cid, Integer hits){
+        int insertResult = articleMapper.updateHits(cid,hits);
+        if(insertResult==1){
+            return WebConst.SUCCESS_RESULT;
+        }else{
+            return WebConst.FAILURE_RESULT;
+        }
+    }
     //更新文章评论数
     public String updateCommentNum(Integer cid, Integer comments_num){
         int insertResult = articleMapper.updateCommentNum(cid,comments_num);

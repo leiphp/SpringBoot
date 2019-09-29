@@ -78,13 +78,17 @@ public class FTLIndexController extends BaseController{
 
     @RequestMapping(value="/article/{id}", method = RequestMethod.GET)
     public String Article(HttpServletRequest request, @PathVariable String id){
-        redisUtils.set(id,"123");
+//        redisUtils.set("key_article_"+id,"123");
+        redisUtils.setSet("set_article_"+id,request.getRemoteAddr());
         log.info("cid是："+id);
         Article article = articleService.getArticle(Integer.valueOf(id));
         if (null == article || "draft".equals(article.getStatus())) {
             return "comm/error_404";
         }
-        log.info("article是："+article);
+        Long hits = redisUtils.getSetLength("set_article_"+id);
+        //article.setHits(Integer.parseInt(String.valueOf(hits)));
+        articleService.updateHitsNum(Integer.valueOf(id), Integer.parseInt(String.valueOf(hits)));
+        log.info("hits点击量是："+hits);
         request.setAttribute("article", article);
 
         Article nextArticle = articleService.getNextArticle(Integer.valueOf(id));
@@ -101,8 +105,8 @@ public class FTLIndexController extends BaseController{
 
         completeArticle(request, article);
         commonSuperData(request);
-        String val = redisUtils.get(id);
-        log.info("redis缓存的值是："+val);
+//        String val = redisUtils.get(id);
+//        log.info("redis缓存的值是："+val);
         return "article";
     }
     @RequestMapping("/login")

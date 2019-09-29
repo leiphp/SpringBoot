@@ -38,6 +38,28 @@ public class RedisUtils {
         }
         return result;
     }
+    /**
+     * 写入集合缓存
+     */
+    public boolean setSet(final String key, String value) {
+        boolean result = false;
+        try {
+            redisTemplate.opsForSet().add(key, value);
+            result = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    /**
+     * 读取集合缓存长度
+     *
+     * @param key
+     * @return
+     */
+    public Long getSetLength(final String key) {
+        return redisTemplate.opsForSet().size(key);
+    }
 
     /**
      * 更新缓存
