@@ -42,6 +42,9 @@ public class FTLIndexController extends BaseController{
     @Resource
     private Commons commons;
 
+    @Resource
+    private RedisUtils redisUtils;
+
     @RequestMapping("/ftlindex")
     public String ftlIndex(Map<String, Object> map){
         map.put("name","雷小天");
@@ -75,6 +78,7 @@ public class FTLIndexController extends BaseController{
 
     @RequestMapping(value="/article/{id}", method = RequestMethod.GET)
     public String Article(HttpServletRequest request, @PathVariable String id){
+        redisUtils.set(id,"123");
         log.info("cid是："+id);
         Article article = articleService.getArticle(Integer.valueOf(id));
         if (null == article || "draft".equals(article.getStatus())) {
@@ -97,6 +101,8 @@ public class FTLIndexController extends BaseController{
 
         completeArticle(request, article);
         commonSuperData(request);
+        String val = redisUtils.get(id);
+        log.info("redis缓存的值是："+val);
         return "article";
     }
     @RequestMapping("/login")
