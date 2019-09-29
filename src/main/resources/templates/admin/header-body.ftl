@@ -3,12 +3,12 @@
         <div class="topbar-left">
             <div class="text-center p-t-10" style="margin: 0 auto;">
                 <div class="pull-left" style="padding-left: 10px;">
-                    <a href="admin/index">
+                    <a href="/admin/index">
                         <img src="/admin/images/logo.png" width="50" height="50"/>
                     </a>
                 </div>
                 <div class="pull-left" style="padding-left: 10px;">
-                    <span style="font-size: 28px; color: #2f353f; line-height: 50px;">My Blog</span>
+                    <span style="font-size: 28px; color: #2f353f; line-height: 50px;">SpringBoot</span>
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                                 <img alt="user-img" class="img-circle" src="https://github.com/identicons/afe94ddc67b57b89f353a02e1ffe3ede.png">
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i>查看网站</a></li>
+                                <li><a href="/" target="_blank"><i class="fa fa-eye" aria-hidden="true"></i>查看网站</a></li>
                                 <li><a href="/admin/profile"><i class="fa fa-sun-o"></i> 个人设置</a></li>
                                 <li><a href="/logout"><i class="fa fa-sign-out"></i> 注销</a></li>
                             </ul>
