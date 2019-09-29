@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <div class="pull-left" style="padding-left: 10px;">
-                    <span style="font-size: 28px; color: #2f353f; line-height: 50px;">SpringBoot</span>
+                    <span style="font-size: 28px; color: #2f353f; line-height: 50px;">My Blog</span>
                 </div>
             </div>
         </div>

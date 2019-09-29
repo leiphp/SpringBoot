@@ -1,6 +1,16 @@
 # SpringBoot
 SpringBoot学习项目
 
+![home](src/main/resources/static/images/github/home.png)
+![login](src/main/resources/static/images/github/login.png)
+![admin](src/main/resources/static/images/github/admin.png)
+
+### 开发文档  
+* 注意事项
+ 1. 运行项目前请确认安装好了mysql和redis 
+ 2. 暂时没有想到
+ 3. 这个也没有想到
+ 
 ### 学习笔记  
 * springboot启动方式
  1. @EnableAutoConfiguration 注解作用：扫包范围 默认在当前类里面（注解在类上面） 
