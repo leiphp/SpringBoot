@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="gb2312">
-    <title>雷小天博客文章标题-SpringBoot开源博客</title>
+    <title>${article.title}-SpringBoot开源博客</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <link href="/css/index.css" rel="stylesheet">
