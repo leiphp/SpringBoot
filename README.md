@@ -1,5 +1,5 @@
 # SpringBoot
-SpringBoot学习项目
+👉SpringBoot项目是一个Java博客项目，由 Sprinboot+shiro+mybatis+freemarker+redis等技术实现。本人是做PHP开发的，抱着一个学习热爱Java的心态做了这个springboot开源项目，有很多地方做的不是很完善，后续也将慢慢完善。如果大家感兴趣可以点个star支持下！
 
 ![home](src/main/resources/static/images/github/home.png)
 ![login](src/main/resources/static/images/github/login.png)
@@ -29,3 +29,5 @@ SpringBoot学习项目
     1. ###### 使用命令 mvn clean package 打包（mvn packsge Dmven.test.skip=true/ mvn -Dmaven.test.skip -U clean package   //跳过测试类）
     2. ###### 使用idea Maven Projects > 项目名 > Lifecycle > 双击package开始打包
  * ##### SpringBootActuator监控接口
+ * ##### 项目后台及前台功能开发及完善
+ * ##### 项目redis缓存功能完善
