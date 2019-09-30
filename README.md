@@ -74,6 +74,7 @@
  ### 项目来源  
  * [小额捐赠](https://www.100txy.com/Home/Index/alidonate.html)    
  * [作者博客](http://100txy.com)    
- * ![微信公号](src/main/resources/static/images/github/weixin.jpg)  
+ * 微信公号  
+ ![微信公号](src/main/resources/static/images/github/weixin.jpg)  
  
  
