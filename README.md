@@ -11,15 +11,19 @@
  2. Linux登录MySQL时，出现Access denied for user 'root'@'localhost' (using password: YES) 拒绝访问  
     i.出现这个问题是由于没有设置过密码造成拒绝访问，解决办法如下：  
     ii.修改vim /etc/my.cnf配置文件(my.ini是windows)，先新增`skip-grant-tables`跳过密码验证，再重启MySQL`systemctl restart mysqld.service`    
-    iii.`1.输入mysql -u root -p，回车出现password不用输入密码直接回车进入`  
+    iii.Mysql密码设置步骤  
+         1.登入Linux`输入mysql -u root -p`回车出现password不用输入密码直接回车进入  
          2.进入mysql数据库`输入：mysql> use MySQL`  
          3.更改密码：`输入：mysql>update user set authentication_string=password(“这里是你想重置的密码”) where user=“root”;`  
          4.刷新数据库`输入：mysql> flush privileges`  
          5.退出mysql`输入： mysql>exit`  
          6.修改完root密码后，将my.cnf文件添加的`skip-grant-tables`删除，保存重启mysql服务就可以通过密码登陆mysql了  
-         7.试一下把！`mysql>mysql -u root -p`
+         7.试一下把！`mysql>mysql -u root -p`  
          
- 3. 这个也没有想到
+ 3. MySql数据库文件导入  
+    3.1.新增数据库`CREATE DATABASE `springboot` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci`  
+    3.2.选择数据库，先查看数据库是否创建成功`use 数据库名;`，再选中`use 数据库名;`  
+    3.3.导入springboot.sql文件`source /data/wwwroot/springboot.sql`注意：source命令后面不要加 分号
  
 ### 学习笔记  
 * springboot启动方式
