@@ -10,20 +10,20 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface UserMapper {
-    @Select("SELECT * FROM USERS WHERE NAME = #{NAME}")
+    @Select("SELECT * FROM users WHERE NAME = #{NAME}")
     User findByName(@Param("name")String name);
 
-    @Insert("INSERT INTO USERS(name, age) VALUES(#{name}, #{age})")
+    @Insert("INSERT INTO users(name, age) VALUES(#{name}, #{age})")
     int insert(@Param("name")String name, @Param("age")Integer age);
 
-    @Select("SELECT * FROM USERS ")
+    @Select("SELECT * FROM users ")
     List<User> findUserList();
 
     /**
      * 获得密码
      * @param username 用户名
      */
-    @Select("SELECT password FROM USERS WHERE username = #{username}")
+    @Select("SELECT password FROM users WHERE username = #{username}")
     String getPassword(String username);
 
     /**
@@ -31,21 +31,21 @@ public interface UserMapper {
      * @param username 用户名
      * @return user/admin
      */
-    @Select("SELECT role FROM USERS WHERE username = #{username}")
+    @Select("SELECT role FROM users WHERE username = #{username}")
     String getRole(String username);
 
-    @Select("SELECT * FROM USERS WHERE id = #{id}")
+    @Select("SELECT * FROM users WHERE id = #{id}")
     User selectById(@Param("id") Integer id);
 
-    @Select("SELECT count(*) FROM USERS ")
+    @Select("SELECT count(*) FROM users ")
     long countByExample(UserVoExample userVoExample);
 
-    @Select("SELECT * FROM USERS WHERE username =  #{username}")
+    @Select("SELECT * FROM users WHERE username =  #{username}")
     List<User> selectByExample(@Param("username")String username);
 
-    @Update("UPDATE USERS SET name=#{name},email=#{email} where id=#{id}")
+    @Update("UPDATE users SET name=#{name},email=#{email} where id=#{id}")
     int update(User user);
 
-    @Update("UPDATE USERS SET password=#{password} where id=#{id}")
+    @Update("UPDATE users SET password=#{password} where id=#{id}")
     int updatePassword(User user);
 }

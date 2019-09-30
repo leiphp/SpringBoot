@@ -23,7 +23,32 @@
  3. MySql数据库文件导入  
     3.1.新增数据库`CREATE DATABASE `springboot` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci`  
     3.2.选择数据库，先查看数据库是否创建成功`use 数据库名;`，再选中`use 数据库名;`  
-    3.3.导入springboot.sql文件`source /data/wwwroot/springboot.sql`注意：source命令后面不要加 分号
+    3.3.导入springboot.sql文件`source /data/wwwroot/springboot.sql`注意：source命令后面不要加 分号  
+ 4. linux安装redis 完整步骤  
+    4.1.获取redis资源`wget http://download.redis.io/releases/redis-4.0.8.tar.gz`  
+    4.2.解压`tar xzvf redis-4.0.8.tar.gz`  
+    4.3.安装  
+    　　`cd redis-4.0.8`  
+    　　`make`  
+    　　`cd src`  
+    　　`make install PREFIX=/usr/local/redis`  
+    4.4.移动配置文件到安装目录下  
+    　　`cd ../`  
+    　　`mkdir /usr/local/redis/etc`  
+    　　`mv redis.conf /usr/local/redis/etc`  
+    4.5.配置redis为后台启动  
+    　　`vi /usr/local/redis/etc/redis.conf //将daemonize no 改成daemonize yes`  
+    4.6.将redis加入到开机启动  
+    　　`vi /etc/rc.local //在里面添加内容：/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf (意思就是开机调用这段开启redis的命令)`  
+    4.7.开启redis  
+    　　`/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf` 
+    4.8.常用命令  
+    　　`redis-server /usr/local/redis/etc/redis.conf //启动redis`  
+    　　`pkill redis  //停止redis`  
+    　　卸载redis：  
+    　　　　`rm -rf /usr/local/redis //删除安装目录`
+    　　　　`rm -rf /usr/bin/redis-* //删除所有redis相关命令脚本`
+    　　　　`rm -rf /root/download/redis-4.0.4 //删除redis解压文件夹`
  
 ### 学习笔记  
 * springboot启动方式

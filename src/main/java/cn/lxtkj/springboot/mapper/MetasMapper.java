@@ -10,25 +10,25 @@ import java.util.Map;
 
 public interface MetasMapper {
 
-    @Insert("INSERT INTO METAS(type, name) VALUES(#{type}, #{name})")
+    @Insert("INSERT INTO metas(type, name) VALUES(#{type}, #{name})")
     int insert(@Param("type") String type, @Param("name") String name);
 
-    @Insert("INSERT INTO METAS(type, name, slug, sort) VALUES(#{type}, #{name}, #{slug}, #{sort})")
+    @Insert("INSERT INTO metas(type, name, slug, sort) VALUES(#{type}, #{name}, #{slug}, #{sort})")
     int insertLink(@Param("type") String type, @Param("name") String name, @Param("slug") String slug, @Param("sort") Integer sort);
 
-    @Select("SELECT * FROM METAS WHERE TYPE = #{type} ORDER BY ${sort}")
+    @Select("SELECT * FROM metas WHERE TYPE = #{type} ORDER BY ${sort}")
     List<Article> findArticleList(@Param("type") String type, @Param("sort") String sort);
 
-    @Select("SELECT * FROM METAS WHERE cid = #{cid}")
+    @Select("SELECT * FROM metas WHERE cid = #{cid}")
     Article selectByCid(@Param("cid") Integer cid);
 
-    @Update("UPDATE METAS SET name=#{name},type=#{type} where mid=#{mid}")
+    @Update("UPDATE metas SET name=#{name},type=#{type} where mid=#{mid}")
     int update(@Param("type") String type, @Param("name") String name, @Param("mid") Integer mid);
 
-    @Update("UPDATE METAS SET name=#{name},type=#{type},slug=#{slug},sort=#{sort} where mid=#{mid}")
+    @Update("UPDATE metas SET name=#{name},type=#{type},slug=#{slug},sort=#{sort} where mid=#{mid}")
     int updateLink(@Param("type") String type, @Param("name") String name,  @Param("slug") String slug, @Param("sort") Integer sort, @Param("mid") Integer mid);
 
-    @Delete("DELETE FROM METAS WHERE mid = #{mid}")
+    @Delete("DELETE FROM metas WHERE mid = #{mid}")
     int delete(@Param("mid") Integer mid);
     
     @Select("select a.*, count(b.cid) as count from metas a left join `relationships` b on a.mid = b.mid where a.type = #{type} group by a.mid order by #{order} limit #{limit}")
@@ -37,7 +37,7 @@ public interface MetasMapper {
     @Select("select * from metas   where type = #{type} group by mid order by #{order}")
     List<Metas> selectMetas(Map<String,Object> paraMap);
 
-    @Select("SELECT count(*) FROM METAS WHERE type = 'link'")
+    @Select("SELECT count(*) FROM metas WHERE type = 'link'")
     Long countByExample(MetasVo metasVo);
 
     //根据条件获取mid

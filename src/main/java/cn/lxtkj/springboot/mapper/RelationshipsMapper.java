@@ -9,15 +9,15 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 public interface RelationshipsMapper {
-    @Select("SELECT count(*) FROM RELATIONSHIPS WHERE cid = #{cid} AND mid=#{mid}")
+    @Select("SELECT count(*) FROM relationships WHERE cid = #{cid} AND mid=#{mid}")
     Integer count(@Param("cid") Integer cid, @Param("mid") Integer mid);
 
     @Insert("INSERT INTO relationships(cid, mid) VALUES(#{cid}, #{mid})")
     int insert(Relationship relationship);
 
-    @Select("SELECT * FROM RELATIONSHIPS WHERE name = #{name}")
+    @Select("SELECT * FROM relationships WHERE name = #{name}")
     List<Relationship> selectByExample(Relationship relationship);
 
-    @Delete("DELETE FROM RELATIONSHIPS WHERE cid = #{cid}")
+    @Delete("DELETE FROM relationships WHERE cid = #{cid}")
     int deleteByExample(Relationship relationship);
 }
