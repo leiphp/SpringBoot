@@ -46,9 +46,9 @@
     　　`redis-server /usr/local/redis/etc/redis.conf //启动redis`  
     　　`pkill redis  //停止redis`  
     　　卸载redis：  
-    　　　　`rm -rf /usr/local/redis //删除安装目录`
-    　　　　`rm -rf /usr/bin/redis-* //删除所有redis相关命令脚本`
-    　　　　`rm -rf /root/download/redis-4.0.4 //删除redis解压文件夹`
+    　　　　`rm -rf /usr/local/redis //删除安装目录`  
+    　　　　`rm -rf /usr/bin/redis-* //删除所有redis相关命令脚本`  
+    　　　　`rm -rf /root/download/redis-4.0.4 //删除redis解压文件夹`  
  
 ### 学习笔记  
 * springboot启动方式
