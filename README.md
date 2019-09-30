@@ -41,7 +41,7 @@
     4.6.将redis加入到开机启动  
     　　`vi /etc/rc.local //在里面添加内容：/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf (意思就是开机调用这段开启redis的命令)`  
     4.7.开启redis  
-    　　`/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf` 
+    　　`/usr/local/redis/bin/redis-server /usr/local/redis/etc/redis.conf`   
     4.8.常用命令  
     　　`redis-server /usr/local/redis/etc/redis.conf //启动redis`  
     　　`pkill redis  //停止redis`  
