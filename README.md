@@ -8,7 +8,17 @@
 ### 开发文档  
 * 注意事项
  1. 运行项目前请确认安装好了mysql和redis 
- 2. 暂时没有想到
+ 2. Linux登录MySQL时，出现Access denied for user 'root'@'localhost' (using password: YES) 拒绝访问  
+    i.出现这个问题是由于没有设置过密码造成拒绝访问，解决办法如下：  
+    ii.修改vim /etc/my.cnf配置文件(my.ini是windows)，先新增`skip-grant-tables`跳过密码验证，再重启MySQL`systemctl restart mysqld.service`    
+    iii.`1.输入mysql -u root -p，回车出现password不用输入密码直接回车进入`  
+         2.进入mysql数据库`输入：mysql> use MySQL`  
+         3.更改密码：`输入：mysql>update user set authentication_string=password(“这里是你想重置的密码”) where user=“root”;`  
+         4.刷新数据库`输入：mysql> flush privileges`  
+         5.退出mysql`输入： mysql>exit`  
+         6.修改完root密码后，将my.cnf文件添加的`skip-grant-tables`删除，保存重启mysql服务就可以通过密码登陆mysql了  
+         7.试一下把！`mysql>mysql -u root -p`
+         
  3. 这个也没有想到
  
 ### 学习笔记  
