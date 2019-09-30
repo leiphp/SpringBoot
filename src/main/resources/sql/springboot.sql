@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50553
 File Encoding         : 65001
 
-Date: 2019-09-29 18:54:07
+Date: 2019-09-30 17:33:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -141,7 +141,7 @@ CREATE TABLE `logs` (
   `ip` varchar(20) DEFAULT NULL,
   `created` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of logs
@@ -165,6 +165,7 @@ INSERT INTO `logs` VALUES ('16', '修改密码', null, '4', '0:0:0:0:0:0:0:1', '
 INSERT INTO `logs` VALUES ('17', '修改密码', null, '4', '0:0:0:0:0:0:0:1', '1568287213');
 INSERT INTO `logs` VALUES ('18', '修改密码', null, '4', '0:0:0:0:0:0:0:1', '1568287240');
 INSERT INTO `logs` VALUES ('19', '修改密码', null, '4', '0:0:0:0:0:0:0:1', '1569754383');
+INSERT INTO `logs` VALUES ('20', '修改密码', null, '4', '0:0:0:0:0:0:0:1', '1569836015');
 
 -- ----------------------------
 -- Table structure for metas
@@ -283,197 +284,6 @@ CREATE TABLE `role` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for t_attach
--- ----------------------------
-DROP TABLE IF EXISTS `t_attach`;
-CREATE TABLE `t_attach` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `fname` varchar(100) NOT NULL DEFAULT '',
-  `ftype` varchar(50) DEFAULT '',
-  `fkey` varchar(100) NOT NULL DEFAULT '',
-  `author_id` int(10) DEFAULT NULL,
-  `created` int(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_attach
--- ----------------------------
-
--- ----------------------------
--- Table structure for t_comments
--- ----------------------------
-DROP TABLE IF EXISTS `t_comments`;
-CREATE TABLE `t_comments` (
-  `coid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cid` int(10) unsigned DEFAULT '0',
-  `created` int(10) unsigned DEFAULT '0',
-  `author` varchar(200) DEFAULT NULL,
-  `author_id` int(10) unsigned DEFAULT '0',
-  `owner_id` int(10) unsigned DEFAULT '0',
-  `mail` varchar(200) DEFAULT NULL,
-  `url` varchar(200) DEFAULT NULL,
-  `ip` varchar(64) DEFAULT NULL,
-  `agent` varchar(200) DEFAULT NULL,
-  `content` text,
-  `type` varchar(16) DEFAULT 'comment',
-  `status` varchar(16) DEFAULT 'approved',
-  `parent` int(10) unsigned DEFAULT '0',
-  PRIMARY KEY (`coid`),
-  KEY `cid` (`cid`),
-  KEY `created` (`created`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_comments
--- ----------------------------
-INSERT INTO `t_comments` VALUES ('1', '19', '1566912526', 'xiaotian lei', '0', '1', '1124378213@qq.com', '', '0:0:0:0:0:0:0:1', null, 'cessssssss', 'comment', 'approved', '0');
-INSERT INTO `t_comments` VALUES ('2', '19', '1566912607', 'xiao', '0', '1', '1124378213@qq.com', 'https://github.com/leiphp/sshflower', '0:0:0:0:0:0:0:1', null, '我来快快快测试', 'comment', 'approved', '0');
-INSERT INTO `t_comments` VALUES ('3', '17', '1566912678', '雷小天', '0', '1', '1124378213@qq.com', 'https://github.com/leiphp/sshflower', '0:0:0:0:0:0:0:1', null, '我可以看看 你的源码吗', 'comment', 'not_audit', '0');
-
--- ----------------------------
--- Table structure for t_contents
--- ----------------------------
-DROP TABLE IF EXISTS `t_contents`;
-CREATE TABLE `t_contents` (
-  `cid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `title` varchar(200) DEFAULT NULL,
-  `slug` varchar(200) DEFAULT NULL,
-  `created` int(10) unsigned DEFAULT '0',
-  `modified` int(10) unsigned DEFAULT '0',
-  `content` text COMMENT '内容文字',
-  `author_id` int(10) unsigned DEFAULT '0',
-  `type` varchar(16) DEFAULT 'post',
-  `status` varchar(16) DEFAULT 'publish',
-  `tags` varchar(200) DEFAULT NULL,
-  `categories` varchar(200) DEFAULT NULL,
-  `hits` int(10) unsigned DEFAULT '0',
-  `comments_num` int(10) unsigned DEFAULT '0',
-  `allow_comment` tinyint(1) DEFAULT '1',
-  `allow_ping` tinyint(1) DEFAULT '1',
-  `allow_feed` tinyint(1) DEFAULT '1',
-  PRIMARY KEY (`cid`),
-  UNIQUE KEY `slug` (`slug`),
-  KEY `created` (`created`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_contents
--- ----------------------------
-INSERT INTO `t_contents` VALUES ('1', 'about my blog', 'about', '1487853610', '1487872488', '### Hello World\r\n\r\nabout me\r\n\r\n### ...\r\n\r\n...', '1', 'page', 'publish', null, null, '0', '0', '1', '1', '1');
-INSERT INTO `t_contents` VALUES ('2', 'Hello My Blog', null, '1487861184', '1487872798', '## Hello  World.\r\n\r\n> ...\r\n\r\n----------\r\n\r\n\r\n<!--more-->\r\n\r\n```java\r\npublic static void main(String[] args){\r\n    System.out.println(\"Hello 13 Blog.\");\r\n}\r\n```', '1', 'post', 'publish', '', 'default', '10', '0', '1', '1', '1');
-
--- ----------------------------
--- Table structure for t_logs
--- ----------------------------
-DROP TABLE IF EXISTS `t_logs`;
-CREATE TABLE `t_logs` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `action` varchar(100) DEFAULT NULL,
-  `data` varchar(2000) DEFAULT NULL,
-  `author_id` int(10) DEFAULT NULL,
-  `ip` varchar(20) DEFAULT NULL,
-  `created` int(10) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_logs
--- ----------------------------
-INSERT INTO `t_logs` VALUES ('1', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566312818');
-INSERT INTO `t_logs` VALUES ('2', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566400842');
-INSERT INTO `t_logs` VALUES ('3', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566489734');
-INSERT INTO `t_logs` VALUES ('4', '登录后台', null, '1', '0:0:0:0:0:0:0:1', '1566569572');
-
--- ----------------------------
--- Table structure for t_metas
--- ----------------------------
-DROP TABLE IF EXISTS `t_metas`;
-CREATE TABLE `t_metas` (
-  `mid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(200) DEFAULT NULL,
-  `slug` varchar(200) DEFAULT NULL,
-  `type` varchar(32) NOT NULL DEFAULT '',
-  `description` varchar(200) DEFAULT NULL,
-  `sort` int(10) unsigned DEFAULT '0',
-  `parent` int(10) unsigned DEFAULT '0',
-  PRIMARY KEY (`mid`),
-  KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_metas
--- ----------------------------
-INSERT INTO `t_metas` VALUES ('1', 'default', null, 'category', null, '0', '0');
-INSERT INTO `t_metas` VALUES ('6', '默认分类', 'https://github.com/ZHENFENG13', 'link', null, '0', '0');
-
--- ----------------------------
--- Table structure for t_options
--- ----------------------------
-DROP TABLE IF EXISTS `t_options`;
-CREATE TABLE `t_options` (
-  `name` varchar(32) NOT NULL DEFAULT '',
-  `value` varchar(1000) DEFAULT '',
-  `description` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_options
--- ----------------------------
-INSERT INTO `t_options` VALUES ('site_description', '13 Blog', null);
-INSERT INTO `t_options` VALUES ('site_keywords', '13 Blog', null);
-INSERT INTO `t_options` VALUES ('site_record', '', '备案号');
-INSERT INTO `t_options` VALUES ('site_theme', 'default', null);
-INSERT INTO `t_options` VALUES ('site_title', 'My Blog', '');
-INSERT INTO `t_options` VALUES ('social_github', '', null);
-INSERT INTO `t_options` VALUES ('social_twitter', '', null);
-INSERT INTO `t_options` VALUES ('social_weibo', '', null);
-INSERT INTO `t_options` VALUES ('social_zhihu', '', null);
-
--- ----------------------------
--- Table structure for t_relationships
--- ----------------------------
-DROP TABLE IF EXISTS `t_relationships`;
-CREATE TABLE `t_relationships` (
-  `cid` int(10) unsigned NOT NULL,
-  `mid` int(10) unsigned NOT NULL,
-  PRIMARY KEY (`cid`,`mid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_relationships
--- ----------------------------
-INSERT INTO `t_relationships` VALUES ('2', '1');
-INSERT INTO `t_relationships` VALUES ('3', '1');
-INSERT INTO `t_relationships` VALUES ('3', '7');
-
--- ----------------------------
--- Table structure for t_users
--- ----------------------------
-DROP TABLE IF EXISTS `t_users`;
-CREATE TABLE `t_users` (
-  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(32) DEFAULT NULL,
-  `password` varchar(64) DEFAULT NULL,
-  `email` varchar(200) DEFAULT NULL,
-  `home_url` varchar(200) DEFAULT NULL,
-  `screen_name` varchar(32) DEFAULT NULL,
-  `created` int(10) unsigned DEFAULT '0',
-  `activated` int(10) unsigned DEFAULT '0',
-  `logged` int(10) unsigned DEFAULT '0',
-  `group_name` varchar(16) DEFAULT 'visitor',
-  PRIMARY KEY (`uid`),
-  UNIQUE KEY `name` (`username`),
-  UNIQUE KEY `mail` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of t_users
--- ----------------------------
-INSERT INTO `t_users` VALUES ('1', 'admin', 'a66abb5684c45962d887564f08346e8d', '1034683568@qq.com', null, 'admin', '1490756162', '0', '0', 'visitor');
-
--- ----------------------------
 -- Table structure for users
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
@@ -494,5 +304,5 @@ CREATE TABLE `users` (
 INSERT INTO `users` VALUES ('1', 'leixiaotian', 'leixiaotian', '123456', '28', 'test', '');
 INSERT INTO `users` VALUES ('2', 'leixiaotian', 'user', '35c5c7aa87c4d6915be5a44b0181b370', '28', 'user', '');
 INSERT INTO `users` VALUES ('3', 'leiwen', 'vip', '112233', '23', 'vip', '');
-INSERT INTO `users` VALUES ('4', 'admin', 'admin', 'f332f9152a10029746d939a2ae4980d4', '28', 'admin', 'tian-lei-happy@163.com');
+INSERT INTO `users` VALUES ('4', 'admin', 'admin', 'addb450b8a9264810c5c006c59892192', '28', 'admin', 'tian-lei-happy@163.com');
 INSERT INTO `users` VALUES ('5', 'test', '', '', '33', '', '');
