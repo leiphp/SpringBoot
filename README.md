@@ -67,8 +67,9 @@
  * ##### SpringBoot项目打包
     1. ###### 使用命令 mvn clean package 打包（mvn packsge Dmven.test.skip=true/ mvn -Dmaven.test.skip -U clean package   //跳过测试类）
     2. ###### 使用idea Maven Projects > 项目名 > Lifecycle > 双击package开始打包
- * ##### SpringBootActuator监控接口
- * ##### 项目后台及前台功能开发及完善
+ * ##### SpringBootActuator监控接口  
+ * ##### 项目后台及前台功能开发及完善  
+ * ##### shiro权限功能完善  
  * ##### 项目redis缓存功能完善  
  
  ### 项目来源  
