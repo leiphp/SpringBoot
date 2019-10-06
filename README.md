@@ -50,6 +50,10 @@
     　　　　`rm -rf /usr/bin/redis-* //删除所有redis相关命令脚本`  
     　　　　`rm -rf /root/download/redis-4.0.4 //删除redis解压文件夹`  
  
+### 项目部署  
+ * ##### jar方式部署  [详情](https://www.100txy.com/article/247.html)  
+ * ##### docker方式部署  
+ 
 ### 学习笔记  
 * springboot启动方式
  1. @EnableAutoConfiguration 注解作用：扫包范围 默认在当前类里面（注解在类上面） 
