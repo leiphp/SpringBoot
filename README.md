@@ -52,7 +52,7 @@
  
 ### 项目部署  
  * ##### jar方式部署  [详情](https://www.100txy.com/article/247.html)  
- * ##### docker方式部署  
+ * ##### docker方式部署  [详情](https://www.100txy.com/article/248.html)  
  
 ### 学习笔记  
 * springboot启动方式
