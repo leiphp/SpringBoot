@@ -52,7 +52,11 @@
  
 ### 项目部署  
  * ##### jar方式部署  [详情](https://www.100txy.com/article/247.html)  
- * ##### docker方式部署  [详情](https://www.100txy.com/article/248.html)  
+ * ##### docker方式部署    
+  1. 主机安装MySQL和Redis，并导入springboot.sql文件   
+  2. 拉取docker镜像：docker image pull leixiaotain/springboot-blog:latest  
+  3. 镜像生成容器，并启动项目：docker run --net=host -d -p 8081:8081 leixiaotain/springboot-blog（一定要带上--net=host否则会隔离容器网络，导致连接MySQL失败）  
+  4. 浏览器输入IP地址:8081访问
  
 ### 学习笔记  
 * springboot启动方式
