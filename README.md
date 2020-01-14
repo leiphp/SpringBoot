@@ -57,7 +57,10 @@
   2. 拉取docker镜像：docker image pull leixiaotain/springboot-blog:latest  
   3. 镜像生成容器，并启动项目：docker run --net=host -d -p 8081:8081 leixiaotain/springboot-blog（一定要带上--net=host否则会隔离容器网络，导致连接MySQL失败）  
   4. 浏览器输入IP地址:8081访问
- 
+ * ##### 项目后台登录
+  1. 账号：admin
+  2. 密码：123456 `如果登录失败,手动加密放到数据库password中MD5(adming123456)`  
+  
 ### 学习笔记  
 * springboot启动方式
  1. @EnableAutoConfiguration 注解作用：扫包范围 默认在当前类里面（注解在类上面） 
